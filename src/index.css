@@ -1,0 +1,136 @@
+@import "tailwindcss";
+
+/*
+  Tema del sitio (Tailwind v4).
+  Estas variables generan clases automáticamente:
+  --color-acento  →  bg-acento, text-acento, border-acento...
+  Cambia un valor aquí y TODA la página cambia.
+*/
+@theme {
+  --color-fondo: #0a0a10;
+  --color-tarjeta: #12121c;
+  --color-borde: #262638;
+  --color-acento: #7c3aed;
+  --color-acento-claro: #a78bfa;
+  --color-texto: #e8e6f0;
+  --color-apagado: #9a98ac;
+
+  --font-sans: "Outfit", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+}
+
+html {
+  scroll-behavior: smooth; /* los enlaces #seccion se desplazan suave */
+}
+
+body {
+  background: var(--color-fondo);
+  color: var(--color-texto);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+}
+
+/* Color al seleccionar texto */
+::selection {
+  background: var(--color-acento);
+  color: white;
+}
+
+/* Barra de scroll fina y oscura */
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: var(--color-fondo); }
+::-webkit-scrollbar-thumb {
+  background: var(--color-borde);
+  border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover { background: var(--color-acento); }
+
+/*
+  EFECTO SPOTLIGHT ✨
+  La card tiene dos capas creadas con ::before y ::after:
+  - ::before → una luz radial centrada en (--x, --y), coordenadas
+    que JavaScript actualiza cuando mueves el mouse.
+  - ::after → ilumina solo el borde con la misma técnica.
+  Ambas están ocultas (opacity: 0) y aparecen con :hover.
+*/
+.spotlight-card {
+  position: relative;
+  overflow: hidden;
+  background: var(--color-tarjeta);
+  border: 1px solid var(--color-borde);
+  border-radius: 1.25rem;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.spotlight-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    450px circle at var(--x, 50%) var(--y, 50%),
+    rgba(124, 58, 237, 0.18),
+    transparent 65%
+  );
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  pointer-events: none; /* la luz no bloquea los clics */
+}
+
+.spotlight-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  border: 1px solid transparent;
+  background: radial-gradient(
+    250px circle at var(--x, 50%) var(--y, 50%),
+    rgba(167, 139, 250, 0.7),
+    transparent 70%
+  ) border-box;
+  mask: linear-gradient(#000 0 0) padding-box, linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  pointer-events: none;
+}
+
+.spotlight-card:hover::before,
+.spotlight-card:hover::after {
+  opacity: 1;
+}
+
+.spotlight-card:hover {
+  transform: translateY(-4px);
+}
+
+/* Texto con degradado (para títulos llamativos) */
+.texto-degradado {
+  background: linear-gradient(120deg, var(--color-texto) 30%, var(--color-acento-claro) 70%, var(--color-acento) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Cursor parpadeante del efecto de escritura */
+.cursor-escritura {
+  display: inline-block;
+  width: 3px;
+  height: 1.1em;
+  background: var(--color-acento-claro);
+  margin-left: 4px;
+  vertical-align: text-bottom;
+  animation: parpadeo 1s step-end infinite;
+}
+
+@keyframes parpadeo {
+  50% { opacity: 0; }
+}
+
+/* Orbes de luz difuminada para el fondo del hero */
+.orbe {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(90px);
+  opacity: 0.35;
+  pointer-events: none;
+}
