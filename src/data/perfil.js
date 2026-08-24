@@ -10,7 +10,7 @@ export const negocio = {
   // ⚠️ IMPORTANTE: reemplaza con TU número de WhatsApp.
   // Formato: 57 (Colombia) + celular, SIN "+", SIN espacios.
   // Ejemplo real: '573001112233'
-  whatsapp: '573000000000',
+  whatsapp: '573136676011',
   mensajeInicial: 'Hola Daniel, vi tu página y me interesa hablar sobre un proyecto.',
   datosRapidos: 'Pereira, Colombia · Respuesta en menos de 24h · Precios cerrados',
 }
