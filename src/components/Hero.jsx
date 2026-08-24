@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion'
-import { perfil } from '../data/perfil'
+import { perfil, negocio, enlaceWhatsApp } from '../data/perfil'
 import fotoDaniel from '../assets/foto-daniel.png'
 
 /*
@@ -97,9 +97,9 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="mb-3 font-mono text-acento-claro"
+            className="mb-3 font-mono text-xs tracking-[0.25em] text-acento-claro"
           >
-            {perfil.saludo}
+            {perfil.etiqueta}
           </motion.p>
 
           <motion.h1
@@ -138,18 +138,30 @@ export default function Hero() {
             className="flex flex-wrap justify-center gap-4 md:justify-start"
           >
             <a
-              href="#contacto"
-              className="rounded-xl bg-acento px-7 py-3.5 font-semibold text-white transition-all hover:-translate-y-0.5 hover:shadow-[0_10px_30px_-8px_rgba(124,58,237,0.7)]"
+              href={enlaceWhatsApp()}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded-xl bg-[#25D366] px-7 py-3.5 font-semibold text-white transition-all hover:-translate-y-0.5 hover:shadow-[0_10px_30px_-8px_rgba(37,211,102,0.6)]"
             >
-              Contactar
+              💬 Hablemos por WhatsApp
             </a>
             <a
-              href="#proyectos"
+              href="#servicios"
               className="rounded-xl border border-borde bg-tarjeta px-7 py-3.5 font-semibold transition-all hover:-translate-y-0.5 hover:border-acento hover:text-acento-claro"
             >
-              Ver proyectos
+              Ver servicios
             </a>
           </motion.div>
+
+          {/* Datos rápidos que generan confianza */}
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.9 }}
+            className="mt-10 font-mono text-[11px] uppercase tracking-[0.2em] text-apagado/80"
+          >
+            {negocio.datosRapidos}
+          </motion.p>
         </div>
 
         {/* Columna de la foto */}

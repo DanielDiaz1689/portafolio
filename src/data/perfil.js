@@ -6,17 +6,32 @@
   ══════════════════════════════════════════════════
 */
 
+export const negocio = {
+  // ⚠️ IMPORTANTE: reemplaza con TU número de WhatsApp.
+  // Formato: 57 (Colombia) + celular, SIN "+", SIN espacios.
+  // Ejemplo real: '573001112233'
+  whatsapp: '573000000000',
+  mensajeInicial: 'Hola Daniel, vi tu página y me interesa hablar sobre un proyecto.',
+  datosRapidos: 'Pereira, Colombia · Respuesta en menos de 24h · Precios cerrados',
+}
+
+/* Construye un enlace que abre WhatsApp con un mensaje ya escrito */
+export function enlaceWhatsApp(mensaje = negocio.mensajeInicial) {
+  return `https://wa.me/${negocio.whatsapp}?text=${encodeURIComponent(mensaje)}`
+}
+
 export const perfil = {
   nombre: 'Daniel Díaz',
   saludo: 'Hola, soy',
+  etiqueta: 'SOFTWARE · IA · AUTOMATIZACIÓN · META ADS',
   // El efecto de escritura rota entre estas frases:
   roles: [
     'Desarrollador Web',
-    'Creador de soluciones digitales',
-    'Freelancer',
+    'Automatizaciones con IA',
+    'Campañas en Meta Ads',
   ],
   descripcion:
-    'Transformo ideas en experiencias digitales modernas, rápidas y llamativas para tu negocio.',
+    'Construyo software a medida, automatizaciones con inteligencia artificial y campañas de tráfico digital para empresas que quieren crecer con orden.',
 }
 
 export const sobreMi = {
@@ -31,24 +46,114 @@ export const sobreMi = {
   ],
 }
 
-export const servicios = [
+/*
+  CATÁLOGO DE SERVICIOS 🗂️
+  - Cada categoría es una pestaña en la página.
+  - precio: pon el texto que quieras ('USD $80 /mes', 'USD $350 único pago'...)
+    o déjalo en null y mostrará "A cotizar".
+*/
+export const catalogo = [
   {
-    icono: '🌐',
-    titulo: 'Desarrollo web',
-    descripcion:
-      'Sitios y aplicaciones web modernas, rápidas y adaptadas a tus necesidades.',
+    id: 'web',
+    nombre: 'Desarrollo web',
+    items: [
+      {
+        titulo: 'Landing page de conversión',
+        descripcion:
+          'Sitio orientado a captar clientes. Diseño persuasivo, formularios y llamadas a la acción optimizadas para resultados.',
+        precio: null,
+      },
+      {
+        titulo: 'Panel administrativo',
+        descripcion:
+          'Dashboard hecho a medida para la operación interna de tu empresa: usuarios, métricas, reportes y permisos.',
+        precio: null,
+      },
+    ],
   },
   {
-    icono: '🎨',
-    titulo: 'Diseño de interfaces',
-    descripcion:
-      'Interfaces claras y atractivas que mejoran la experiencia del usuario.',
+    id: 'automatizaciones',
+    nombre: 'Automatizaciones',
+    items: [
+      {
+        titulo: 'Automatización de procesos',
+        descripcion:
+          'Convierte tareas repetitivas (reportes, correos, inventarios, pedidos) en flujos automáticos que trabajan por ti.',
+        precio: null,
+      },
+      {
+        titulo: 'Integraciones a medida',
+        descripcion:
+          'Conecta tus herramientas entre sí: tienda online, WhatsApp, correo, hojas de cálculo y más.',
+        precio: null,
+      },
+    ],
   },
   {
-    icono: '💡',
-    titulo: 'Consultoría',
-    descripcion:
-      'Asesoramiento técnico para llevar tu proyecto al siguiente nivel.',
+    id: 'ia',
+    nombre: 'IA',
+    items: [
+      {
+        titulo: 'Agentes de IA a medida',
+        descripcion:
+          'Asistentes inteligentes que generan contenido, analizan información o atienden procesos de tu negocio.',
+        precio: null,
+      },
+      {
+        titulo: 'Chatbot de atención 24/7',
+        descripcion:
+          'Responde a tus clientes a cualquier hora por WhatsApp o web, con respuestas entrenadas para tu negocio.',
+        precio: null,
+      },
+    ],
+  },
+  {
+    id: 'meta-ads',
+    nombre: 'Meta Ads',
+    items: [
+      {
+        titulo: 'Gestión de pauta en Meta Ads',
+        descripcion:
+          'Estrategia, segmentación, optimización y reportes mensuales. Manejamos tu presupuesto para que cada peso traiga resultados.',
+        precio: null,
+      },
+      {
+        titulo: 'Pack de 6 videos UGC para anuncios',
+        descripcion:
+          'Contenido auténtico estilo creador para campañas de conversión. Producción ágil enfocada en resultados.',
+        precio: null,
+      },
+    ],
+  },
+  {
+    id: 'soporte',
+    nombre: 'Soporte',
+    items: [
+      {
+        titulo: 'Hosting + mantenimiento web',
+        descripcion:
+          'Servidor, dominio, actualizaciones y correcciones incluidas. Tu sitio siempre online, siempre actualizado.',
+        precio: 'USD $80 /mes',
+      },
+      {
+        titulo: 'Soporte técnico continuo',
+        descripcion:
+          'Resolución de incidentes, ajustes menores y asistencia con tiempos de respuesta garantizados.',
+        precio: 'USD $150 /mes',
+      },
+      {
+        titulo: 'Mantenimiento de automatizaciones',
+        descripcion:
+          'Monitoreo, ajustes y garantía de funcionamiento continuo de tus flujos críticos. Si algo falla, lo arreglamos.',
+        precio: 'USD $200 /mes',
+      },
+      {
+        titulo: 'Backups y monitoreo',
+        descripcion:
+          'Copias de seguridad automáticas y alertas de disponibilidad. Tu información protegida y tu sistema vigilado.',
+        precio: 'USD $100 /mes',
+      },
+    ],
   },
 ]
 
@@ -57,7 +162,10 @@ export const servicios = [
 export const proyectos = []
 
 export const contacto = {
-  intro: '¿Tienes un proyecto en mente? Escríbeme y hablemos.',
+  titulo: '¿Tienes un proyecto',
+  tituloAcento: 'en mente?', // esta parte se muestra en morado cursiva
+  intro:
+    'Cuéntame qué necesitas y te envío una propuesta personalizada, sin costo y sin compromiso.',
   enlaces: [
     {
       etiqueta: 'Email',
