@@ -157,9 +157,18 @@ export const catalogo = [
   },
 ]
 
-// Cuando tengas proyectos reales, agrégalos aquí con este formato:
-// { titulo: 'Mi tienda', descripcion: '...', imagen: '/proyectos/tienda.png', enlace: 'https://...' }
-export const proyectos = []
+// Agrega más proyectos con este mismo formato.
+// enlace: null → muestra la card sin botón; cuando publiques
+// el proyecto en internet, pon aquí su URL real.
+export const proyectos = [
+  {
+    titulo: 'VIP STORE — Tienda de tecnología',
+    descripcion:
+      'Ecommerce completo: catálogo con filtros y buscador, carrito de compras con IVA, pago simulado y panel administrativo con métricas de ventas. React + Tailwind.',
+    imagen: '/proyectos/vip-store.jpg',
+    enlace: null,
+  },
+]
 
 export const contacto = {
   titulo: '¿Tienes un proyecto',
