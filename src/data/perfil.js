@@ -166,7 +166,7 @@ export const proyectos = [
     descripcion:
       'Ecommerce completo: catálogo con filtros y buscador, carrito de compras con IVA, pago simulado y panel administrativo con métricas de ventas. React + Tailwind.',
     imagen: '/proyectos/vip-store.jpg',
-    enlace: null,
+    enlace: 'https://vip-store-nu.vercel.app/',
   },
 ]
 
