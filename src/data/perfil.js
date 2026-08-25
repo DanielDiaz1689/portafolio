@@ -162,6 +162,13 @@ export const catalogo = [
 // el proyecto en internet, pon aquí su URL real.
 export const proyectos = [
   {
+    titulo: 'EVENTO15 — Wedding & Event Planners',
+    descripcion:
+      'Sitio premium para planificadores de bodas y eventos. Galería cinematográfica con efecto scroll-zoom, sistema de agendamiento de citas con confirmación por correo, WhatsApp integrado y videos de eventos. Verde esmeralda + dorado. React + Vercel.',
+    imagen: '/proyectos/evento15.jpg',
+    enlace: null, // 📝 Reemplaza con la URL de Vercel cuando esté lista
+  },
+  {
     titulo: 'VIP STORE — Tienda de tecnología',
     descripcion:
       'Ecommerce completo: catálogo con filtros y buscador, carrito de compras con IVA, pago simulado y panel administrativo con métricas de ventas. React + Tailwind.',
