@@ -166,7 +166,7 @@ export const proyectos = [
     descripcion:
       'Sitio premium para planificadores de bodas y eventos. Galería cinematográfica con efecto scroll-zoom, sistema de agendamiento de citas con confirmación por correo, WhatsApp integrado y videos de eventos. Verde esmeralda + dorado. React + Vercel.',
     imagen: '/proyectos/evento15.jpg',
-    enlace: null, // 📝 Reemplaza con la URL de Vercel cuando esté lista
+    enlace: 'https://evento15.vercel.app/',
   },
   {
     titulo: 'VIP STORE — Tienda de tecnología',
