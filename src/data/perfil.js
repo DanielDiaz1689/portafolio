@@ -161,6 +161,12 @@ export const catalogo = [
 // enlace: null → muestra la card sin botón; cuando publiques
 // el proyecto en internet, pon aquí su URL real.
 export const proyectos = [
+    {
+    titulo: 'DropiAnalyzer',
+    descripcion: 'Sitio web para encontrar los mejores productos winners.',
+    imagen: '/proyectos/Dropianalyzer',  // ← foto de miniatura
+    enlace: 'https://dropi-analyzer.vercel.app/', // ← URL de Vercel
+  },
   {
     titulo: 'EVENTO15 — Wedding & Event Planners',
     descripcion:
