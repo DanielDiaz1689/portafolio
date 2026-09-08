@@ -164,7 +164,7 @@ export const proyectos = [
     {
     titulo: 'DropiAnalyzer',
     descripcion: 'Sitio web para encontrar los mejores productos winners.',
-    imagen: '/proyectos/Dropianalyzer',  // ← foto de miniatura
+    imagen: '/proyectos/dropianalyzer.jpg',  // ← foto de miniatura
     enlace: 'https://dropi-analyzer.vercel.app/', // ← URL de Vercel
   },
   {
