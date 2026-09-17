@@ -166,7 +166,7 @@ export const proyectos = [
     descripcion:
       'Tablero interactivo de ahorro con 200 celdas. Cada número representa $1.000 COP; la meta es acumular $20.100.000. Progreso visible en tiempo real, persistencia local y mensajes motivacionales.',
     imagen: '/proyectos/reto200.jpg',
-    enlace: 'https://claude.ai/artifact/MYkAMoNsV6j7S2zVTu1pBi',
+    enlace: 'https://danieldiaz-dev.vercel.app/reto200',
   },
     {
     titulo: 'DropiAnalyzer',
