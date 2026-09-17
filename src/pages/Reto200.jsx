@@ -1,4 +1,5 @@
 import { useEffect, useState, useRef } from 'react'
+import { supabase, RETO_ID } from '../lib/supabase'
 
 const STORAGE_KEY = 'reto200_cop_v1'
 const TOTAL = 200
@@ -8,23 +9,56 @@ function cop(n) {
   return '$' + (n * 1000).toLocaleString('es-CO')
 }
 
+function loadLocal() {
+  try {
+    const saved = localStorage.getItem(STORAGE_KEY)
+    return saved ? new Set(JSON.parse(saved)) : new Set()
+  } catch { return new Set() }
+}
+
+function saveLocal(done) {
+  try { localStorage.setItem(STORAGE_KEY, JSON.stringify([...done])) } catch {}
+}
+
 export default function Reto200() {
-  const [done, setDone] = useState(() => {
-    try {
-      const saved = localStorage.getItem(STORAGE_KEY)
-      return saved ? new Set(JSON.parse(saved)) : new Set()
-    } catch {
-      return new Set()
-    }
-  })
+  const [done, setDone] = useState(loadLocal)
+  const [synced, setSynced] = useState(false) // true cuando cargó de Supabase
   const [toast, setToast] = useState(null)
   const toastTimer = useRef(null)
 
+  // ── Cargar desde Supabase al montar ──────────────────────────────────────
   useEffect(() => {
-    try {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify([...done]))
-    } catch {}
-  }, [done])
+    async function cargar() {
+      try {
+        const { data, error } = await supabase
+          .from('reto200_progress')
+          .select('done_numbers')
+          .eq('id', RETO_ID)
+          .single()
+
+        if (!error && data?.done_numbers) {
+          const remoto = new Set(data.done_numbers)
+          setDone(remoto)
+          saveLocal(remoto)
+        }
+      } catch {}
+      setSynced(true)
+    }
+    cargar()
+  }, [])
+
+  // ── Guardar en Supabase + localStorage cuando cambia done ─────────────────
+  const firstRender = useRef(true)
+  useEffect(() => {
+    if (!synced) return
+    if (firstRender.current) { firstRender.current = false; return }
+    saveLocal(done)
+    supabase.from('reto200_progress').upsert({
+      id: RETO_ID,
+      done_numbers: [...done],
+      updated_at: new Date().toISOString(),
+    }).then(() => {})
+  }, [done, synced])
 
   function toggle(n) {
     setDone(prev => {
@@ -42,12 +76,47 @@ export default function Reto200() {
   function showToast(msg) {
     setToast(msg)
     clearTimeout(toastTimer.current)
-    toastTimer.current = setTimeout(() => setToast(null), 2000)
+    toastTimer.current = setTimeout(() => setToast(null), 2200)
   }
 
   function resetAll() {
     if (!confirm('¿Reiniciar todo el reto? Se borrarán todos los avances.')) return
     setDone(new Set())
+  }
+
+  // ── Exportar a archivo .txt ───────────────────────────────────────────────
+  function exportar() {
+    const marcados = [...done].sort((a, b) => a - b)
+    const sumN = marcados.reduce((a, b) => a + b, 0)
+    const total = sumN * 1000
+    const falta = META_COP - total
+
+    const lineas = [
+      '====================================',
+      '   RETO 200 — RESPALDO DE PROGRESO',
+      '====================================',
+      `Fecha: ${new Date().toLocaleString('es-CO')}`,
+      '',
+      `Números completados: ${marcados.length} de 200`,
+      `Total ahorrado:      $${total.toLocaleString('es-CO')} COP`,
+      `Falta:               $${Math.max(0, falta).toLocaleString('es-CO')} COP`,
+      '',
+      '--- Números marcados ---',
+      ...marcados.map(n => `  ${String(n).padStart(3)}  →  ${cop(n)}`),
+      '',
+      '--- Números pendientes ---',
+      ...Array.from({ length: TOTAL }, (_, i) => i + 1)
+        .filter(n => !done.has(n))
+        .map(n => `  ${String(n).padStart(3)}  →  ${cop(n)}`),
+    ]
+
+    const blob = new Blob([lineas.join('\n')], { type: 'text/plain;charset=utf-8' })
+    const url = URL.createObjectURL(blob)
+    const a = document.createElement('a')
+    a.href = url
+    a.download = `reto200_respaldo_${new Date().toISOString().slice(0,10)}.txt`
+    a.click()
+    URL.revokeObjectURL(url)
   }
 
   const count = done.size
@@ -88,7 +157,12 @@ export default function Reto200() {
           <div className="reto-days">
             <div className="reto-days-num">{count}</div>
             <div className="reto-days-label">de 200</div>
-            <button className="reto-btn-reset" onClick={resetAll}>↺ Reiniciar</button>
+            <div className="reto-btns">
+              <button className="reto-btn-export" onClick={exportar} title="Descargar respaldo">
+                ⬇ Exportar
+              </button>
+              <button className="reto-btn-reset" onClick={resetAll}>↺ Reiniciar</button>
+            </div>
           </div>
         </div>
 
@@ -127,7 +201,12 @@ export default function Reto200() {
       {/* ── Footer ── */}
       <footer className="reto-footer">
         <div className="reto-motto">{motto()}</div>
-        <div className="reto-footer-sub">Cada número = $1.000 COP · Haz clic para marcar</div>
+        <div className="reto-footer-sub">
+          Cada número = $1.000 COP · Haz clic para marcar ·{' '}
+          <span style={{ color: 'var(--r-accent)' }}>
+            {synced ? '☁ Sincronizado' : '⏳ Cargando...'}
+          </span>
+        </div>
       </footer>
 
       {/* ── Toast ── */}
@@ -161,114 +240,77 @@ export default function Reto200() {
           }
         }
 
-        .reto-wrap {
-          min-height: 100vh;
-          background: var(--r-bg);
-          color: var(--r-text);
-          font-family: 'Inter', system-ui, sans-serif;
-        }
+        .reto-wrap { min-height: 100vh; background: var(--r-bg); color: var(--r-text);
+                     font-family: 'Inter', system-ui, sans-serif; }
 
-        /* Header */
-        .reto-header {
-          position: sticky;
-          top: 0;
-          z-index: 50;
-          background: var(--r-surface);
-          border-bottom: 1px solid var(--r-border);
-          padding: 14px 20px 10px;
-          box-shadow: 0 4px 24px rgba(0,0,0,.3);
-        }
-        .reto-header-top {
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          margin-bottom: 12px;
-          gap: 12px;
-        }
-        .reto-title   { font-size: 20px; font-weight: 800; letter-spacing: -.5px; }
-        .reto-subtitle{ font-size: 11px; color: var(--r-muted); font-weight: 500;
-                        text-transform: uppercase; letter-spacing: .05em; }
+        .reto-header { position: sticky; top: 0; z-index: 50; background: var(--r-surface);
+                       border-bottom: 1px solid var(--r-border); padding: 14px 20px 10px;
+                       box-shadow: 0 4px 24px rgba(0,0,0,.3); }
+        .reto-header-top { display: flex; align-items: center; justify-content: space-between;
+                           margin-bottom: 12px; gap: 12px; }
+        .reto-title    { font-size: 20px; font-weight: 800; letter-spacing: -.5px; }
+        .reto-subtitle { font-size: 11px; color: var(--r-muted); font-weight: 500;
+                         text-transform: uppercase; letter-spacing: .05em; }
 
         .reto-money { text-align: center; flex: 1; }
-        .reto-saved { font-size: clamp(20px,4vw,30px); font-weight: 800;
-                      color: var(--r-gold); font-variant-numeric: tabular-nums;
-                      letter-spacing: -1px; line-height: 1; }
+        .reto-saved { font-size: clamp(20px,4vw,30px); font-weight: 800; color: var(--r-gold);
+                      font-variant-numeric: tabular-nums; letter-spacing: -1px; line-height: 1; }
         .reto-money-label { font-size: 11px; color: var(--r-muted); text-transform: uppercase;
                             letter-spacing: .06em; margin-top: 2px; }
         .reto-remaining   { font-size: 12px; color: var(--r-muted); margin-top: 4px; }
         .reto-remaining strong { color: var(--r-accent); font-weight: 700; }
 
-        .reto-days { text-align: right; min-width: 80px; }
-        .reto-days-num  { font-size: 30px; font-weight: 800; color: var(--r-accent);
-                          font-variant-numeric: tabular-nums; line-height: 1; }
-        .reto-days-label{ font-size: 11px; color: var(--r-muted); text-transform: uppercase; }
-        .reto-btn-reset {
-          margin-top: 6px;
-          background: transparent;
-          border: 1px solid var(--r-border);
-          border-radius: 6px;
-          padding: 4px 10px;
-          font-size: 11px;
-          font-weight: 600;
-          color: var(--r-muted);
-          cursor: pointer;
-          transition: all .15s;
+        .reto-days { text-align: right; min-width: 90px; }
+        .reto-days-num   { font-size: 30px; font-weight: 800; color: var(--r-accent);
+                           font-variant-numeric: tabular-nums; line-height: 1; }
+        .reto-days-label { font-size: 11px; color: var(--r-muted); text-transform: uppercase; }
+        .reto-btns { display: flex; flex-direction: column; gap: 4px; margin-top: 6px; }
+
+        .reto-btn-export, .reto-btn-reset {
+          background: transparent; border-radius: 6px; padding: 4px 10px;
+          font-size: 11px; font-weight: 600; cursor: pointer; transition: all .15s;
+          letter-spacing: .03em; white-space: nowrap;
         }
+        .reto-btn-export { border: 1px solid var(--r-accent); color: var(--r-accent); }
+        .reto-btn-export:hover { background: var(--r-accent); color: #fff; }
+        .reto-btn-reset  { border: 1px solid var(--r-border); color: var(--r-muted); }
         .reto-btn-reset:hover { border-color: #ef4444; color: #ef4444; }
 
-        /* Barra */
         .reto-progress-section { margin-top: 8px; }
         .reto-progress-labels  { display: flex; justify-content: space-between;
                                   font-size: 11px; color: var(--r-muted); font-weight: 600;
                                   margin-bottom: 4px; font-variant-numeric: tabular-nums; }
         .reto-pct { color: var(--r-accent); }
         .reto-track { height: 8px; background: var(--r-cell); border-radius: 99px; overflow: hidden; }
-        .reto-fill  { height: 100%;
-                      background: linear-gradient(90deg,#059669,#10b981,#34d399);
-                      border-radius: 99px;
-                      transition: width .4s cubic-bezier(.4,0,.2,1); }
+        .reto-fill  { height: 100%; background: linear-gradient(90deg,#059669,#10b981,#34d399);
+                      border-radius: 99px; transition: width .4s cubic-bezier(.4,0,.2,1); }
 
-        /* Grilla */
         .reto-grid-wrap { padding: 14px 14px 40px; }
-        .reto-grid {
-          display: grid;
-          grid-template-columns: repeat(10, 1fr);
-          gap: 6px;
-        }
+        .reto-grid { display: grid; grid-template-columns: repeat(10, 1fr); gap: 6px; }
+
         @media (max-width: 600px) {
           .reto-grid { grid-template-columns: repeat(5,1fr); gap: 5px; }
           .reto-header-top { flex-wrap: wrap; }
           .reto-money { order: 3; flex: 0 0 100%; text-align: left; }
           .reto-saved { font-size: 20px; }
+          .reto-btns { flex-direction: row; }
         }
-        @media (max-width: 380px) {
-          .reto-grid { grid-template-columns: repeat(4,1fr); }
-        }
+        @media (max-width: 380px) { .reto-grid { grid-template-columns: repeat(4,1fr); } }
 
-        /* Celda */
         .reto-cell {
-          aspect-ratio: 1;
-          background: var(--r-cell);
-          border: 1.5px solid var(--r-border);
-          border-radius: 8px;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
-          cursor: pointer;
+          aspect-ratio: 1; background: var(--r-cell); border: 1.5px solid var(--r-border);
+          border-radius: 8px; display: flex; flex-direction: column; align-items: center;
+          justify-content: center; cursor: pointer;
           transition: transform .12s, background .2s, border-color .2s;
-          position: relative;
-          padding: 0;
-          gap: 2px;
+          position: relative; padding: 0; gap: 2px;
         }
         .reto-cell:hover  { transform: scale(1.07); border-color: var(--r-accent); }
         .reto-cell:active { transform: scale(.94); }
         .reto-cell.done   { background: var(--r-done-bg); border-color: var(--r-done-b);
                             box-shadow: 0 0 10px rgba(16,185,129,.25); }
 
-        .reto-cell-num { font-size: clamp(9px,1.8vw,13px); font-weight: 700;
-                         color: var(--r-muted); line-height: 1; transition: color .2s;
-                         font-variant-numeric: tabular-nums; }
+        .reto-cell-num { font-size: clamp(9px,1.8vw,13px); font-weight: 700; color: var(--r-muted);
+                         line-height: 1; transition: color .2s; font-variant-numeric: tabular-nums; }
         .reto-cell-cop { font-size: clamp(7px,1vw,10px); font-weight: 500;
                          color: var(--r-muted); opacity: .6; line-height: 1; }
         .reto-cell.done .reto-cell-num { color: var(--r-done-t); font-weight: 800; }
@@ -277,29 +319,16 @@ export default function Reto200() {
                       font-size: clamp(7px,1vw,10px); color: var(--r-accent);
                       font-weight: 700; line-height: 1; }
 
-        /* Footer */
         .reto-footer     { text-align: center; padding: 10px 16px 36px; }
         .reto-motto      { font-size: 14px; font-weight: 600; margin-bottom: 4px; }
         .reto-footer-sub { font-size: 12px; color: var(--r-muted); }
 
-        /* Toast */
         .reto-toast {
-          position: fixed;
-          bottom: 28px;
-          left: 50%;
-          transform: translateX(-50%);
-          background: #064e35;
-          border: 1px solid var(--r-accent);
-          color: #6ee7b7;
-          padding: 10px 22px;
-          border-radius: 99px;
-          font-size: 14px;
-          font-weight: 700;
-          pointer-events: none;
-          z-index: 200;
-          white-space: nowrap;
-          animation: slideup .3s ease;
-          font-variant-numeric: tabular-nums;
+          position: fixed; bottom: 28px; left: 50%; transform: translateX(-50%);
+          background: #064e35; border: 1px solid var(--r-accent); color: #6ee7b7;
+          padding: 10px 22px; border-radius: 99px; font-size: 14px; font-weight: 700;
+          pointer-events: none; z-index: 200; white-space: nowrap;
+          animation: slideup .3s ease; font-variant-numeric: tabular-nums;
         }
         @keyframes slideup {
           from { transform: translateX(-50%) translateY(20px); opacity: 0; }
