@@ -161,6 +161,13 @@ export const catalogo = [
 // enlace: null → muestra la card sin botón; cuando publiques
 // el proyecto en internet, pon aquí su URL real.
 export const proyectos = [
+  {
+    titulo: 'Reto 200 — Tablero de Ahorro',
+    descripcion:
+      'Tablero interactivo de ahorro con 200 celdas. Cada número representa $1.000 COP; la meta es acumular $20.100.000. Progreso visible en tiempo real, persistencia local y mensajes motivacionales.',
+    imagen: '/proyectos/reto200.jpg',
+    enlace: 'https://claude.ai/artifact/MYkAMoNsV6j7S2zVTu1pBi',
+  },
     {
     titulo: 'DropiAnalyzer',
     descripcion: 'Sitio web para encontrar los mejores productos winners.',
