@@ -29,6 +29,7 @@ export default function Reto200() {
   // ── Cargar desde Supabase al montar ──────────────────────────────────────
   useEffect(() => {
     async function cargar() {
+      if (!supabase) { setSynced(true); return }
       try {
         const { data, error } = await supabase
           .from('reto200_progress')
@@ -53,11 +54,13 @@ export default function Reto200() {
     if (!synced) return
     if (firstRender.current) { firstRender.current = false; return }
     saveLocal(done)
-    supabase.from('reto200_progress').upsert({
-      id: RETO_ID,
-      done_numbers: [...done],
-      updated_at: new Date().toISOString(),
-    }).then(() => {})
+    if (supabase) {
+      supabase.from('reto200_progress').upsert({
+        id: RETO_ID,
+        done_numbers: [...done],
+        updated_at: new Date().toISOString(),
+      }).then(() => {})
+    }
   }, [done, synced])
 
   function toggle(n) {

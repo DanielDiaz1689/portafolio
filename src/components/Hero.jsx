@@ -95,6 +95,7 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.15 }}
             className="texto-degradado mb-4 text-5xl font-extrabold tracking-tight md:text-7xl"
+            style={{ fontFamily: 'var(--font-display)', letterSpacing: '-0.02em' }}
           >
             {perfil.nombre}
           </motion.h1>
@@ -103,7 +104,8 @@ export default function Hero() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.4 }}
-            className="mb-5 h-8 text-xl font-medium text-apagado md:text-2xl"
+            className="mb-5 h-8 text-xl font-medium text-acento-claro/80 md:text-2xl"
+            style={{ fontFamily: 'var(--font-display)' }}
           >
             {textoEscrito}
             <span className="cursor-escritura" />

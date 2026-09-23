@@ -1,4 +1,12 @@
-import { perfil, contacto, enlaceWhatsApp } from '../data/perfil'
+import { Mail, Globe, GitBranch, MessageCircle, MapPin } from 'lucide-react'
+import { perfil, enlaceWhatsApp } from '../data/perfil'
+
+const LINKS = [
+  { etiqueta: 'Email',     href: `mailto:${perfil.email || 'daniel.diaz@utp.edu.co'}`, Icono: Mail,          hover: 'hover:text-acento-claro' },
+  { etiqueta: 'LinkedIn',  href: perfil.linkedin || '#',                                Icono: Globe,         hover: 'hover:text-blue-400' },
+  { etiqueta: 'GitHub',    href: perfil.github || 'https://github.com/DanielDiaz1689', Icono: GitBranch,     hover: 'hover:text-texto' },
+  { etiqueta: 'WhatsApp',  href: enlaceWhatsApp(),                                     Icono: MessageCircle, hover: 'hover:text-[#25D366]' },
+]
 
 export default function Footer() {
   const año = new Date().getFullYear()
@@ -10,39 +18,32 @@ export default function Footer() {
 
           {/* Logo / nombre */}
           <div>
-            <a href="#inicio" className="font-mono text-lg font-semibold">
+            <a href="#inicio" className="font-mono text-lg font-semibold transition-colors hover:text-acento-claro" style={{ fontFamily: 'var(--font-display)' }}>
               <span className="text-acento-claro">&lt;</span>
               {perfil.nombre}
               <span className="text-acento-claro"> /&gt;</span>
             </a>
-            <p className="mt-1 text-xs text-apagado/60">
-              Desarrollador Web · IA · Meta Ads
+            <p className="mt-1.5 flex items-center gap-1.5 text-xs text-apagado/60">
+              <MapPin size={11} aria-hidden="true" />
+              Pereira, Colombia · Desarrollador Web · IA
             </p>
           </div>
 
-          {/* Links rápidos */}
-          <div className="flex flex-wrap justify-center gap-6">
-            {contacto.enlaces.map((enlace) => (
+          {/* Links sociales */}
+          <div className="flex flex-wrap justify-center gap-1">
+            {LINKS.map(({ etiqueta, href, Icono, hover }) => (
               <a
-                key={enlace.etiqueta}
-                href={enlace.url}
+                key={etiqueta}
+                href={href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 text-sm text-apagado transition-colors hover:text-acento-claro"
+                aria-label={etiqueta}
+                className={`flex items-center gap-2 rounded-lg px-4 py-2 text-sm text-apagado transition-all duration-200 hover:bg-tarjeta ${hover} cursor-pointer`}
               >
-                <span>{enlace.icono}</span>
-                <span>{enlace.etiqueta}</span>
+                <Icono size={15} aria-hidden="true" />
+                <span>{etiqueta}</span>
               </a>
             ))}
-            <a
-              href={enlaceWhatsApp()}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 text-sm text-apagado transition-colors hover:text-[#25D366]"
-            >
-              <span>💬</span>
-              <span>WhatsApp</span>
-            </a>
           </div>
         </div>
 
@@ -50,7 +51,6 @@ export default function Footer() {
         <div className="mt-8 border-t border-borde/40 pt-6 text-center text-xs text-apagado/50">
           © {año} {perfil.nombre} · Hecho con
           <span className="mx-1 text-acento-claro/70">React + Vite + Tailwind</span>
-          · Pereira, Colombia
         </div>
       </div>
     </footer>

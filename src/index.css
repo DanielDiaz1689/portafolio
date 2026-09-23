@@ -1,15 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
 @import "tailwindcss";
 
 @theme {
   --color-fondo:        #05050f;
-  --color-tarjeta:      #0e0e1c;
-  --color-borde:        #1e1e36;
+  --color-tarjeta:      #0d0d1a;
+  --color-borde:        #1a1a30;
   --color-acento:       #7c3aed;
   --color-acento-claro: #a78bfa;
   --color-texto:        #eceaf6;
   --color-apagado:      #8b89a0;
 
-  --font-sans: "Outfit", system-ui, sans-serif;
+  --font-sans: "Inter", system-ui, sans-serif;
+  --font-display: "Space Grotesk", system-ui, sans-serif;
   --font-mono: "JetBrains Mono", monospace;
 }
 
@@ -20,6 +22,11 @@ body {
   color: var(--color-texto);
   font-family: var(--font-sans);
   overflow-x: hidden;
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: var(--font-display);
 }
 
 /* Patrón de puntos como fondo global */
@@ -56,6 +63,7 @@ body::before {
   border: 1px solid var(--color-borde);
   border-radius: 1.25rem;
   transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  cursor: default;
 }
 
 .spotlight-card::before {
@@ -153,4 +161,33 @@ body::before {
   background: linear-gradient(90deg, var(--color-acento), var(--color-acento-claro));
   z-index: 100;
   transition: width 0.1s linear;
+}
+
+/* ── Reducir movimiento ─────────────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  html { scroll-behavior: auto; }
+}
+
+/* ── Glass card ─────────────────────────────────────────────────────────────── */
+.glass-card {
+  background: rgba(13, 13, 26, 0.6);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(167, 139, 250, 0.1);
+  border-radius: 1.25rem;
+}
+
+/* ── Sección número decorativo ──────────────────────────────────────────────── */
+.section-label {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-acento-claro);
+  opacity: 0.7;
 }

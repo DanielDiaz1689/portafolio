@@ -7,8 +7,10 @@ export default function Projects() {
     <section id="proyectos" className="border-t border-borde/50 py-24">
       <div className="mx-auto max-w-6xl px-6">
         <Reveal>
-          <h2 className="mb-2 font-mono text-sm text-acento-claro">03.</h2>
-          <h3 className="mb-10 text-3xl font-bold md:text-4xl">Proyectos</h3>
+          <p className="section-label mb-2">03 — Proyectos</p>
+          <h3 className="mb-10 text-3xl font-bold md:text-4xl" style={{ fontFamily: 'var(--font-display)' }}>
+            Lo que construyo
+          </h3>
         </Reveal>
 
         {proyectos.length === 0 ? (
@@ -25,7 +27,7 @@ export default function Projects() {
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {proyectos.map((proyecto, i) => (
               <Reveal key={proyecto.titulo} delay={i * 0.1}>
-                <div className="spotlight-card group h-full flex flex-col overflow-hidden">
+                <div className="spotlight-card group h-full flex flex-col overflow-hidden cursor-pointer">
                   {/* Imagen con overlay en hover */}
                   {proyecto.imagen && (
                     <div className="relative h-48 overflow-hidden">
@@ -54,7 +56,7 @@ export default function Projects() {
 
                   {/* Contenido */}
                   <div className="flex flex-1 flex-col p-6">
-                    <h4 className="mb-2 text-lg font-semibold leading-snug">{proyecto.titulo}</h4>
+                    <h4 className="mb-2 text-lg font-semibold leading-snug" style={{ fontFamily: 'var(--font-display)' }}>{proyecto.titulo}</h4>
                     <p className="mb-5 flex-1 text-sm leading-relaxed text-apagado">
                       {proyecto.descripcion}
                     </p>
