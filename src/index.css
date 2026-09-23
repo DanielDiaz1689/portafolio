@@ -1,27 +1,19 @@
 @import "tailwindcss";
 
-/*
-  Tema del sitio (Tailwind v4).
-  Estas variables generan clases automáticamente:
-  --color-acento  →  bg-acento, text-acento, border-acento...
-  Cambia un valor aquí y TODA la página cambia.
-*/
 @theme {
-  --color-fondo: #0a0a10;
-  --color-tarjeta: #12121c;
-  --color-borde: #262638;
-  --color-acento: #7c3aed;
+  --color-fondo:        #05050f;
+  --color-tarjeta:      #0e0e1c;
+  --color-borde:        #1e1e36;
+  --color-acento:       #7c3aed;
   --color-acento-claro: #a78bfa;
-  --color-texto: #e8e6f0;
-  --color-apagado: #9a98ac;
+  --color-texto:        #eceaf6;
+  --color-apagado:      #8b89a0;
 
   --font-sans: "Outfit", system-ui, sans-serif;
   --font-mono: "JetBrains Mono", monospace;
 }
 
-html {
-  scroll-behavior: smooth; /* los enlaces #seccion se desplazan suave */
-}
+html { scroll-behavior: smooth; }
 
 body {
   background: var(--color-fondo);
@@ -30,36 +22,40 @@ body {
   overflow-x: hidden;
 }
 
-/* Color al seleccionar texto */
+/* Patrón de puntos como fondo global */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(124,58,237,0.12) 1px, transparent 1px);
+  background-size: 32px 32px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Todo el contenido va encima del patrón */
+#root { position: relative; z-index: 1; }
+
 ::selection {
   background: var(--color-acento);
   color: white;
 }
 
-/* Barra de scroll fina y oscura */
-::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: var(--color-fondo); }
 ::-webkit-scrollbar-thumb {
-  background: var(--color-borde);
-  border-radius: 5px;
+  background: var(--color-acento);
+  border-radius: 3px;
 }
-::-webkit-scrollbar-thumb:hover { background: var(--color-acento); }
 
-/*
-  EFECTO SPOTLIGHT ✨
-  La card tiene dos capas creadas con ::before y ::after:
-  - ::before → una luz radial centrada en (--x, --y), coordenadas
-    que JavaScript actualiza cuando mueves el mouse.
-  - ::after → ilumina solo el borde con la misma técnica.
-  Ambas están ocultas (opacity: 0) y aparecen con :hover.
-*/
+/* ── Spotlight card ─────────────────────────────────────────────────────────── */
 .spotlight-card {
   position: relative;
   overflow: hidden;
   background: var(--color-tarjeta);
   border: 1px solid var(--color-borde);
   border-radius: 1.25rem;
-  transition: transform 0.3s ease, border-color 0.3s ease;
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .spotlight-card::before {
@@ -68,12 +64,12 @@ body {
   inset: 0;
   background: radial-gradient(
     450px circle at var(--x, 50%) var(--y, 50%),
-    rgba(124, 58, 237, 0.18),
+    rgba(124, 58, 237, 0.15),
     transparent 65%
   );
   opacity: 0;
   transition: opacity 0.35s ease;
-  pointer-events: none; /* la luz no bloquea los clics */
+  pointer-events: none;
 }
 
 .spotlight-card::after {
@@ -84,7 +80,7 @@ body {
   border: 1px solid transparent;
   background: radial-gradient(
     250px circle at var(--x, 50%) var(--y, 50%),
-    rgba(167, 139, 250, 0.7),
+    rgba(167, 139, 250, 0.6),
     transparent 70%
   ) border-box;
   mask: linear-gradient(#000 0 0) padding-box, linear-gradient(#000 0 0);
@@ -95,15 +91,14 @@ body {
 }
 
 .spotlight-card:hover::before,
-.spotlight-card:hover::after {
-  opacity: 1;
-}
+.spotlight-card:hover::after { opacity: 1; }
 
 .spotlight-card:hover {
-  transform: translateY(-4px);
+  transform: translateY(-5px);
+  box-shadow: 0 20px 60px -20px rgba(124,58,237,0.3);
 }
 
-/* Texto con degradado (para títulos llamativos) */
+/* ── Utilidades ────────────────────────────────────────────────────────────── */
 .texto-degradado {
   background: linear-gradient(120deg, var(--color-texto) 30%, var(--color-acento-claro) 70%, var(--color-acento) 100%);
   -webkit-background-clip: text;
@@ -111,26 +106,51 @@ body {
   color: transparent;
 }
 
-/* Cursor parpadeante del efecto de escritura */
 .cursor-escritura {
   display: inline-block;
-  width: 3px;
-  height: 1.1em;
+  width: 2px;
+  height: 1em;
   background: var(--color-acento-claro);
-  margin-left: 4px;
+  margin-left: 3px;
   vertical-align: text-bottom;
   animation: parpadeo 1s step-end infinite;
 }
+@keyframes parpadeo { 50% { opacity: 0; } }
 
-@keyframes parpadeo {
-  50% { opacity: 0; }
-}
-
-/* Orbes de luz difuminada para el fondo del hero */
 .orbe {
   position: absolute;
   border-radius: 9999px;
-  filter: blur(90px);
-  opacity: 0.35;
+  filter: blur(100px);
+  opacity: 0.25;
   pointer-events: none;
+}
+
+/* ── Badge de tecnología ────────────────────────────────────────────────────── */
+.tech-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: rgba(124,58,237,0.1);
+  border: 1px solid rgba(124,58,237,0.25);
+  color: var(--color-acento-claro);
+  font-size: 12px;
+  font-family: var(--font-mono);
+  padding: 4px 12px;
+  border-radius: 99px;
+  transition: background 0.2s, border-color 0.2s;
+}
+.tech-badge:hover {
+  background: rgba(124,58,237,0.2);
+  border-color: rgba(167,139,250,0.5);
+}
+
+/* ── Barra de progreso de scroll ────────────────────────────────────────────── */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--color-acento), var(--color-acento-claro));
+  z-index: 100;
+  transition: width 0.1s linear;
 }
