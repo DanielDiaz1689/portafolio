@@ -162,6 +162,13 @@ export const catalogo = [
 // el proyecto en internet, pon aquí su URL real.
 export const proyectos = [
   {
+    titulo: 'CRM Eventos — Gestión comercial para empresas de eventos',
+    descripcion:
+      'CRM a medida: clientes por canal (Instagram, Meta Ads, WhatsApp, web, referidos), embudo de ventas, órdenes de servicio, pagos y métricas del mes. Roles dueño/asesor, reparto automático de clientes, historial de cambios y seguridad a nivel de base de datos. React + Supabase + Vercel.',
+    imagen: '/proyectos/crm-eventos.png',
+    enlace: 'https://crm-eventos-eight.vercel.app/tour.html', // recorrido público (el CRM real pide usuario)
+  },
+  {
     titulo: 'Reto 200 — Tablero de Ahorro',
     descripcion:
       'Tablero interactivo de ahorro con 200 celdas. Cada número representa $1.000 COP; la meta es acumular $20.100.000. Progreso visible en tiempo real, persistencia local y mensajes motivacionales.',
