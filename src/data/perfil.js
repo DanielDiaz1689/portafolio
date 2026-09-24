@@ -162,6 +162,13 @@ export const catalogo = [
 // el proyecto en internet, pon aquí su URL real.
 export const proyectos = [
   {
+    titulo: 'Dr. Ospina — Rediseño web cirugía bariátrica',
+    descripcion:
+      'Rediseño completo de sitio web médico. Video con expansión scroll y sonido automático, galería de resultados con efecto "falling images", calculadora IMC, modal de servicios con animación spring, carrusel de testimonios y WhatsApp integrado. HTML + CSS + JS vanilla.',
+    imagen: '/proyectos/dr-ospina.jpg',
+    enlace: '/dr-ospina-redesign.html',
+  },
+  {
     titulo: 'CRM Eventos — Gestión comercial para empresas de eventos',
     descripcion:
       'CRM a medida: clientes por canal (Instagram, Meta Ads, WhatsApp, web, referidos), embudo de ventas, órdenes de servicio, pagos y métricas del mes. Roles dueño/asesor, reparto automático de clientes, historial de cambios y seguridad a nivel de base de datos. React + Supabase + Vercel.',

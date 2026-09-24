@@ -1,0 +1,1536 @@
+<title>Dr. Juan Cristóbal Ospina</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400&display=swap">
+<style>
+:root {
+  --bg: #f7faf9;
+  --bg-alt: #ffffff;
+  --surface: #edf3f0;
+  --text: #162b2b;
+  --text-muted: #4a6565;
+  --text-light: #7a9494;
+  --primary: #0a6e5c;
+  --primary-light: #0f8d76;
+  --primary-pale: #e4f5f0;
+  --primary-dark: #064d40;
+  --gold: #b8963a;
+  --gold-pale: #faf5e8;
+  --border: #d4e0dc;
+  --white: #ffffff;
+  --danger: #c0392b;
+  --warning: #e67e22;
+  --safe: #27ae60;
+  --shadow-sm: 0 1px 4px rgba(10,60,50,0.06);
+  --shadow-md: 0 6px 20px rgba(10,60,50,0.08);
+  --shadow-lg: 0 16px 48px rgba(10,60,50,0.1);
+  --radius: 20px;
+  --radius-sm: 12px;
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body: 'DM Sans', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0c1816;
+    --bg-alt: #12211e;
+    --surface: #1a302b;
+    --text: #e4f0ec;
+    --text-muted: #8fada5;
+    --text-light: #5e8078;
+    --primary: #26c9a4;
+    --primary-light: #3dddb8;
+    --primary-pale: rgba(38,201,164,0.1);
+    --primary-dark: #1a9b7e;
+    --gold: #d4af52;
+    --gold-pale: rgba(212,175,82,0.08);
+    --border: #26403a;
+    --white: #12211e;
+    --shadow-sm: 0 1px 4px rgba(0,0,0,0.2);
+    --shadow-md: 0 6px 20px rgba(0,0,0,0.25);
+    --shadow-lg: 0 16px 48px rgba(0,0,0,0.3);
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0c1816;
+  --bg-alt: #12211e;
+  --surface: #1a302b;
+  --text: #e4f0ec;
+  --text-muted: #8fada5;
+  --text-light: #5e8078;
+  --primary: #26c9a4;
+  --primary-light: #3dddb8;
+  --primary-pale: rgba(38,201,164,0.1);
+  --primary-dark: #1a9b7e;
+  --gold: #d4af52;
+  --gold-pale: rgba(212,175,82,0.08);
+  --border: #26403a;
+  --white: #12211e;
+  --shadow-sm: 0 1px 4px rgba(0,0,0,0.2);
+  --shadow-md: 0 6px 20px rgba(0,0,0,0.25);
+  --shadow-lg: 0 16px 48px rgba(0,0,0,0.3);
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:var(--font-body);line-height:1.6;-webkit-font-smoothing:antialiased;padding:0!important;overflow-x:hidden}
+h1,h2,h3,h4{font-family:var(--font-display)}
+img{max-width:100%}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(32px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
+@keyframes slideRight{from{transform:translateX(-100%)}to{transform:translateX(0)}}
+.reveal{opacity:0;transform:translateY(32px);transition:opacity 0.7s cubic-bezier(0.22,1,0.36,1),transform 0.7s cubic-bezier(0.22,1,0.36,1)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-delay-1{transition-delay:0.1s}
+.reveal-delay-2{transition-delay:0.2s}
+.reveal-delay-3{transition-delay:0.3s}
+.reveal-delay-4{transition-delay:0.4s}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:0.01ms!important;transition-duration:0.01ms!important}
+  .reveal{opacity:1;transform:none}
+}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 24px;transition:all 0.4s}
+.nav.scrolled{background:var(--bg-alt);box-shadow:var(--shadow-sm);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)}
+.nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:76px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text)}
+.logo svg{width:44px;height:44px}
+.logo-text{font-family:var(--font-display);font-size:16px;font-weight:600;line-height:1.2}
+.logo-text span{color:var(--primary);font-size:11px;font-family:var(--font-body);font-weight:500;letter-spacing:0.04em;display:block}
+.nav-links{display:flex;gap:28px;list-style:none}
+.nav-links a{color:var(--text-muted);text-decoration:none;font-size:14px;font-weight:500;transition:color 0.2s;position:relative}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:2px;background:var(--primary);transition:width 0.3s}
+.nav-links a:hover{color:var(--primary)}
+.nav-links a:hover::after{width:100%}
+.nav-cta{background:var(--primary);color:#fff!important;padding:10px 24px;border-radius:99px;font-weight:600;font-size:13px;text-decoration:none;transition:all 0.3s;letter-spacing:0.02em;box-shadow:0 4px 12px rgba(10,110,92,0.25)}
+.nav-cta:hover{background:var(--primary-light);transform:translateY(-2px);box-shadow:0 6px 20px rgba(10,110,92,0.35)}
+.mobile-toggle{display:none;background:none;border:none;cursor:pointer;padding:8px}
+.mobile-toggle svg{width:24px;height:24px;stroke:var(--text);fill:none;stroke-width:2}
+
+/* HERO */
+.hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:48px;max-width:1200px;margin:0 auto;padding:120px 24px 80px}
+.hero-content{animation:fadeUp 0.8s ease-out}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:var(--primary-pale);color:var(--primary);padding:8px 18px;border-radius:99px;font-size:13px;font-weight:600;margin-bottom:24px;letter-spacing:0.02em}
+.hero h1{font-size:clamp(34px,5vw,54px);font-weight:700;line-height:1.1;margin-bottom:12px;letter-spacing:-0.02em}
+.hero h1 em{color:var(--primary);font-style:normal;position:relative}
+.hero h1 em::after{content:'';position:absolute;bottom:2px;left:0;width:100%;height:8px;background:var(--primary);opacity:0.12;border-radius:4px}
+.hero-sub{font-size:17px;color:var(--text-muted);margin-bottom:32px;max-width:440px;line-height:1.7}
+.hero-actions{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+.btn-primary{display:inline-flex;align-items:center;gap:10px;background:var(--primary);color:#fff;padding:15px 30px;border-radius:99px;font-size:15px;font-weight:600;text-decoration:none;transition:all 0.3s;border:none;cursor:pointer;box-shadow:0 4px 16px rgba(10,110,92,0.3)}
+.btn-primary:hover{background:var(--primary-light);transform:translateY(-3px);box-shadow:0 8px 28px rgba(10,110,92,0.35)}
+.btn-primary svg{width:18px;height:18px}
+.btn-outline{display:inline-flex;align-items:center;gap:8px;background:transparent;color:var(--text);padding:15px 26px;border-radius:99px;font-size:15px;font-weight:500;text-decoration:none;border:1.5px solid var(--border);transition:all 0.3s}
+.btn-outline:hover{border-color:var(--primary);color:var(--primary);transform:translateY(-2px)}
+.hero-stats{display:flex;gap:36px;margin-top:44px;padding-top:28px;border-top:1px solid var(--border)}
+.hero-stat{text-align:center}
+.hero-stat-num{font-family:var(--font-display);font-size:34px;font-weight:700;color:var(--primary);line-height:1;font-variant-numeric:tabular-nums}
+.hero-stat-label{font-size:12px;color:var(--text-light);margin-top:4px;line-height:1.3}
+.hero-visual{position:relative;display:flex;justify-content:center;align-items:center;animation:fadeIn 1s ease-out 0.3s both}
+.hero-photo{width:100%;max-width:460px;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-lg);position:relative}
+.hero-photo img{width:100%;height:auto;display:block;aspect-ratio:3/4;object-fit:cover}
+.hero-photo-overlay{position:absolute;bottom:0;left:0;right:0;padding:20px 24px;background:linear-gradient(to top,rgba(0,0,0,0.7),transparent);color:#fff}
+.hero-photo-overlay h3{font-family:var(--font-display);font-size:18px;font-weight:600;margin-bottom:2px}
+.hero-photo-overlay p{font-size:12px;opacity:0.9;letter-spacing:0.03em}
+.trust-badge{position:absolute;bottom:-16px;right:-16px;background:var(--bg-alt);border:1px solid var(--border);border-radius:var(--radius-sm);padding:14px 18px;box-shadow:var(--shadow-md);display:flex;align-items:center;gap:10px;animation:fadeUp 0.8s ease-out 0.6s both}
+.trust-badge svg{width:28px;height:28px;flex-shrink:0}
+.trust-badge-text{font-size:12px;font-weight:600;line-height:1.3;color:var(--text)}
+.trust-badge-text span{color:var(--primary);display:block;font-size:11px;font-weight:500}
+
+/* SECTIONS */
+section{padding:100px 24px}
+.section-inner{max-width:1200px;margin:0 auto}
+.section-eyebrow{font-family:var(--font-mono);font-size:11px;font-weight:400;letter-spacing:0.18em;text-transform:uppercase;color:var(--primary);margin-bottom:12px}
+.section-title{font-size:clamp(26px,3.5vw,40px);font-weight:700;line-height:1.2;margin-bottom:14px;letter-spacing:-0.01em;text-wrap:balance}
+.section-desc{font-size:16px;color:var(--text-muted);max-width:540px;line-height:1.7}
+.section-center{text-align:center;max-width:600px;margin:0 auto}
+.section-center .section-desc{margin:0 auto}
+
+/* BMI CHECK */
+.bmi-section{background:linear-gradient(135deg,var(--primary-dark) 0%,var(--primary) 50%,var(--primary-light) 100%);position:relative;overflow:hidden}
+.bmi-section::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")}
+.bmi-inner{max-width:800px;margin:0 auto;position:relative;z-index:1}
+.bmi-card{background:rgba(255,255,255,0.1);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,0.15);border-radius:var(--radius);padding:48px 40px;color:#fff}
+.bmi-card h2{font-family:var(--font-display);font-size:clamp(24px,3.5vw,34px);margin-bottom:8px;text-align:center}
+.bmi-card>p{text-align:center;opacity:0.85;margin-bottom:32px;font-size:15px;line-height:1.6}
+.bmi-form{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;align-items:end}
+.bmi-field label{display:block;font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:6px;opacity:0.8}
+.bmi-field input{width:100%;padding:14px 16px;border-radius:var(--radius-sm);border:1px solid rgba(255,255,255,0.2);background:rgba(255,255,255,0.08);color:#fff;font-family:var(--font-body);font-size:16px;font-weight:600;transition:all 0.3s;outline:none}
+.bmi-field input::placeholder{color:rgba(255,255,255,0.4)}
+.bmi-field input:focus{border-color:rgba(255,255,255,0.5);background:rgba(255,255,255,0.12)}
+.bmi-calc-btn{padding:14px 28px;border-radius:var(--radius-sm);background:#fff;color:var(--primary-dark);font-family:var(--font-body);font-size:15px;font-weight:700;border:none;cursor:pointer;transition:all 0.3s}
+.bmi-calc-btn:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,0.2)}
+.bmi-result{margin-top:28px;display:none;text-align:center;animation:fadeUp 0.5s ease-out}
+.bmi-result.show{display:block}
+.bmi-number{font-family:var(--font-display);font-size:52px;font-weight:700;line-height:1}
+.bmi-category{font-size:18px;font-weight:700;margin-top:6px;letter-spacing:0.02em}
+.bmi-bar{height:8px;border-radius:99px;background:rgba(255,255,255,0.1);margin:20px 0;position:relative;overflow:visible}
+.bmi-bar-fill{height:100%;border-radius:99px;transition:width 0.8s cubic-bezier(0.22,1,0.36,1)}
+.bmi-bar-marker{position:absolute;top:-6px;width:20px;height:20px;border-radius:50%;background:#fff;border:3px solid;transform:translateX(-50%);transition:left 0.8s cubic-bezier(0.22,1,0.36,1);box-shadow:0 2px 8px rgba(0,0,0,0.3)}
+.bmi-scale{display:flex;justify-content:space-between;font-size:11px;opacity:0.7;margin-bottom:16px}
+.bmi-message{font-size:14px;line-height:1.7;opacity:0.9;max-width:500px;margin:0 auto 20px}
+.bmi-cta-link{display:inline-flex;align-items:center;gap:8px;background:#fff;color:var(--primary-dark);padding:14px 32px;border-radius:99px;font-weight:700;font-size:14px;text-decoration:none;transition:all 0.3s;box-shadow:0 4px 16px rgba(0,0,0,0.15)}
+.bmi-cta-link:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(0,0,0,0.2)}
+
+/* VIDEO SCROLL */
+.video-scroll{position:relative;height:300vh;background:var(--bg)}
+.video-sticky{position:sticky;top:0;height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.video-frame{position:relative;width:70%;max-width:900px;aspect-ratio:16/9;border-radius:24px;overflow:hidden;background:#000;transition:width 0.1s linear,max-width 0.1s linear,border-radius 0.1s linear,height 0.1s linear;box-shadow:0 20px 60px rgba(0,0,0,0.3)}
+.video-frame video{width:100%;height:100%;object-fit:cover;display:block}
+.video-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.7) 0%,transparent 40%,transparent 60%,rgba(0,0,0,0.3) 100%);display:flex;flex-direction:column;justify-content:flex-end;padding:40px;z-index:2;transition:opacity 0.3s}
+.video-overlay h2{font-family:var(--font-display);color:#fff;font-size:clamp(22px,3.5vw,36px);margin-bottom:8px;text-shadow:0 2px 8px rgba(0,0,0,0.3)}
+.video-overlay p{color:rgba(255,255,255,0.85);font-size:15px;max-width:500px;line-height:1.6}
+.video-sound-btn{position:absolute;top:20px;right:20px;z-index:4;width:44px;height:44px;border-radius:50%;border:none;background:rgba(0,0,0,0.5);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background 0.2s,transform 0.2s,opacity 0.3s;opacity:0;pointer-events:none}
+.video-sound-btn.visible{opacity:1;pointer-events:auto}
+.video-sound-btn:hover{background:rgba(0,0,0,0.7);transform:scale(1.1)}
+.video-sound-btn svg{width:22px;height:22px;stroke:#fff;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.video-scroll-hint{position:absolute;bottom:24px;left:50%;transform:translateX(-50%);color:rgba(255,255,255,0.6);font-size:12px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;z-index:3;display:flex;flex-direction:column;align-items:center;gap:6px}
+.video-scroll-hint svg{width:20px;height:20px;stroke:rgba(255,255,255,0.6);fill:none;stroke-width:2;animation:bounce 2s infinite}
+@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
+
+/* FALLING IMAGES GALLERY */
+.falling-gallery{position:relative;height:400vh;background:linear-gradient(180deg,#062b23 0%,#0a3d32 30%,#073026 70%,#041f19 100%)}
+.falling-gallery-sticky{position:sticky;top:0;height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.falling-gallery-inner{position:relative;width:100%;max-width:1200px;height:80vh;margin:0 auto}
+.falling-item{position:absolute;opacity:0;transform:translateY(-100%);will-change:transform,opacity;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-lg);background:var(--bg-alt)}
+.falling-item img{width:100%;height:100%;object-fit:cover;display:block}
+.falling-item-caption{position:absolute;bottom:0;left:0;right:0;padding:16px 18px;background:linear-gradient(to top,rgba(0,0,0,0.85),transparent);color:#fff;z-index:2}
+.falling-item-caption h4{font-family:var(--font-display);font-size:15px;font-weight:600;margin-bottom:3px}
+.falling-item-caption p{font-size:11px;opacity:0.85;line-height:1.4}
+.falling-bg-text{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;z-index:0;pointer-events:none}
+.falling-bg-text h2{font-family:var(--font-display);font-size:clamp(40px,8vw,100px);font-weight:700;color:#0fbe8c;line-height:1;opacity:0.1;text-shadow:0 0 60px rgba(10,110,92,0.3)}
+.falling-cta{position:absolute;bottom:8vh;left:50%;transform:translateX(-50%);z-index:10;opacity:0;transition:opacity 0.6s;text-align:center}
+.falling-cta.show{opacity:1}
+.falling-cta a{display:inline-flex;align-items:center;gap:10px;background:var(--primary);color:#fff;padding:16px 36px;border-radius:99px;font-weight:700;font-size:15px;text-decoration:none;box-shadow:0 8px 28px rgba(10,110,92,0.35);transition:all 0.3s}
+.falling-cta a:hover{transform:translateY(-3px);box-shadow:0 12px 36px rgba(10,110,92,0.4)}
+.falling-cta p{margin-top:10px;color:var(--text-muted);font-size:13px}
+
+/* ABOUT */
+.about{background:var(--bg-alt)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center;margin-top:48px}
+.about-photo{border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-lg)}
+.about-photo img{width:100%;height:auto;display:block;aspect-ratio:4/5;object-fit:cover}
+.about-text p{color:var(--text-muted);margin-bottom:18px;line-height:1.8;font-size:15px}
+.credentials{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+.credential{display:inline-flex;align-items:center;gap:7px;background:var(--gold-pale);color:var(--gold);padding:7px 14px;border-radius:8px;font-size:12px;font-weight:600;border:1px solid rgba(184,150,58,0.15);transition:transform 0.2s}
+.credential:hover{transform:translateY(-2px)}
+.credential svg{width:13px;height:13px;flex-shrink:0}
+.benefits{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:28px}
+.benefit{display:flex;align-items:flex-start;gap:10px;padding:12px;border-radius:var(--radius-sm);background:var(--primary-pale);transition:transform 0.2s}
+.benefit:hover{transform:translateY(-2px)}
+.benefit svg{width:18px;height:18px;stroke:var(--primary);fill:none;flex-shrink:0;margin-top:2px}
+.benefit span{font-size:13px;font-weight:500;color:var(--text);line-height:1.4}
+
+/* SERVICES */
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:48px}
+.service-card{background:var(--bg-alt);border:1px solid var(--border);border-radius:var(--radius);padding:32px 24px;transition:all 0.4s cubic-bezier(0.22,1,0.36,1);position:relative;overflow:hidden;cursor:pointer}
+.service-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--primary),var(--primary-light));transform:scaleX(0);transform-origin:left;transition:transform 0.4s}
+.service-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg);border-color:var(--primary)}
+.service-card:hover::before{transform:scaleX(1)}
+.service-icon{width:48px;height:48px;background:var(--primary-pale);border-radius:14px;display:flex;align-items:center;justify-content:center;margin-bottom:18px;transition:all 0.3s}
+.service-card:hover .service-icon{background:var(--primary);transform:scale(1.1)}
+.service-icon svg{width:22px;height:22px;stroke:var(--primary);fill:none;stroke-width:1.8;transition:stroke 0.3s}
+.service-card:hover .service-icon svg{stroke:#fff}
+.service-card h3{font-size:18px;font-weight:600;margin-bottom:10px}
+.service-card p{font-size:13px;color:var(--text-muted);line-height:1.7}
+.service-link{display:inline-flex;align-items:center;gap:6px;margin-top:16px;color:var(--primary);font-size:13px;font-weight:600;text-decoration:none;transition:gap 0.3s}
+.service-card:hover .service-link{gap:12px}
+/* SERVICE MODAL */
+.svc-modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0);z-index:1000;display:none;align-items:center;justify-content:center;padding:24px;backdrop-filter:blur(0);-webkit-backdrop-filter:blur(0);transition:background 0.4s, backdrop-filter 0.4s, -webkit-backdrop-filter 0.4s}
+.svc-modal-overlay.active{display:flex;background:rgba(0,0,0,0.6);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.svc-modal-overlay.closing{background:rgba(0,0,0,0);backdrop-filter:blur(0);-webkit-backdrop-filter:blur(0)}
+.svc-modal{background:var(--bg-alt);border-radius:var(--radius);max-width:720px;width:100%;max-height:85vh;overflow-y:auto;box-shadow:0 24px 64px rgba(0,0,0,0.3);position:relative;transform:scale(0.85) translateY(40px);opacity:0;transition:transform 0.5s cubic-bezier(0.34,1.56,0.64,1), opacity 0.4s ease}
+.svc-modal-overlay.active .svc-modal{transform:scale(1) translateY(0);opacity:1}
+.svc-modal-overlay.closing .svc-modal{transform:scale(0.9) translateY(20px);opacity:0;transition:transform 0.3s cubic-bezier(0.55,0,1,0.45), opacity 0.25s ease}
+.svc-modal-close{position:absolute;top:16px;right:16px;width:36px;height:36px;border-radius:50%;background:var(--surface);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:2;transition:all 0.2s}
+.svc-modal-close:hover{background:var(--primary);transform:scale(1.1)}
+.svc-modal-close svg{width:18px;height:18px;stroke:var(--text-muted);fill:none;stroke-width:2}
+.svc-modal-close:hover svg{stroke:#fff}
+.svc-modal-img{width:100%;height:240px;object-fit:cover;border-radius:var(--radius) var(--radius) 0 0}
+.svc-modal-body{padding:32px}
+.svc-modal-body h2{font-family:var(--font-display);font-size:clamp(22px,3vw,30px);margin-bottom:6px;color:var(--text)}
+.svc-modal-body .svc-modal-tag{display:inline-block;background:var(--primary-pale);color:var(--primary);font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:5px 14px;border-radius:99px;margin-bottom:16px}
+.svc-modal-body p{font-size:15px;color:var(--text-muted);line-height:1.8;margin-bottom:14px}
+.svc-modal-benefits{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:20px 0}
+.svc-modal-benefit{display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:var(--radius-sm);background:var(--primary-pale)}
+.svc-modal-benefit svg{width:18px;height:18px;stroke:var(--primary);fill:none;flex-shrink:0}
+.svc-modal-benefit span{font-size:13px;font-weight:500;color:var(--text)}
+.svc-modal-gallery{display:flex;gap:10px;margin-top:20px;overflow-x:auto;padding-bottom:8px;scrollbar-width:none}
+.svc-modal-gallery::-webkit-scrollbar{display:none}
+.svc-modal-gallery img{width:180px;height:130px;object-fit:cover;border-radius:var(--radius-sm);flex-shrink:0;border:2px solid var(--border);transition:all 0.3s}
+.svc-modal-gallery img:hover{border-color:var(--primary);transform:scale(1.05)}
+.svc-modal-cta{display:inline-flex;align-items:center;gap:10px;background:var(--primary);color:#fff;padding:14px 28px;border-radius:99px;font-size:14px;font-weight:700;text-decoration:none;margin-top:24px;transition:all 0.3s;box-shadow:0 4px 16px rgba(10,110,92,0.3)}
+.svc-modal-cta:hover{background:var(--primary-light);transform:translateY(-2px)}
+.svc-modal-cta svg{width:18px;height:18px}
+@media(max-width:768px){.svc-modal-benefits{grid-template-columns:1fr}.svc-modal{max-height:90vh}.svc-modal-gallery img{width:140px;height:100px}}
+
+/* PROCESS */
+.process{background:var(--bg-alt)}
+.process-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:48px;position:relative}
+.process-steps::before{content:'';position:absolute;top:36px;left:10%;right:10%;height:2px;background:linear-gradient(90deg,var(--primary-pale),var(--primary),var(--primary-pale))}
+.step{text-align:center;position:relative;z-index:1}
+.step-num{width:72px;height:72px;border-radius:50%;background:var(--bg-alt);border:3px solid var(--primary);display:flex;align-items:center;justify-content:center;margin:0 auto 18px;font-family:var(--font-display);font-size:26px;font-weight:700;color:var(--primary);transition:all 0.3s;box-shadow:var(--shadow-sm)}
+.step:hover .step-num{background:var(--primary);color:#fff;transform:scale(1.1);box-shadow:0 8px 24px rgba(10,110,92,0.3)}
+.step h4{font-size:16px;font-weight:600;margin-bottom:8px}
+.step p{font-size:13px;color:var(--text-muted);line-height:1.6;max-width:220px;margin:0 auto}
+
+/* RESULTS */
+.results-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:48px}
+.result-card{background:var(--bg-alt);border-radius:var(--radius);overflow:hidden;border:1px solid var(--border);transition:all 0.4s;box-shadow:var(--shadow-sm)}
+.result-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg)}
+.result-comparison{display:grid;grid-template-columns:1fr 1fr;position:relative}
+.result-side{height:240px;display:flex;align-items:center;justify-content:center;position:relative}
+.result-side.before{background:linear-gradient(145deg,#e8ddd4,#d8ccc0)}
+.result-side.after{background:linear-gradient(145deg,var(--primary-pale),#c0e8dc)}
+.result-side .silhouette{width:80px;height:180px}
+.result-side .tag{position:absolute;bottom:10px;left:10px;padding:4px 14px;border-radius:99px;font-size:11px;font-weight:700;letter-spacing:0.05em;text-transform:uppercase}
+.result-side.before .tag{background:rgba(0,0,0,0.5);color:#fff}
+.result-side.after .tag{background:var(--primary);color:#fff}
+.result-arrow{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:36px;height:36px;background:var(--bg-alt);border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow-md);z-index:2}
+.result-arrow svg{width:16px;height:16px;stroke:var(--primary);fill:none;stroke-width:2.5}
+.result-info{padding:20px;text-align:center}
+.result-weight{font-family:var(--font-display);font-size:22px;font-weight:700;color:var(--primary)}
+.result-name{font-size:14px;font-weight:600;margin-top:4px}
+.result-desc{font-size:12px;color:var(--text-light);margin-top:2px}
+
+/* TESTIMONIALS */
+.testimonials{background:linear-gradient(180deg,var(--bg-alt) 0%,var(--surface) 100%);overflow:hidden;padding-bottom:80px}
+.testi-carousel{position:relative;margin-top:48px;max-width:1200px;margin-left:auto;margin-right:auto;padding:0 16px;overflow:hidden}
+.testi-track{display:flex;gap:20px;will-change:transform}
+.testi-card{min-width:calc(25% - 15px);max-width:calc(25% - 15px);border-radius:var(--radius);padding:28px 24px;flex-shrink:0;position:relative;overflow:hidden;transition:transform 0.3s, box-shadow 0.3s}
+.testi-card:hover{transform:translateY(-6px)}
+.testi-nav{display:flex;align-items:center;justify-content:center;gap:16px;margin-top:32px}
+.testi-nav-btn{width:44px;height:44px;border-radius:50%;border:2px solid var(--border);background:var(--bg-alt);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.3s}
+.testi-nav-btn:hover{border-color:var(--primary);background:var(--primary);color:#fff}
+.testi-nav-btn:hover svg{stroke:#fff}
+.testi-nav-btn svg{width:18px;height:18px;stroke:var(--text-muted);fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+.testi-dots{display:flex;gap:8px;align-items:center}
+.testi-dot{width:10px;height:10px;border-radius:50%;background:var(--border);border:none;cursor:pointer;transition:all 0.3s;padding:0}
+.testi-dot.active{background:var(--primary);width:28px;border-radius:99px}
+@media(max-width:1024px){.testi-card{min-width:calc(33.33% - 14px);max-width:calc(33.33% - 14px)}}
+@media(max-width:768px){.testi-card{min-width:calc(50% - 10px);max-width:calc(50% - 10px)}}
+@media(max-width:500px){.testi-card{min-width:100%;max-width:100%}}
+.testi-card.testi-green{background:linear-gradient(135deg,#064d40,#0a6e5c);color:#fff;box-shadow:0 8px 32px rgba(10,110,92,0.25)}
+.testi-card.testi-green .testi-quote{color:rgba(255,255,255,0.9)}
+.testi-card.testi-green .testi-author-name{color:#fff}
+.testi-card.testi-green .testi-author-role{color:rgba(255,255,255,0.7)}
+.testi-card.testi-green .testi-quote-icon{color:rgba(255,255,255,0.15)}
+.testi-card.testi-gold{background:linear-gradient(135deg,#7c6520,#b8963a);color:#fff;box-shadow:0 8px 32px rgba(184,150,58,0.2)}
+.testi-card.testi-gold .testi-quote{color:rgba(255,255,255,0.9)}
+.testi-card.testi-gold .testi-author-name{color:#fff}
+.testi-card.testi-gold .testi-author-role{color:rgba(255,255,255,0.7)}
+.testi-card.testi-gold .testi-quote-icon{color:rgba(255,255,255,0.12)}
+.testi-card.testi-light{background:var(--bg-alt);border:1.5px solid var(--border);box-shadow:var(--shadow-md)}
+.testi-card.testi-light .testi-quote{color:var(--text-muted)}
+.testi-card.testi-light .testi-author-name{color:var(--text)}
+.testi-card.testi-light .testi-author-role{color:var(--text-light)}
+.testi-card.testi-light .testi-quote-icon{color:var(--primary);opacity:0.1}
+.testi-card.testi-dark{background:var(--text);color:#fff;box-shadow:0 8px 32px rgba(0,0,0,0.2)}
+.testi-card.testi-dark .testi-quote{color:rgba(255,255,255,0.85)}
+.testi-card.testi-dark .testi-author-name{color:#fff}
+.testi-card.testi-dark .testi-author-role{color:rgba(255,255,255,0.6)}
+.testi-card.testi-dark .testi-quote-icon{color:rgba(255,255,255,0.08)}
+.testi-quote-icon{position:absolute;top:16px;right:20px;font-family:var(--font-display);font-size:64px;line-height:1;font-weight:700}
+.testi-stars{display:flex;gap:2px;margin-bottom:14px;font-size:16px;color:var(--gold, #d4a520)}
+.testi-card.testi-green .testi-stars,.testi-card.testi-dark .testi-stars{color:#ffd700}
+.testi-card blockquote{font-size:14px;line-height:1.75;margin:0 0 20px;position:relative;z-index:1;font-style:normal}
+.testi-card.testi-green blockquote{color:rgba(255,255,255,0.9)}
+.testi-card.testi-gold blockquote{color:rgba(255,255,255,0.9)}
+.testi-card.testi-light blockquote{color:var(--text-muted)}
+.testi-card.testi-dark blockquote{color:rgba(255,255,255,0.85)}
+.testi-author{display:flex;align-items:center;gap:12px;position:relative;z-index:1}
+.testi-author strong{font-weight:700;font-size:14px;display:block}
+.testi-author span{font-size:12px;margin-top:1px;display:block;opacity:0.7}
+.testi-avatar{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:18px;font-weight:700;flex-shrink:0}
+.testi-card.testi-green .testi-avatar{background:rgba(255,255,255,0.15);color:#fff}
+.testi-card.testi-gold .testi-avatar{background:rgba(255,255,255,0.2);color:#fff}
+.testi-card.testi-light .testi-avatar{background:var(--primary-pale);color:var(--primary)}
+.testi-card.testi-dark .testi-avatar{background:rgba(255,255,255,0.1);color:#fff}
+.testi-author-name{font-weight:700;font-size:14px}
+.testi-author-role{font-size:12px;margin-top:1px}
+.testi-procedure{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:600;letter-spacing:0.04em;margin-top:4px;padding:3px 10px;border-radius:99px}
+.testi-card.testi-green .testi-procedure{background:rgba(255,255,255,0.12);color:rgba(255,255,255,0.8)}
+.testi-card.testi-gold .testi-procedure{background:rgba(255,255,255,0.15);color:rgba(255,255,255,0.8)}
+.testi-card.testi-light .testi-procedure{background:var(--primary-pale);color:var(--primary)}
+.testi-card.testi-dark .testi-procedure{background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.6)}
+
+/* FAQ */
+.faq-list{max-width:720px;margin:48px auto 0}
+.faq-item{border:1px solid var(--border);border-radius:var(--radius-sm);margin-bottom:10px;overflow:hidden;transition:border-color 0.3s}
+.faq-item.open{border-color:var(--primary)}
+.faq-q{width:100%;background:var(--bg-alt);border:none;padding:20px 24px;display:flex;justify-content:space-between;align-items:center;cursor:pointer;font-family:var(--font-body);font-size:15px;font-weight:600;color:var(--text);text-align:left;transition:all 0.2s;gap:16px}
+.faq-q:hover{color:var(--primary);background:var(--primary-pale)}
+.faq-q svg{width:18px;height:18px;stroke:var(--text-light);transition:transform 0.3s;flex-shrink:0}
+.faq-item.open .faq-q svg{transform:rotate(180deg);stroke:var(--primary)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height 0.4s cubic-bezier(0.22,1,0.36,1)}
+.faq-item.open .faq-a{max-height:300px}
+.faq-a-inner{padding:0 24px 20px;font-size:14px;color:var(--text-muted);line-height:1.7}
+
+/* CTA */
+.cta-section{background:linear-gradient(135deg,var(--primary-dark),var(--primary),var(--primary-light));text-align:center;padding:80px 24px;position:relative;overflow:hidden}
+.cta-section::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")}
+.cta-section h2{font-size:clamp(26px,4vw,38px);color:#fff;margin-bottom:14px;position:relative}
+.cta-section p{color:rgba(255,255,255,0.85);font-size:16px;margin-bottom:28px;max-width:460px;margin-left:auto;margin-right:auto;position:relative;line-height:1.7}
+.btn-white{display:inline-flex;align-items:center;gap:10px;background:#fff;color:var(--primary-dark);padding:16px 36px;border-radius:99px;font-size:16px;font-weight:700;text-decoration:none;transition:all 0.3s;position:relative;box-shadow:0 4px 16px rgba(0,0,0,0.15)}
+.btn-white:hover{transform:translateY(-3px) scale(1.02);box-shadow:0 8px 28px rgba(0,0,0,0.2)}
+.btn-white svg{width:20px;height:20px}
+
+/* FOOTER */
+.footer{background:var(--bg-alt);border-top:1px solid var(--border);padding:56px 24px 32px}
+.footer-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px}
+.footer-brand .logo{margin-bottom:16px}
+.footer-brand p{font-size:13px;color:var(--text-muted);line-height:1.7;max-width:280px}
+.footer-social{display:flex;gap:10px;margin-top:18px}
+.footer-social a{width:38px;height:38px;border-radius:10px;background:var(--surface);display:flex;align-items:center;justify-content:center;transition:all 0.3s;text-decoration:none}
+.footer-social a:hover{background:var(--primary);transform:translateY(-2px)}
+.footer-social svg{width:16px;height:16px;stroke:var(--text-muted);fill:none;stroke-width:2}
+.footer-social a:hover svg{stroke:#fff}
+.footer-col h4{font-family:var(--font-body);font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-light);margin-bottom:14px}
+.footer-col a{display:block;font-size:13px;color:var(--text-muted);text-decoration:none;padding:5px 0;transition:color 0.2s}
+.footer-col a:hover{color:var(--primary)}
+.footer-bottom{max-width:1200px;margin:36px auto 0;padding-top:20px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--text-light)}
+.footer-bottom a{color:var(--primary);text-decoration:none;font-weight:600}
+
+/* WA Float */
+.wa-float{position:fixed;bottom:24px;right:24px;z-index:90;display:flex;flex-direction:column;align-items:flex-end;gap:8px}
+.wa-float-msg{background:var(--bg-alt);color:var(--text);padding:10px 16px;border-radius:var(--radius-sm);box-shadow:var(--shadow-md);font-size:13px;font-weight:500;line-height:1.4;max-width:220px;opacity:0;transform:translateY(8px);transition:all 0.4s;pointer-events:none;border:1px solid var(--border)}
+.wa-float-msg.show{opacity:1;transform:translateY(0)}
+.wa-float-btn{width:56px;height:56px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,0.4);transition:all 0.3s;text-decoration:none;animation:pulse 2s infinite}
+.wa-float-btn:hover{transform:scale(1.15);box-shadow:0 6px 28px rgba(37,211,102,0.5)}
+.wa-float-btn svg{width:26px;height:26px;fill:#fff}
+
+/* Scroll progress */
+.scroll-progress{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--primary),var(--primary-light));z-index:200;transition:width 0.1s linear;border-radius:0 2px 2px 0}
+
+/* RESPONSIVE */
+@media(max-width:1024px){
+  .services-grid{grid-template-columns:repeat(2,1fr)}
+  .process-steps{grid-template-columns:repeat(2,1fr);gap:32px}
+  .process-steps::before{display:none}
+  .results-grid{grid-template-columns:repeat(2,1fr)}
+  .footer-inner{grid-template-columns:1fr 1fr}
+  .bmi-form{grid-template-columns:1fr 1fr}
+}
+@media(max-width:768px){
+  .hero{grid-template-columns:1fr;padding-top:100px;gap:32px}
+  .hero-visual{order:-1}
+  .hero-photo{max-width:320px;margin:0 auto}
+  .about-grid{grid-template-columns:1fr;gap:36px}
+  .services-grid{grid-template-columns:1fr}
+  .process-steps{grid-template-columns:1fr;gap:24px}
+  .results-grid{grid-template-columns:1fr}
+  .nav-links{display:none}
+  .mobile-toggle{display:block}
+  .hero-stats{gap:20px}
+  .benefits{grid-template-columns:1fr}
+  .footer-inner{grid-template-columns:1fr;gap:28px}
+  .testimonial-card{min-width:290px}
+  .bmi-form{grid-template-columns:1fr}
+  .bmi-card{padding:32px 24px}
+  .falling-item{width:180px!important;height:240px!important}
+}
+@media(max-width:480px){
+  .hero-stats{flex-direction:column;gap:12px;align-items:flex-start}
+  .hero-actions{flex-direction:column;align-items:stretch}
+  .btn-primary,.btn-outline{justify-content:center}
+  .footer-bottom{flex-direction:column;gap:6px;text-align:center}
+  .trust-badge{display:none}
+}
+</style>
+
+<!-- Scroll Progress -->
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="#" class="logo">
+      <svg viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="22" cy="22" r="21" stroke="var(--primary)" stroke-width="2"/>
+        <path d="M22 8c-3 0-6 2-7 5-1 3-0.5 6 0 8 0.5 2 1 4 1 6 0 3 1 5 2 6.5 1 1.5 2.5 2.5 4 2.5s3-1 4-2.5c1-1.5 2-3.5 2-6.5 0-2 0.5-4 1-6 0.5-2 1-5 0-8-1-3-4-5-7-5z" fill="var(--primary)" opacity="0.15" stroke="var(--primary)" stroke-width="1.5" stroke-linecap="round"/>
+        <path d="M18 18h8" stroke="var(--primary)" stroke-width="1.5" stroke-linecap="round"/>
+        <path d="M17 22c1.5 1 3.5 1.5 5 1.5s3.5-0.5 5-1.5" stroke="var(--primary)" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+        <line x1="22" y1="14" x2="22" y2="18" stroke="var(--primary)" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="22" y1="22" x2="22" y2="28" stroke="var(--primary)" stroke-width="1.5" stroke-linecap="round"/>
+        <circle cx="22" cy="10" r="1.5" fill="var(--primary)"/>
+      </svg>
+      <div class="logo-text">Dr. Ospina<span>Cirugía Bariátrica</span></div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#about">Doctor</a></li>
+      <li><a href="#equipo">Equipo</a></li>
+      <li><a href="#servicios">Servicios</a></li>
+      <li><a href="#proceso">Proceso</a></li>
+      <li><a href="#resultados">Resultados</a></li>
+      <li><a href="#testimonios">Testimonios</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+    <a href="https://wa.me/573105978158?text=Hola%20Dr.%20Ospina,%20deseo%20solicitar%20una%20cita%20de%20valoraci%C3%B3n" class="nav-cta" target="_blank" rel="noopener noreferrer">Agendar Cita</a>
+    <button class="mobile-toggle" aria-label="Abrir menú" onclick="this.parentElement.querySelector('.nav-links').style.display=this.parentElement.querySelector('.nav-links').style.display==='flex'?'none':'flex';this.parentElement.querySelector('.nav-links').style.flexDirection='column';this.parentElement.querySelector('.nav-links').style.position='absolute';this.parentElement.querySelector('.nav-links').style.top='76px';this.parentElement.querySelector('.nav-links').style.right='24px';this.parentElement.querySelector('.nav-links').style.background='var(--bg-alt)';this.parentElement.querySelector('.nav-links').style.padding='16px 24px';this.parentElement.querySelector('.nav-links').style.borderRadius='12px';this.parentElement.querySelector('.nav-links').style.boxShadow='0 8px 24px rgba(0,0,0,0.1)'">
+      <svg viewBox="0 0 24 24"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+    </button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Cirujano Bariátrico Certificado</div>
+    <h1>Recupera tu salud y <em>transforma tu vida</em></h1>
+    <p class="hero-sub">Cirugía bariátrica y laparoscópica de alta precisión en Pereira, con acompañamiento integral antes, durante y después del procedimiento.</p>
+    <div class="hero-actions">
+      <a href="https://wa.me/573105978158?text=Hola%20Dr.%20Ospina,%20deseo%20solicitar%20una%20cita%20de%20valoraci%C3%B3n" class="btn-primary" target="_blank" rel="noopener noreferrer">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Solicitar Cita
+      </a>
+      <a href="#imc" class="btn-outline">Calcular mi IMC →</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat"><div class="hero-stat-num">+500</div><div class="hero-stat-label">Cirugías<br>exitosas</div></div>
+      <div class="hero-stat"><div class="hero-stat-num">15+</div><div class="hero-stat-label">Años de<br>experiencia</div></div>
+      <div class="hero-stat"><div class="hero-stat-num">98%</div><div class="hero-stat-label">Pacientes<br>satisfechos</div></div>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="hero-photo">
+      <img src="https://drjuancristobalospina.com/wp-content/uploads/2024/06/Doctor-Juan-Cristobal-Ospina-Cirugia-bariatrica-y-laparoscopica.jpg.webp" alt="Dr. Juan Cristóbal Ospina — Cirugía Bariátrica y Laparoscópica en Pereira">
+      <div class="hero-photo-overlay">
+        <h3>Dr. Juan Cristóbal Ospina</h3>
+        <p>Cirugía General, Laparoscópica y Bariátrica</p>
+      </div>
+    </div>
+    <div class="trust-badge">
+      <svg viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="18" fill="var(--primary-pale)"/><path d="M20 10l2.47 5 5.53.8-4 3.9.94 5.5L20 22.7l-4.94 2.5.94-5.5-4-3.9 5.53-.8L20 10z" fill="var(--gold)"/></svg>
+      <div class="trust-badge-text">Cirujano certificado<span>Pereira, Colombia</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- BMI CALCULATOR -->
+<section class="bmi-section" id="imc">
+  <div class="bmi-inner">
+    <div class="bmi-card">
+      <h2>Conoce tu Índice de Masa Corporal</h2>
+      <p>El IMC es el primer indicador para saber si tu peso puede estar afectando tu salud. Descúbrelo en segundos.</p>
+      <div class="bmi-form">
+        <div class="bmi-field">
+          <label>Peso (kg)</label>
+          <input type="number" id="bmiPeso" placeholder="Ej: 85" min="30" max="300">
+        </div>
+        <div class="bmi-field">
+          <label>Estatura (cm)</label>
+          <input type="number" id="bmiAltura" placeholder="Ej: 165" min="100" max="250">
+        </div>
+        <div>
+          <button class="bmi-calc-btn" onclick="calcularIMC()">Calcular mi IMC</button>
+        </div>
+      </div>
+      <div class="bmi-result" id="bmiResult">
+        <div class="bmi-number" id="bmiNumber">--</div>
+        <div class="bmi-category" id="bmiCategory">--</div>
+        <div class="bmi-bar">
+          <div class="bmi-bar-fill" id="bmiFill" style="width:0%;background:var(--safe)"></div>
+          <div class="bmi-bar-marker" id="bmiMarker" style="left:0%;border-color:var(--safe)"></div>
+        </div>
+        <div class="bmi-scale">
+          <span>18.5 Bajo peso</span>
+          <span>25 Normal</span>
+          <span>30 Sobrepeso</span>
+          <span>35 Obesidad</span>
+          <span>40+</span>
+        </div>
+        <div class="bmi-message" id="bmiMessage"></div>
+        <a href="https://wa.me/573105978158?text=Hola%20Dr.%20Ospina,%20acabo%20de%20calcular%20mi%20IMC%20y%20me%20gustar%C3%ADa%20una%20valoraci%C3%B3n" class="bmi-cta-link" id="bmiCta" target="_blank" rel="noopener noreferrer" style="display:none">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Solicitar valoración gratuita
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VIDEO FULLSCREEN ON SCROLL -->
+<section class="video-scroll" id="video-section">
+  <div class="video-sticky">
+    <div class="video-frame" id="videoFrame">
+      <video src="https://drjuancristobalospina.com/wp-content/uploads/2024/06/Doctor-Juan-Cristobal-Ospina-Cirugia-Bariatrica-y-Laparoscopica.mp4" muted loop playsinline preload="metadata"></video>
+      <button class="video-sound-btn" id="videoSoundBtn" aria-label="Activar sonido">
+        <svg id="iconMuted" viewBox="0 0 24 24"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
+        <svg id="iconUnmuted" style="display:none" viewBox="0 0 24 24"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+      </button>
+      <div class="video-overlay" id="videoOverlay">
+        <h2>Cirugía de precisión que transforma vidas</h2>
+        <p>Técnica laparoscópica mínimamente invasiva con el más alto estándar de seguridad y cuidado para cada paciente.</p>
+      </div>
+      <div class="video-scroll-hint" id="scrollHint">
+        <span>Desliza para descubrir</span>
+        <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FALLING IMAGES GALLERY -->
+<section class="falling-gallery" id="fallingGallery">
+  <div class="falling-bg-text">
+    <h2>Resultados<br>Reales</h2>
+  </div>
+  <div class="falling-gallery-sticky">
+    <div class="falling-gallery-inner" id="fallingInner">
+      <div class="falling-item" data-delay="0" style="left:2%;top:5%;width:260px;height:340px">
+        <img src="https://drjuancristobalospina.com/wp-content/uploads/2024/06/Cirugia-bariatrica-para-perder-peso-antes.jpg.webp" alt="Antes del procedimiento" loading="lazy">
+        <div class="falling-item-caption">
+          <h4>Antes del procedimiento</h4>
+          <p>Evaluación inicial y plan personalizado</p>
+        </div>
+      </div>
+      <div class="falling-item" data-delay="100" style="right:3%;top:2%;width:280px;height:360px">
+        <img src="https://drjuancristobalospina.com/wp-content/uploads/2024/06/Cirugia-bariatrica-para-perder-peso-despues.jpg.webp" alt="Después del procedimiento" loading="lazy">
+        <div class="falling-item-caption">
+          <h4>Después — Nueva vida</h4>
+          <p>Resultado sostenido con acompañamiento integral</p>
+        </div>
+      </div>
+      <div class="falling-item" data-delay="200" style="left:28%;top:28%;width:240px;height:320px">
+        <img src="https://drjuancristobalospina.com/wp-content/uploads/2024/06/Cirugia-bariatrica-y-laparoscopica-para-perder-peso-en-Pereira-2.jpg.webp" alt="Consulta médica" loading="lazy">
+        <div class="falling-item-caption">
+          <h4>Consulta personalizada</h4>
+          <p>Análisis de peso, talla y plan quirúrgico a medida</p>
+        </div>
+      </div>
+      <div class="falling-item" data-delay="300" style="left:6%;top:55%;width:220px;height:280px">
+        <img src="https://drjuancristobalospina.com/wp-content/uploads/2024/06/Cirugia-para-perder-peso-Antes-Pereira-1.jpg.webp" alt="Caso de éxito antes" loading="lazy">
+        <div class="falling-item-caption">
+          <h4>Caso de éxito</h4>
+          <p>Antes de la manga gástrica</p>
+        </div>
+      </div>
+      <div class="falling-item" data-delay="400" style="right:6%;top:45%;width:250px;height:330px">
+        <img src="https://drjuancristobalospina.com/wp-content/uploads/2024/06/Cirugia-para-perder-peso-Pereira-1.jpg.webp" alt="Caso de éxito después" loading="lazy">
+        <div class="falling-item-caption">
+          <h4>Transformación completa</h4>
+          <p>Resultado después de la cirugía bariátrica</p>
+        </div>
+      </div>
+      <div class="falling-item" data-delay="500" style="left:48%;top:6%;width:230px;height:300px">
+        <img src="https://drjuancristobalospina.com/wp-content/uploads/2024/06/Cirugia-bariatrica-y-laparoscopica-para-perder-peso-en-Pereira-3.jpg.webp" alt="Equipo médico" loading="lazy">
+        <div class="falling-item-caption">
+          <h4>Equipo multidisciplinario</h4>
+          <p>Cirugía, nutrición, psicología y medicina interna</p>
+        </div>
+      </div>
+      <div class="falling-item" data-delay="600" style="right:22%;top:62%;width:200px;height:260px">
+        <img src="https://drjuancristobalospina.com/wp-content/uploads/2024/06/Cirugia-bariatrica-para-perder-peso-Antes-Pereira-scaled.jpg.webp" alt="Seguimiento postoperatorio" loading="lazy">
+        <div class="falling-item-caption">
+          <h4>Seguimiento continuo</h4>
+          <p>Acompañamiento antes, durante y después</p>
+        </div>
+      </div>
+    </div>
+    <div class="falling-cta" id="fallingCta">
+      <a href="https://wa.me/573105978158?text=Hola%20Dr.%20Ospina,%20vi%20los%20resultados%20y%20quiero%20agendar%20una%20cita" target="_blank" rel="noopener noreferrer">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Quiero estos resultados
+      </a>
+      <p>Agenda tu valoración sin compromiso</p>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-visual reveal">
+        <div class="about-photo">
+          <img src="https://drjuancristobalospina.com/wp-content/uploads/2024/06/Cirugia-bariatrica-y-laparoscopica-para-perder-peso-Pereira.jpg.webp" alt="Dr. Juan Cristóbal Ospina en consulta">
+        </div>
+      </div>
+      <div class="about-text reveal reveal-delay-1">
+        <p class="section-eyebrow">Sobre el doctor</p>
+        <h2 class="section-title">Dr. Juan Cristóbal Ospina</h2>
+        <p>Cirujano general con especialización en cirugía laparoscópica y bariátrica. Más de 15 años de experiencia dedicados a mejorar la calidad de vida de sus pacientes.</p>
+        <p>Se caracteriza por estar siempre pendiente de sus pacientes de principio a fin, sin importar la hora o el lugar, antes, durante y después de la cirugía. Trabaja con un equipo multidisciplinario que incluye nutrición, psicología y medicina interna.</p>
+        <div class="credentials">
+          <div class="credential"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>Cirujano General</div>
+          <div class="credential"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>Cirugía Laparoscópica</div>
+          <div class="credential"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>Cirugía Bariátrica</div>
+          <div class="credential"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Pereira, Colombia</div>
+        </div>
+        <div class="benefits">
+          <div class="benefit"><svg viewBox="0 0 24 24" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg><span>Acompañamiento personalizado 24/7</span></div>
+          <div class="benefit"><svg viewBox="0 0 24 24" stroke-width="2"><path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="23" y1="11" x2="17" y2="11"/></svg><span>Equipo médico multidisciplinario</span></div>
+          <div class="benefit"><svg viewBox="0 0 24 24" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><span>Procedimiento seguro y a la medida</span></div>
+          <div class="benefit"><svg viewBox="0 0 24 24" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg><span>Recuperación rápida</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CREDENTIALS & TEAM -->
+<section id="equipo">
+  <div class="section-inner">
+    <div class="section-center reveal">
+      <p class="section-eyebrow">Trayectoria</p>
+      <h2 class="section-title">Reconocimiento nacional e internacional</h2>
+      <p class="section-desc">Formación y experiencia que respaldan cada procedimiento.</p>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:16px;justify-content:center;margin-top:40px">
+      <div class="reveal reveal-delay-1" style="background:var(--bg-alt);border:1px solid var(--border);border-radius:var(--radius);padding:24px 28px;text-align:center;flex:1;min-width:200px;max-width:260px;transition:all 0.3s">
+        <div style="width:52px;height:52px;border-radius:50%;background:var(--primary-pale);display:flex;align-items:center;justify-content:center;margin:0 auto 12px">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        </div>
+        <div style="font-weight:700;font-size:14px;margin-bottom:4px">Asociación Colombiana de Cirugía</div>
+        <div style="font-size:12px;color:var(--text-light)">Miembro activo</div>
+      </div>
+      <div class="reveal reveal-delay-2" style="background:var(--bg-alt);border:1px solid var(--border);border-radius:var(--radius);padding:24px 28px;text-align:center;flex:1;min-width:200px;max-width:260px;transition:all 0.3s">
+        <div style="width:52px;height:52px;border-radius:50%;background:var(--gold-pale);display:flex;align-items:center;justify-content:center;margin:0 auto 12px">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
+        </div>
+        <div style="font-weight:700;font-size:14px;margin-bottom:4px">SSAT</div>
+        <div style="font-size:12px;color:var(--text-light)">Society for Surgery of the Alimentary Tract</div>
+      </div>
+      <div class="reveal reveal-delay-3" style="background:var(--bg-alt);border:1px solid var(--border);border-radius:var(--radius);padding:24px 28px;text-align:center;flex:1;min-width:200px;max-width:260px;transition:all 0.3s">
+        <div style="width:52px;height:52px;border-radius:50%;background:var(--primary-pale);display:flex;align-items:center;justify-content:center;margin:0 auto 12px">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+        </div>
+        <div style="font-weight:700;font-size:14px;margin-bottom:4px">Experiencia Internacional</div>
+        <div style="font-size:12px;color:var(--text-light)">Colombia, Brasil y Argentina</div>
+      </div>
+      <div class="reveal reveal-delay-4" style="background:var(--bg-alt);border:1px solid var(--border);border-radius:var(--radius);padding:24px 28px;text-align:center;flex:1;min-width:200px;max-width:260px;transition:all 0.3s">
+        <div style="width:52px;height:52px;border-radius:50%;background:var(--primary-pale);display:flex;align-items:center;justify-content:center;margin:0 auto 12px">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>
+        </div>
+        <div style="font-weight:700;font-size:14px;margin-bottom:4px">Publicaciones Médicas</div>
+        <div style="font-size:12px;color:var(--text-light)">Contribución a literatura científica</div>
+      </div>
+    </div>
+    <div style="margin-top:64px">
+      <div class="section-center reveal">
+        <p class="section-eyebrow">Equipo multidisciplinario</p>
+        <h2 class="section-title" style="font-size:clamp(22px,3vw,32px)">Profesionales que te acompañan</h2>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;margin-top:36px">
+        <div class="reveal reveal-delay-1" style="background:var(--bg-alt);border:1px solid var(--border);border-radius:var(--radius);padding:28px;text-align:center;transition:all 0.3s">
+          <div style="width:64px;height:64px;border-radius:50%;background:var(--primary-pale);display:flex;align-items:center;justify-content:center;margin:0 auto 14px;font-family:var(--font-display);font-size:24px;font-weight:700;color:var(--primary)">S</div>
+          <div style="font-weight:700;font-size:15px;margin-bottom:2px">Susana Pérez Gutiérrez</div>
+          <div style="font-size:12px;color:var(--primary);font-weight:600;margin-bottom:8px">Psicóloga Clínica</div>
+          <div style="font-size:13px;color:var(--text-muted);line-height:1.6">Maestría en Psicología Clínica. Especialista en conducta alimentaria y acompañamiento en cambio de hábitos.</div>
+        </div>
+        <div class="reveal reveal-delay-2" style="background:var(--bg-alt);border:1px solid var(--border);border-radius:var(--radius);padding:28px;text-align:center;transition:all 0.3s">
+          <div style="width:64px;height:64px;border-radius:50%;background:var(--gold-pale);display:flex;align-items:center;justify-content:center;margin:0 auto 14px;font-family:var(--font-display);font-size:24px;font-weight:700;color:var(--gold)">M</div>
+          <div style="font-weight:700;font-size:15px;margin-bottom:2px">Martha Isabel López Reinosa</div>
+          <div style="font-size:12px;color:var(--primary);font-weight:600;margin-bottom:8px">Nutricionista</div>
+          <div style="font-size:13px;color:var(--text-muted);line-height:1.6">Experiencia en pacientes bariátricos y oncológicos. Experta en soporte metabólico y nutricional perioperatorio.</div>
+        </div>
+        <div class="reveal reveal-delay-3" style="background:var(--bg-alt);border:1px solid var(--border);border-radius:var(--radius);padding:28px;text-align:center;transition:all 0.3s">
+          <div style="width:64px;height:64px;border-radius:50%;background:var(--primary-pale);display:flex;align-items:center;justify-content:center;margin:0 auto 14px;font-family:var(--font-display);font-size:24px;font-weight:700;color:var(--primary)">V</div>
+          <div style="font-weight:700;font-size:15px;margin-bottom:2px">Dra. Valentina Santa Gil</div>
+          <div style="font-size:12px;color:var(--primary);font-weight:600;margin-bottom:8px">Médica General</div>
+          <div style="font-size:13px;color:var(--text-muted);line-height:1.6">Experiencia en ámbito quirúrgico. Apoyo durante intervenciones y monitoreo de pacientes pre y postbariátricos.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="servicios">
+  <div class="section-inner">
+    <div class="reveal">
+      <p class="section-eyebrow">Servicios</p>
+      <h2 class="section-title">Procedimientos quirúrgicos</h2>
+      <p class="section-desc">Haz clic en cada procedimiento para conocer los detalles completos, fotos y beneficios.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card reveal reveal-delay-1" onclick="openServiceModal('manga')">
+        <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></div>
+        <h3>Manga Gástrica</h3>
+        <p>Se extrae el 80% del estómago por laparoscopia, reduciendo la capacidad de ingesta y generando saciedad temprana.</p>
+        <span class="service-link">Ver detalles <span>→</span></span>
+      </div>
+      <div class="service-card reveal reveal-delay-2" onclick="openServiceModal('bypass')">
+        <div class="service-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg></div>
+        <h3>Bypass Gástrico</h3>
+        <p>Convierte el estómago en una bolsa pequeña conectada al intestino para una pérdida de peso efectiva.</p>
+        <span class="service-link">Ver detalles <span>→</span></span>
+      </div>
+      <div class="service-card reveal reveal-delay-3" onclick="openServiceModal('integral')">
+        <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="23" y1="11" x2="17" y2="11"/></svg></div>
+        <h3>Manejo Integral de Obesidad</h3>
+        <p>Programa multidisciplinario con nutrición, psicología y medicina interna para pérdida de peso sostenida.</p>
+        <span class="service-link">Ver detalles <span>→</span></span>
+      </div>
+      <div class="service-card reveal reveal-delay-1" onclick="openServiceModal('colecistectomia')">
+        <div class="service-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg></div>
+        <h3>Colecistectomía</h3>
+        <p>Extracción de vesícula biliar por laparoscopia. Procedimiento ambulatorio con recuperación rápida.</p>
+        <span class="service-link">Ver detalles <span>→</span></span>
+      </div>
+      <div class="service-card reveal reveal-delay-2" onclick="openServiceModal('hernias')">
+        <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <h3>Corrección de Hernias</h3>
+        <p>Reparación de hernias inguinales, umbilicales e incisionales con técnica laparoscópica avanzada.</p>
+        <span class="service-link">Ver detalles <span>→</span></span>
+      </div>
+      <div class="service-card reveal reveal-delay-3" onclick="openServiceModal('otros')">
+        <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
+        <h3>Otros Procedimientos</h3>
+        <p>Esplenectomía, toma de biopsias, resección de lipomas con técnicas mínimamente invasivas.</p>
+        <span class="service-link">Ver detalles <span>→</span></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICE MODAL -->
+<div class="svc-modal-overlay" id="svcModal" onclick="if(event.target===this)closeSvcModal()">
+  <div class="svc-modal">
+    <button class="svc-modal-close" onclick="closeSvcModal()" aria-label="Cerrar"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    <img class="svc-modal-img" id="svcModalImg" src="" alt="">
+    <div class="svc-modal-body">
+      <span class="svc-modal-tag" id="svcModalTag"></span>
+      <h2 id="svcModalTitle"></h2>
+      <p id="svcModalDesc"></p>
+      <p id="svcModalDesc2"></p>
+      <div class="svc-modal-benefits" id="svcModalBenefits"></div>
+      <div class="svc-modal-gallery" id="svcModalGallery"></div>
+      <a class="svc-modal-cta" id="svcModalCta" href="#" target="_blank" rel="noopener noreferrer">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        <span id="svcModalCtaText">Solicitar cita para este procedimiento</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- PROCESS -->
+<section class="process" id="proceso">
+  <div class="section-inner">
+    <div class="section-center reveal">
+      <p class="section-eyebrow">Tu proceso</p>
+      <h2 class="section-title">Del primer contacto a tu nueva vida</h2>
+      <p class="section-desc">Un proceso claro, seguro y acompañado en cada paso.</p>
+    </div>
+    <div class="process-steps">
+      <div class="step reveal reveal-delay-1">
+        <div class="step-num">1</div>
+        <h4>Consulta diagnóstica</h4>
+        <p>Analizamos peso, talla, tipo de cirugía ideal y exámenes necesarios. Te explicamos todo sobre el procedimiento.</p>
+      </div>
+      <div class="step reveal reveal-delay-2">
+        <div class="step-num">2</div>
+        <h4>Revisión de exámenes</h4>
+        <p>Revisamos resultados de exámenes solicitados. Puede ser presencial o virtual para tu comodidad.</p>
+      </div>
+      <div class="step reveal reveal-delay-3">
+        <div class="step-num">3</div>
+        <h4>Valoración anestésica</h4>
+        <p>El anestesiólogo realiza una valoración completa previo a la cirugía para garantizar tu seguridad.</p>
+      </div>
+      <div class="step reveal reveal-delay-4">
+        <div class="step-num">4</div>
+        <h4>Cirugía</h4>
+        <p>Todo listo para tu cirugía con el Dr. Ospina y su equipo médico. Técnica laparoscópica de precisión.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESULTS -->
+<section id="resultados">
+  <div class="section-inner">
+    <div class="section-center reveal">
+      <p class="section-eyebrow">Resultados reales</p>
+      <h2 class="section-title">Transformaciones que hablan por sí solas</h2>
+      <p class="section-desc">Cada paciente es único. Estos son algunos casos de éxito con resultados sostenidos en el tiempo.</p>
+    </div>
+    <div class="results-grid">
+      <div class="result-card reveal reveal-delay-1">
+        <div class="result-comparison">
+          <div class="result-side before">
+            <svg class="silhouette" viewBox="0 0 80 180"><ellipse cx="40" cy="50" rx="22" ry="24" fill="#a08070" opacity="0.6"/><ellipse cx="40" cy="110" rx="34" ry="50" fill="#a08070" opacity="0.5"/><ellipse cx="40" cy="25" rx="16" ry="18" fill="#a08070" opacity="0.7"/><rect x="28" y="155" width="10" height="25" rx="4" fill="#a08070" opacity="0.5"/><rect x="42" y="155" width="10" height="25" rx="4" fill="#a08070" opacity="0.5"/></svg>
+            <span class="tag">Antes</span>
+          </div>
+          <div class="result-side after">
+            <svg class="silhouette" viewBox="0 0 80 180"><ellipse cx="40" cy="55" rx="15" ry="18" fill="var(--primary)" opacity="0.5"/><ellipse cx="40" cy="110" rx="20" ry="45" fill="var(--primary)" opacity="0.4"/><ellipse cx="40" cy="25" rx="14" ry="16" fill="var(--primary)" opacity="0.6"/><rect x="30" y="150" width="8" height="28" rx="4" fill="var(--primary)" opacity="0.4"/><rect x="42" y="150" width="8" height="28" rx="4" fill="var(--primary)" opacity="0.4"/></svg>
+            <span class="tag">Después</span>
+          </div>
+          <div class="result-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div>
+        </div>
+        <div class="result-info">
+          <div class="result-weight">99 kg → 70 kg</div>
+          <div class="result-name">María C.</div>
+          <div class="result-desc">Manga gástrica · 8 meses</div>
+        </div>
+      </div>
+      <div class="result-card reveal reveal-delay-2">
+        <div class="result-comparison">
+          <div class="result-side before">
+            <svg class="silhouette" viewBox="0 0 80 180"><ellipse cx="40" cy="50" rx="20" ry="22" fill="#a08070" opacity="0.6"/><ellipse cx="40" cy="110" rx="30" ry="48" fill="#a08070" opacity="0.5"/><ellipse cx="40" cy="25" rx="15" ry="17" fill="#a08070" opacity="0.7"/><rect x="28" y="155" width="10" height="25" rx="4" fill="#a08070" opacity="0.5"/><rect x="42" y="155" width="10" height="25" rx="4" fill="#a08070" opacity="0.5"/></svg>
+            <span class="tag">Antes</span>
+          </div>
+          <div class="result-side after">
+            <svg class="silhouette" viewBox="0 0 80 180"><ellipse cx="40" cy="55" rx="14" ry="17" fill="var(--primary)" opacity="0.5"/><ellipse cx="40" cy="110" rx="18" ry="42" fill="var(--primary)" opacity="0.4"/><ellipse cx="40" cy="25" rx="13" ry="15" fill="var(--primary)" opacity="0.6"/><rect x="31" y="148" width="7" height="30" rx="3" fill="var(--primary)" opacity="0.4"/><rect x="42" y="148" width="7" height="30" rx="3" fill="var(--primary)" opacity="0.4"/></svg>
+            <span class="tag">Después</span>
+          </div>
+          <div class="result-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div>
+        </div>
+        <div class="result-info">
+          <div class="result-weight">112 kg → 78 kg</div>
+          <div class="result-name">Carlos R.</div>
+          <div class="result-desc">Bypass gástrico · 12 meses</div>
+        </div>
+      </div>
+      <div class="result-card reveal reveal-delay-3">
+        <div class="result-comparison">
+          <div class="result-side before">
+            <svg class="silhouette" viewBox="0 0 80 180"><ellipse cx="40" cy="50" rx="24" ry="26" fill="#a08070" opacity="0.6"/><ellipse cx="40" cy="110" rx="36" ry="52" fill="#a08070" opacity="0.5"/><ellipse cx="40" cy="25" rx="17" ry="19" fill="#a08070" opacity="0.7"/><rect x="26" y="155" width="12" height="25" rx="5" fill="#a08070" opacity="0.5"/><rect x="42" y="155" width="12" height="25" rx="5" fill="#a08070" opacity="0.5"/></svg>
+            <span class="tag">Antes</span>
+          </div>
+          <div class="result-side after">
+            <svg class="silhouette" viewBox="0 0 80 180"><ellipse cx="40" cy="55" rx="16" ry="19" fill="var(--primary)" opacity="0.5"/><ellipse cx="40" cy="110" rx="22" ry="46" fill="var(--primary)" opacity="0.4"/><ellipse cx="40" cy="25" rx="14" ry="16" fill="var(--primary)" opacity="0.6"/><rect x="30" y="150" width="8" height="28" rx="4" fill="var(--primary)" opacity="0.4"/><rect x="42" y="150" width="8" height="28" rx="4" fill="var(--primary)" opacity="0.4"/></svg>
+            <span class="tag">Después</span>
+          </div>
+          <div class="result-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div>
+        </div>
+        <div class="result-info">
+          <div class="result-weight">95 kg → 65 kg</div>
+          <div class="result-name">Andrea P.</div>
+          <div class="result-desc">Manga gástrica · 10 meses</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="testimonios">
+  <div class="section-inner">
+    <div class="reveal">
+      <p class="section-eyebrow">Testimonios</p>
+      <h2 class="section-title">Lo que dicen nuestros pacientes</h2>
+      <p class="section-desc" style="margin-bottom:2rem">Historias reales de personas que transformaron su vida con la ayuda del Dr. Ospina.</p>
+    </div>
+  </div>
+  <div class="testi-carousel" id="testiCarousel">
+    <div class="testi-track" id="testiTrack">
+      <div class="testi-card testi-green">
+        <div class="testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <blockquote>Al Doctor me lo recomendó un dermatólogo y me habló muy bien de él. Quedé muy contenta por la seguridad y la agilidad que le da a todo el proceso. Sin duda alguna, lo recomiendo.</blockquote>
+        <div class="testi-author"><div class="testi-avatar">L</div><div><strong>Luz</strong><span>Manga gástrica</span></div></div>
+      </div>
+      <div class="testi-card testi-gold">
+        <div class="testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <blockquote>Es un Doctor muy atento, respetuoso y profesional. Resuelve todas las dudas de la mejor manera posible, es muy sincero desde el principio y genera mucha tranquilidad.</blockquote>
+        <div class="testi-author"><div class="testi-avatar">J</div><div><strong>Jessica</strong><span>Bypass gástrico</span></div></div>
+      </div>
+      <div class="testi-card testi-light">
+        <div class="testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <blockquote>Me decidí por el Doctor Ospina por su experiencia y sobretodo por ser una persona muy humana. Explica todo el proceso y responde todas las dudas. Gran ser humano.</blockquote>
+        <div class="testi-author"><div class="testi-avatar">F</div><div><strong>Francisco</strong><span>Colecistectomía</span></div></div>
+      </div>
+      <div class="testi-card testi-dark">
+        <div class="testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <blockquote>Excelente cirugía realizada por el profesional. Agradecida por su compromiso y honestidad. Solo tengo opiniones de agradecimiento para el médico y su equipo.</blockquote>
+        <div class="testi-author"><div class="testi-avatar">S</div><div><strong>Sandra</strong><span>Cirugía bariátrica</span></div></div>
+      </div>
+      <div class="testi-card testi-green">
+        <div class="testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <blockquote>El Doctor Juan Cristóbal Ospina es el mejor de todos, me ayudó con un problema que tenía en mi pierna por años. Todo salió perfecto, muy buen cirujano.</blockquote>
+        <div class="testi-author"><div class="testi-avatar">D</div><div><strong>Dora</strong><span>Cirugía general</span></div></div>
+      </div>
+      <div class="testi-card testi-gold">
+        <div class="testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <blockquote>Desde la primera cita me sentí muy segura. El Doctor explica cada detalle y qué esperar después. La recuperación fue rápida y el acompañamiento post-operatorio excelente.</blockquote>
+        <div class="testi-author"><div class="testi-avatar">C</div><div><strong>Carolina</strong><span>Manga gástrica</span></div></div>
+      </div>
+      <div class="testi-card testi-dark">
+        <div class="testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <blockquote>Un profesional increíble. Todo el equipo médico es muy profesional y humano. Mi calidad de vida cambió completamente después de la cirugía. Totalmente recomendado.</blockquote>
+        <div class="testi-author"><div class="testi-avatar">M</div><div><strong>Martha</strong><span>Bypass gástrico</span></div></div>
+      </div>
+      <div class="testi-card testi-light">
+        <div class="testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <blockquote>El mejor cirujano de Pereira. Me operé de manga gástrica y ya bajé 25 kilos en 5 meses. El seguimiento post-cirugía es excelente, siempre pendiente.</blockquote>
+        <div class="testi-author"><div class="testi-avatar">R</div><div><strong>Ricardo</strong><span>Manga gástrica</span></div></div>
+      </div>
+      <div class="testi-card testi-green">
+        <div class="testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <blockquote>Le agradezco al Doctor por cambiar mi vida. Tenía diabetes y presión alta, después de la cirugía mis niveles se normalizaron. Excelente ser humano y cirujano.</blockquote>
+        <div class="testi-author"><div class="testi-avatar">A</div><div><strong>Ana María</strong><span>Cirugía bariátrica</span></div></div>
+      </div>
+      <div class="testi-card testi-gold">
+        <div class="testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <blockquote>Tuve una hernia inguinal y el Doctor Ospina me operó por laparoscopia. A los 3 días ya estaba haciendo vida normal. Muy recomendado, excelente atención.</blockquote>
+        <div class="testi-author"><div class="testi-avatar">P</div><div><strong>Pedro</strong><span>Corrección de hernia</span></div></div>
+      </div>
+      <div class="testi-card testi-light">
+        <div class="testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <blockquote>El Doctor es muy profesional, humano y honesto. Me explicó todo antes de la cirugía. La recuperación fue mejor de lo que esperaba. 100% recomendado.</blockquote>
+        <div class="testi-author"><div class="testi-avatar">V</div><div><strong>Valentina</strong><span>Manga gástrica</span></div></div>
+      </div>
+      <div class="testi-card testi-dark">
+        <div class="testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <blockquote>Gracias al Doctor Ospina mi esposa pudo operarse de la vesícula sin complicaciones. La atención de todo su equipo fue maravillosa. Muy agradecidos.</blockquote>
+        <div class="testi-author"><div class="testi-avatar">E</div><div><strong>Esteban</strong><span>Colecistectomía</span></div></div>
+      </div>
+    </div>
+    <div class="testi-nav">
+      <button class="testi-nav-btn" onclick="testiPrev()" aria-label="Anterior"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></button>
+      <div class="testi-dots" id="testiDots"></div>
+      <button class="testi-nav-btn" onclick="testiNext()" aria-label="Siguiente"><svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg></button>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="section-inner">
+    <div class="section-center reveal">
+      <p class="section-eyebrow">Preguntas frecuentes</p>
+      <h2 class="section-title">Resuelve tus dudas</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item reveal"><button class="faq-q" aria-expanded="false">¿Cómo sé si tengo sobrepeso u obesidad?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button><div class="faq-a"><div class="faq-a-inner">El indicador más utilizado es el Índice de Masa Corporal (IMC). Un IMC entre 25 y 29.9 indica sobrepeso, y mayor a 30 indica obesidad. Puedes calcularlo arriba en esta misma página. Si tu IMC es mayor a 30, una consulta con el Dr. Ospina te ayudará a evaluar las opciones disponibles para mejorar tu salud.</div></div></div>
+      <div class="faq-item reveal reveal-delay-1"><button class="faq-q" aria-expanded="false">¿Soy candidato para cirugía bariátrica?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button><div class="faq-a"><div class="faq-a-inner">Los candidatos generalmente tienen un IMC mayor a 35, o mayor a 30 con comorbilidades como diabetes, hipertensión o apnea del sueño. En la cita de valoración se evalúa cada caso individualmente con el Dr. Ospina.</div></div></div>
+      <div class="faq-item reveal reveal-delay-2"><button class="faq-q" aria-expanded="false">¿Cuánto dura la recuperación?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button><div class="faq-a"><div class="faq-a-inner">La mayoría de pacientes retoman actividades normales entre 1 y 2 semanas. La actividad física intensa se recomienda a partir de las 4-6 semanas, según cada caso.</div></div></div>
+      <div class="faq-item reveal reveal-delay-3"><button class="faq-q" aria-expanded="false">¿La cirugía es segura?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button><div class="faq-a"><div class="faq-a-inner">La cirugía bariátrica laparoscópica es un procedimiento seguro con tasas de complicación muy bajas. Se realizan evaluaciones preoperatorias completas para minimizar cualquier riesgo.</div></div></div>
+      <div class="faq-item reveal"><button class="faq-q" aria-expanded="false">¿Cuánto peso puedo perder?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button><div class="faq-a"><div class="faq-a-inner">La manga gástrica permite perder entre el 60-70% del exceso de peso, y el bypass gástrico entre el 70-80%, en los primeros 12-18 meses. Los resultados varían según el compromiso del paciente.</div></div></div>
+      <div class="faq-item reveal reveal-delay-1"><button class="faq-q" aria-expanded="false">¿Qué riesgos tiene la obesidad para mi salud?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button><div class="faq-a"><div class="faq-a-inner">La obesidad incrementa significativamente el riesgo de diabetes tipo 2, hipertensión arterial, enfermedades cardiovasculares, apnea del sueño, problemas articulares y ciertos tipos de cáncer. Si tu IMC es superior a 30, consultar con un especialista puede ayudarte a prevenir estas complicaciones.</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <h2>Tu salud no puede esperar</h2>
+  <p>Cada día con sobrepeso u obesidad es un día que tu cuerpo enfrenta riesgos evitables. Agenda tu cita de valoración sin compromiso con el Dr. Ospina.</p>
+  <a href="https://wa.me/573105978158?text=Hola%20Dr.%20Ospina,%20deseo%20solicitar%20una%20cita%20de%20valoraci%C3%B3n" class="btn-white" target="_blank" rel="noopener noreferrer">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Solicitar Cita por WhatsApp
+  </a>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a href="#" class="logo">
+        <svg viewBox="0 0 44 44" fill="none"><circle cx="22" cy="22" r="21" stroke="var(--primary)" stroke-width="2"/><path d="M22 8c-3 0-6 2-7 5-1 3-0.5 6 0 8 0.5 2 1 4 1 6 0 3 1 5 2 6.5 1 1.5 2.5 2.5 4 2.5s3-1 4-2.5c1-1.5 2-3.5 2-6.5 0-2 0.5-4 1-6 0.5-2 1-5 0-8-1-3-4-5-7-5z" fill="var(--primary)" opacity="0.15" stroke="var(--primary)" stroke-width="1.5"/><path d="M18 18h8" stroke="var(--primary)" stroke-width="1.5" stroke-linecap="round"/><path d="M17 22c1.5 1 3.5 1.5 5 1.5s3.5-0.5 5-1.5" stroke="var(--primary)" stroke-width="1.5" stroke-linecap="round" fill="none"/><line x1="22" y1="14" x2="22" y2="18" stroke="var(--primary)" stroke-width="1.5" stroke-linecap="round"/><line x1="22" y1="22" x2="22" y2="28" stroke="var(--primary)" stroke-width="1.5" stroke-linecap="round"/><circle cx="22" cy="10" r="1.5" fill="var(--primary)"/></svg>
+        <div class="logo-text">Dr. Ospina<span>Cirugía Bariátrica</span></div>
+      </a>
+      <p>Cirugía General, Laparoscópica y Bariátrica. Comprometidos con tu salud y bienestar en Pereira, Colombia.</p>
+      <div class="footer-social">
+        <a href="https://www.facebook.com/drjuancristobalospinac" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
+        <a href="https://www.instagram.com/drjuancristobalospina/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/></svg></a>
+        <a href="https://wa.me/573105978158" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg></a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Servicios</h4>
+      <a href="#servicios">Manga Gástrica</a>
+      <a href="#servicios">Bypass Gástrico</a>
+      <a href="#servicios">Manejo Integral</a>
+      <a href="#servicios">Colecistectomía</a>
+      <a href="#servicios">Corrección de Hernias</a>
+    </div>
+    <div class="footer-col">
+      <h4>Información</h4>
+      <a href="#imc">Calcular mi IMC</a>
+      <a href="#proceso">Proceso quirúrgico</a>
+      <a href="#resultados">Resultados</a>
+      <a href="#testimonios">Testimonios</a>
+      <a href="#faq">Preguntas frecuentes</a>
+    </div>
+    <div class="footer-col">
+      <h4>Contacto</h4>
+      <a href="https://wa.me/573105978158" target="_blank" rel="noopener noreferrer">+57 310 597 8158</a>
+      <a href="#">Pereira, Colombia</a>
+      <a href="https://www.instagram.com/drjuancristobalospina/" target="_blank" rel="noopener noreferrer">@drjuancristobalospina</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2024 Dr. Juan Cristóbal Ospina &middot; Todos los derechos reservados</span>
+    <span>Diseñado por <a href="https://danieldiaz-dev.vercel.app" target="_blank" rel="noopener noreferrer">Daniel Díaz</a></span>
+  </div>
+</footer>
+
+<!-- WhatsApp Float with message -->
+<div class="wa-float">
+  <div class="wa-float-msg" id="waMsg">¿Tienes dudas sobre tu peso? Escríbenos, la valoración es sin compromiso.</div>
+  <a href="https://wa.me/573105978158?text=Hola%20Dr.%20Ospina,%20deseo%20solicitar%20una%20cita%20de%20valoraci%C3%B3n" class="wa-float-btn" target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+</div>
+
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<script>
+// Scroll progress bar
+const progressBar = document.getElementById('scrollProgress');
+window.addEventListener('scroll', () => {
+  const scrollTop = document.documentElement.scrollTop;
+  const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  progressBar.style.width = (scrollTop / scrollHeight * 100) + '%';
+});
+
+// Nav scroll effect
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 50);
+});
+
+// Reveal on scroll
+const revealElements = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) entry.target.classList.add('visible');
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+revealElements.forEach(el => observer.observe(el));
+
+// FAQ accordion
+document.querySelectorAll('.faq-q').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const item = btn.parentElement;
+    const wasOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(i => {
+      i.classList.remove('open');
+      i.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
+    });
+    if (!wasOpen) {
+      item.classList.add('open');
+      btn.setAttribute('aria-expanded', 'true');
+    }
+  });
+});
+
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) {
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+
+// BMI Calculator
+function calcularIMC() {
+  const peso = parseFloat(document.getElementById('bmiPeso').value);
+  const alturaCm = parseFloat(document.getElementById('bmiAltura').value);
+  if (!peso || !alturaCm || peso < 30 || alturaCm < 100) return;
+
+  const alturaM = alturaCm / 100;
+  const imc = peso / (alturaM * alturaM);
+  const resultDiv = document.getElementById('bmiResult');
+  const numEl = document.getElementById('bmiNumber');
+  const catEl = document.getElementById('bmiCategory');
+  const msgEl = document.getElementById('bmiMessage');
+  const fillEl = document.getElementById('bmiFill');
+  const markerEl = document.getElementById('bmiMarker');
+  const ctaEl = document.getElementById('bmiCta');
+
+  resultDiv.classList.add('show');
+  numEl.textContent = imc.toFixed(1);
+
+  let cat, color, msg;
+  const pct = Math.min(100, Math.max(0, ((imc - 15) / 30) * 100));
+
+  if (imc < 18.5) {
+    cat = 'Bajo peso'; color = '#3498db';
+    msg = 'Tu peso está por debajo de lo recomendado. Una consulta médica puede ayudarte a evaluar si hay factores que debes atender.';
+  } else if (imc < 25) {
+    cat = 'Peso normal'; color = '#27ae60';
+    msg = 'Tu peso está dentro del rango saludable. Mantén buenos hábitos alimenticios y actividad física regular.';
+  } else if (imc < 30) {
+    cat = 'Sobrepeso'; color = '#e67e22';
+    msg = 'Tu peso está por encima de lo recomendado. El sobrepeso incrementa el riesgo de enfermedades cardiovasculares y diabetes. Una valoración profesional puede ayudarte a tomar acción a tiempo.';
+  } else if (imc < 35) {
+    cat = 'Obesidad grado I'; color = '#e74c3c';
+    msg = 'La obesidad grado I aumenta significativamente el riesgo de diabetes, hipertensión y problemas articulares. El Dr. Ospina puede evaluar las mejores opciones para tu caso, incluyendo programas integrales de manejo de peso.';
+  } else if (imc < 40) {
+    cat = 'Obesidad grado II'; color = '#c0392b';
+    msg = 'La obesidad grado II representa un riesgo alto para tu salud. La cirugía bariátrica puede ser una opción efectiva y segura. Consulta con el Dr. Ospina para una valoración personalizada.';
+  } else {
+    cat = 'Obesidad grado III'; color = '#922b21';
+    msg = 'La obesidad mórbida es una condición que pone en riesgo tu vida. La cirugía bariátrica es el tratamiento más efectivo. No esperes más: el Dr. Ospina y su equipo pueden ayudarte.';
+  }
+
+  catEl.textContent = cat;
+  catEl.style.color = color;
+  fillEl.style.width = pct + '%';
+  fillEl.style.background = color;
+  markerEl.style.left = pct + '%';
+  markerEl.style.borderColor = color;
+  msgEl.textContent = msg;
+  ctaEl.style.display = imc >= 25 ? 'inline-flex' : 'none';
+}
+
+// VIDEO FULLSCREEN ON SCROLL
+const videoSection = document.getElementById('video-section');
+const videoFrame = document.getElementById('videoFrame');
+const videoOverlay = document.getElementById('videoOverlay');
+const scrollHint = document.getElementById('scrollHint');
+const videoEl = videoFrame ? videoFrame.querySelector('video') : null;
+const soundBtn = document.getElementById('videoSoundBtn');
+const iconMuted = document.getElementById('iconMuted');
+const iconUnmuted = document.getElementById('iconUnmuted');
+let videoPlaying = false;
+let userMuted = false;
+let videoFullyOpen = false;
+
+function updateSoundIcon() {
+  if (!videoEl) return;
+  const isMuted = videoEl.muted;
+  iconMuted.style.display = isMuted ? 'block' : 'none';
+  iconUnmuted.style.display = isMuted ? 'none' : 'block';
+  soundBtn.setAttribute('aria-label', isMuted ? 'Activar sonido' : 'Silenciar');
+}
+
+if (soundBtn && videoEl) {
+  soundBtn.addEventListener('click', function() {
+    videoEl.muted = !videoEl.muted;
+    userMuted = videoEl.muted;
+    updateSoundIcon();
+  });
+}
+
+function handleVideoScroll() {
+  if (!videoSection || !videoFrame) return;
+  const rect = videoSection.getBoundingClientRect();
+  const sectionHeight = videoSection.offsetHeight;
+  const viewportHeight = window.innerHeight;
+  const scrolled = -rect.top;
+  const progress = Math.max(0, Math.min(1, scrolled / (sectionHeight - viewportHeight)));
+
+  if (progress > 0.02 && !videoPlaying && videoEl) {
+    videoEl.play().catch(() => {});
+    videoPlaying = true;
+  }
+  if (progress <= 0.01 && videoPlaying && videoEl) {
+    videoEl.pause();
+    videoPlaying = false;
+  }
+
+  const fullyOpen = progress > 0.7;
+  if (fullyOpen !== videoFullyOpen) {
+    videoFullyOpen = fullyOpen;
+    if (videoEl) {
+      if (fullyOpen && !userMuted) {
+        videoEl.muted = false;
+      } else if (!fullyOpen) {
+        videoEl.muted = true;
+      }
+      updateSoundIcon();
+    }
+  }
+
+  if (soundBtn) {
+    soundBtn.classList.toggle('visible', progress > 0.1 && videoPlaying);
+  }
+
+  const w = 70 + progress * 30;
+  const br = Math.max(0, 24 * (1 - progress * 2.5));
+  videoFrame.style.width = Math.min(100, w) + '%';
+  videoFrame.style.maxWidth = progress > 0.3 ? '100%' : '900px';
+  videoFrame.style.borderRadius = br + 'px';
+
+  if (progress > 0.2) {
+    const h = 56 + (progress - 0.2) * 55;
+    videoFrame.style.height = Math.min(100, h) + 'vh';
+    videoFrame.style.aspectRatio = 'auto';
+  } else {
+    videoFrame.style.height = '';
+    videoFrame.style.aspectRatio = '16/9';
+  }
+
+  scrollHint.style.opacity = Math.max(0, 1 - progress * 5);
+  videoOverlay.style.opacity = 0.5 + progress * 0.5;
+}
+window.addEventListener('scroll', handleVideoScroll, { passive: true });
+
+// FALLING IMAGES ON SCROLL
+const fallingGallery = document.getElementById('fallingGallery');
+const fallingItems = document.querySelectorAll('.falling-item');
+const fallingCta = document.getElementById('fallingCta');
+
+function handleFallingScroll() {
+  if (!fallingGallery) return;
+  const rect = fallingGallery.getBoundingClientRect();
+  const sectionTop = -rect.top;
+  const sectionHeight = fallingGallery.offsetHeight - window.innerHeight;
+  const progress = Math.max(0, Math.min(1, sectionTop / sectionHeight));
+
+  fallingItems.forEach((item) => {
+    const delay = parseInt(item.dataset.delay || 0);
+    const triggerPoint = delay / 800;
+    const itemProgress = Math.max(0, Math.min(1, (progress - triggerPoint) / 0.2));
+
+    if (itemProgress > 0) {
+      const ease = 1 - Math.pow(1 - itemProgress, 3);
+      const rotation = (Math.random() - 0.5) * 6;
+      item.style.opacity = Math.min(1, itemProgress * 3);
+      item.style.transform = `translateY(${(1 - ease) * -120}vh) rotate(${rotation * (1 - ease)}deg)`;
+      item.style.transition = 'none';
+    } else {
+      item.style.opacity = 0;
+      item.style.transform = 'translateY(-120vh)';
+      item.style.transition = 'none';
+    }
+  });
+
+  if (fallingCta) {
+    fallingCta.classList.toggle('show', progress > 0.75);
+  }
+}
+window.addEventListener('scroll', handleFallingScroll, { passive: true });
+
+// Counter animation
+function animateCounters() {
+  document.querySelectorAll('.hero-stat-num').forEach(el => {
+    const text = el.textContent;
+    const match = text.match(/(\+?)(\d+)(%?)/);
+    if (!match) return;
+    const prefix = match[1];
+    const target = parseInt(match[2]);
+    const suffix = match[3];
+    let current = 0;
+    const step = Math.ceil(target / 40);
+    const interval = setInterval(() => {
+      current = Math.min(current + step, target);
+      el.textContent = prefix + current + suffix;
+      if (current >= target) clearInterval(interval);
+    }, 30);
+  });
+}
+
+const heroObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      animateCounters();
+      heroObserver.disconnect();
+    }
+  });
+}, { threshold: 0.3 });
+const heroStats = document.querySelector('.hero-stats');
+if (heroStats) heroObserver.observe(heroStats);
+
+// WhatsApp message popup
+setTimeout(() => {
+  const waMsg = document.getElementById('waMsg');
+  if (waMsg) waMsg.classList.add('show');
+  setTimeout(() => { if (waMsg) waMsg.classList.remove('show'); }, 8000);
+}, 15000);
+
+// SERVICE MODAL
+const svcData = {
+  manga: {
+    tag: 'Cirugía Bariátrica',
+    title: 'Manga Gástrica',
+    desc: 'La manga gástrica (gastrectomía en manga) es un procedimiento quirúrgico en el que se extrae aproximadamente el 80% del estómago por vía laparoscópica, dejando un tubo delgado en forma de manga que limita la cantidad de alimento que se puede consumir.',
+    desc2: 'Este procedimiento produce pérdida de peso al reducir la capacidad del estómago y generar saciedad temprana. Además, disminuye la producción de grelina (hormona del hambre), lo que reduce significativamente el apetito.',
+    img: 'https://drjuancristobalospina.com/wp-content/uploads/2024/06/Cirugia-manga-gastrica-para-bajar-de-peso-en-Pereira.jpg.webp',
+    benefits: ['Pérdida del 60-70% del exceso de peso','Saciedad temprana','Reducción del apetito','Técnica laparoscópica','Recuperación en pocos días','Mejora de comorbilidades'],
+    gallery: [
+      'https://drjuancristobalospina.com/wp-content/uploads/2024/06/Antes-y-despues-cirugia-perdida-de-peso-Dr-Juan-Cristobal-Ospina-en-Pereira-Colombia-2.png.webp',
+      'https://drjuancristobalospina.com/wp-content/uploads/2024/08/Antes-y-Despues-05.png.webp',
+      'https://drjuancristobalospina.com/wp-content/uploads/2024/06/Antes-y-despues-cirugia-perdida-de-peso-Dr-Juan-Cristobal-Ospina-en-Pereira-Colombia.png.webp'
+    ],
+    wa: 'Hola,%20me%20interesa%20la%20Manga%20Gástrica'
+  },
+  bypass: {
+    tag: 'Cirugía Bariátrica',
+    title: 'Bypass Gástrico',
+    desc: 'El bypass gástrico convierte el estómago en una pequeña bolsa que se conecta directamente al intestino delgado mediante laparoscopia. Combina restricción (menor capacidad) con malabsorción (menor absorción de calorías).',
+    desc2: 'Es uno de los procedimientos bariátricos más efectivos, ideal para pacientes con IMC mayor a 40 o con comorbilidades severas como diabetes tipo 2, hipertensión y apnea del sueño.',
+    img: 'https://drjuancristobalospina.com/wp-content/uploads/2024/06/Cirugia-bypass-gastrico-para-bajar-de-peso-en-Pereira.jpg.webp',
+    benefits: ['Pérdida del 70-80% del exceso de peso','Combina restricción y malabsorción','Remisión de diabetes tipo 2','Mejora de hipertensión','Técnica laparoscópica','Resultados sostenidos'],
+    gallery: [
+      'https://drjuancristobalospina.com/wp-content/uploads/2024/06/Cirugia-bypass-gastrico-para-bajar-de-peso-Pereira.jpg.webp',
+      'https://drjuancristobalospina.com/wp-content/uploads/2024/06/Antes-y-despues-cirugia-perdida-de-peso-Dr-Juan-Cristobal-Ospina-en-Pereira-Colombia-3.png.webp',
+      'https://drjuancristobalospina.com/wp-content/uploads/2024/06/Antes-y-despues-cirugia-perdida-de-peso-Dr-Juan-Cristobal-Ospina-en-Pereira-Colombia-4.png.webp'
+    ],
+    wa: 'Hola,%20me%20interesa%20el%20Bypass%20Gástrico'
+  },
+  integral: {
+    tag: 'Programa Integral',
+    title: 'Manejo Integral de Obesidad',
+    desc: 'Programa multidisciplinario de mínimo 3 meses diseñado para pacientes que no requieren cirugía. Incluye valoración con bioimpedanciometría, plan nutricional personalizado, manejo con medicamentos y apoyo psicológico.',
+    desc2: 'El objetivo es lograr un cambio de hábitos sostenible y una pérdida de peso progresiva y saludable, con seguimiento continuo del equipo médico para ajustar el tratamiento según la evolución del paciente.',
+    img: 'https://drjuancristobalospina.com/wp-content/uploads/2024/06/Cirugia-manga-gastrica-para-bajar-de-peso-en-Pereira.jpg.webp',
+    benefits: ['Sin cirugía','Bioimpedanciometría','Plan nutricional personalizado','Apoyo psicológico','Manejo farmacológico','Seguimiento continuo'],
+    gallery: [],
+    wa: 'Hola,%20me%20interesa%20el%20programa%20integral%20de%20obesidad'
+  },
+  colecistectomia: {
+    tag: 'Cirugía General',
+    title: 'Colecistectomía',
+    desc: 'La colecistectomía es la extracción quirúrgica de la vesícula biliar mediante técnica laparoscópica. Se realiza principalmente cuando hay cálculos biliares que causan dolor, inflamación o complicaciones.',
+    desc2: 'Es un procedimiento ambulatorio con mínima invasión. La mayoría de pacientes regresan a sus actividades normales en pocos días. La vesícula no es un órgano vital, por lo que su extracción no afecta la calidad de vida.',
+    img: 'https://drjuancristobalospina.com/wp-content/uploads/2024/06/Cirugia-manga-gastrica-para-bajar-de-peso-en-Pereira.jpg.webp',
+    benefits: ['Procedimiento ambulatorio','Técnica laparoscópica','Recuperación rápida','Mínima invasión','Sin afectar calidad de vida','Resolución definitiva'],
+    gallery: [],
+    wa: 'Hola,%20consulta%20sobre%20Colecistectomía'
+  },
+  hernias: {
+    tag: 'Cirugía General',
+    title: 'Corrección de Hernias',
+    desc: 'Reparación quirúrgica de hernias inguinales, umbilicales, incisionales y abdominales. Se realiza mediante técnica laparoscópica con suturas y mallas de última generación para reforzar la pared abdominal.',
+    desc2: 'La técnica laparoscópica permite una recuperación más rápida, menor dolor postoperatorio y un resultado estético superior comparado con la cirugía abierta convencional.',
+    img: 'https://drjuancristobalospina.com/wp-content/uploads/2024/06/Cirugia-bypass-gastrico-para-bajar-de-peso-en-Pereira.jpg.webp',
+    benefits: ['Técnica laparoscópica','Malla de última generación','Menor dolor postoperatorio','Recuperación rápida','Resultado estético','Baja recurrencia'],
+    gallery: [],
+    wa: 'Hola,%20consulta%20sobre%20corrección%20de%20hernias'
+  },
+  otros: {
+    tag: 'Otros Procedimientos',
+    title: 'Esplenectomía, Biopsias y Lipomas',
+    desc: 'El Dr. Ospina realiza diversos procedimientos de cirugía general: esplenectomía (extracción del bazo) por laparoscopia, toma de biopsias (aguja fina, trucut, abierta o laparoscópica) para diagnóstico, y resección de lipomas (tumores benignos de grasa).',
+    desc2: 'La resección de lipomas es un procedimiento de 20-30 minutos que elimina estos tumores benignos de forma definitiva. Todos los procedimientos se realizan con técnicas mínimamente invasivas cuando es posible.',
+    img: 'https://drjuancristobalospina.com/wp-content/uploads/2024/06/Cirugia-bypass-gastrico-para-bajar-de-peso-Pereira.jpg.webp',
+    benefits: ['Técnicas mínimamente invasivas','Diagnóstico preciso','Recuperación rápida','Procedimientos ambulatorios','Equipo médico especializado','Máxima seguridad'],
+    gallery: [],
+    wa: 'Hola,%20consulta%20sobre%20otros%20procedimientos'
+  }
+};
+
+function openSvcModal(id) {
+  const d = svcData[id];
+  if (!d) return;
+  const overlay = document.getElementById('svcModal');
+  document.getElementById('svcModalImg').src = d.img;
+  document.getElementById('svcModalImg').alt = d.title;
+  document.getElementById('svcModalTag').textContent = d.tag;
+  document.getElementById('svcModalTitle').textContent = d.title;
+  document.getElementById('svcModalDesc').textContent = d.desc;
+  document.getElementById('svcModalDesc2').textContent = d.desc2;
+
+  const benefitsEl = document.getElementById('svcModalBenefits');
+  benefitsEl.innerHTML = d.benefits.map(b => '<div class="svc-modal-benefit"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span>' + b + '</span></div>').join('');
+
+  const galleryEl = document.getElementById('svcModalGallery');
+  if (d.gallery.length) {
+    galleryEl.innerHTML = '<h4 style="font-size:16px;margin-bottom:12px;color:var(--text)">Resultados reales</h4>' + d.gallery.map(src => '<img src="' + src + '" alt="Resultado ' + d.title + '" loading="lazy">').join('');
+    galleryEl.style.display = 'block';
+  } else {
+    galleryEl.style.display = 'none';
+  }
+
+  document.getElementById('svcModalCta').href = 'https://wa.me/573105978158?text=' + d.wa;
+  document.getElementById('svcModalCtaText').textContent = 'Solicitar cita para ' + d.title;
+
+  overlay.classList.remove('closing');
+  overlay.classList.add('active');
+  overlay.querySelector('.svc-modal').scrollTop = 0;
+  document.body.style.overflow = 'hidden';
+}
+
+function closeSvcModal() {
+  const overlay = document.getElementById('svcModal');
+  if (!overlay.classList.contains('active')) return;
+  overlay.classList.add('closing');
+  setTimeout(() => {
+    overlay.classList.remove('active', 'closing');
+    document.body.style.overflow = '';
+  }, 350);
+}
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closeSvcModal();
+});
+
+document.querySelectorAll('.service-card[onclick]').forEach(c => c.style.cursor = 'pointer');
+window.openServiceModal = openSvcModal;
+
+// TESTIMONIALS CAROUSEL
+(function() {
+  const track = document.getElementById('testiTrack');
+  const dotsWrap = document.getElementById('testiDots');
+  if (!track || !dotsWrap) return;
+
+  const cards = track.querySelectorAll('.testi-card');
+  const total = cards.length;
+  let currentPage = 0;
+  let perPage = 4;
+  let autoTimer;
+
+  function getPerPage() {
+    const w = window.innerWidth;
+    if (w <= 500) return 1;
+    if (w <= 768) return 2;
+    if (w <= 1024) return 3;
+    return 4;
+  }
+
+  function getTotalPages() {
+    return Math.ceil(total / perPage);
+  }
+
+  function buildDots() {
+    const pages = getTotalPages();
+    dotsWrap.innerHTML = '';
+    for (let i = 0; i < pages; i++) {
+      const dot = document.createElement('button');
+      dot.className = 'testi-dot' + (i === currentPage ? ' active' : '');
+      dot.setAttribute('aria-label', 'Página ' + (i + 1));
+      dot.addEventListener('click', () => goTo(i));
+      dotsWrap.appendChild(dot);
+    }
+  }
+
+  function updatePosition() {
+    const gap = 20;
+    const cardWidth = cards[0].offsetWidth + gap;
+    const offset = currentPage * perPage * cardWidth;
+    track.style.transition = 'transform 0.6s cubic-bezier(0.25,1,0.5,1)';
+    track.style.transform = 'translateX(-' + offset + 'px)';
+    dotsWrap.querySelectorAll('.testi-dot').forEach((d, i) => {
+      d.classList.toggle('active', i === currentPage);
+    });
+  }
+
+  function goTo(page) {
+    const pages = getTotalPages();
+    currentPage = ((page % pages) + pages) % pages;
+    updatePosition();
+    resetAuto();
+  }
+
+  window.testiNext = function() { goTo(currentPage + 1); };
+  window.testiPrev = function() { goTo(currentPage - 1); };
+
+  function resetAuto() {
+    clearInterval(autoTimer);
+    autoTimer = setInterval(() => goTo(currentPage + 1), 4500);
+  }
+
+  function init() {
+    perPage = getPerPage();
+    if (currentPage >= getTotalPages()) currentPage = 0;
+    buildDots();
+    updatePosition();
+    resetAuto();
+  }
+
+  init();
+  let resizeTimeout;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(init, 200);
+  });
+
+  const carousel = document.getElementById('testiCarousel');
+  carousel.addEventListener('mouseenter', () => clearInterval(autoTimer));
+  carousel.addEventListener('mouseleave', resetAuto);
+
+  let touchStartX = 0;
+  carousel.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; clearInterval(autoTimer); }, { passive: true });
+  carousel.addEventListener('touchend', e => {
+    const diff = touchStartX - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 50) diff > 0 ? goTo(currentPage + 1) : goTo(currentPage - 1);
+    resetAuto();
+  }, { passive: true });
+})();
+</script>
