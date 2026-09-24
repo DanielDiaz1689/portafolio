@@ -175,7 +175,7 @@ section{padding:100px 24px}
 .video-scroll{position:relative;height:300vh;background:var(--bg)}
 .video-sticky{position:sticky;top:0;height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden}
 .video-frame{position:relative;width:70%;max-width:900px;aspect-ratio:16/9;border-radius:24px;overflow:hidden;background:#000;transition:width 0.1s linear,max-width 0.1s linear,border-radius 0.1s linear,height 0.1s linear;box-shadow:0 20px 60px rgba(0,0,0,0.3)}
-.video-frame video{width:100%;height:100%;object-fit:cover;display:block}
+.video-frame video{width:100%;height:100%;object-fit:contain;display:block;background:#000}
 .video-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.7) 0%,transparent 40%,transparent 60%,rgba(0,0,0,0.3) 100%);display:flex;flex-direction:column;justify-content:flex-end;padding:40px;z-index:2;transition:opacity 0.3s}
 .video-overlay h2{font-family:var(--font-display);color:#fff;font-size:clamp(22px,3.5vw,36px);margin-bottom:8px;text-shadow:0 2px 8px rgba(0,0,0,0.3)}
 .video-overlay p{color:rgba(255,255,255,0.85);font-size:15px;max-width:500px;line-height:1.6}
@@ -1179,7 +1179,6 @@ const iconMuted = document.getElementById('iconMuted');
 const iconUnmuted = document.getElementById('iconUnmuted');
 let videoPlaying = false;
 let userMuted = false;
-let videoFullyOpen = false;
 
 function updateSoundIcon() {
   if (!videoEl) return;
@@ -1205,30 +1204,26 @@ function handleVideoScroll() {
   const scrolled = -rect.top;
   const progress = Math.max(0, Math.min(1, scrolled / (sectionHeight - viewportHeight)));
 
-  if (progress > 0.02 && !videoPlaying && videoEl) {
+  const fullyOpen = progress > 0.85 && progress < 0.98;
+
+  if (fullyOpen && !videoPlaying && videoEl) {
+    videoEl.currentTime = 0;
     videoEl.play().catch(() => {});
     videoPlaying = true;
-  }
-  if (progress <= 0.01 && videoPlaying && videoEl) {
-    videoEl.pause();
-    videoPlaying = false;
-  }
-
-  const fullyOpen = progress > 0.7;
-  if (fullyOpen !== videoFullyOpen) {
-    videoFullyOpen = fullyOpen;
-    if (videoEl) {
-      if (fullyOpen && !userMuted) {
-        videoEl.muted = false;
-      } else if (!fullyOpen) {
-        videoEl.muted = true;
-      }
+    if (!userMuted) {
+      videoEl.muted = false;
       updateSoundIcon();
     }
   }
+  if (!fullyOpen && videoPlaying && videoEl) {
+    videoEl.pause();
+    videoEl.muted = true;
+    videoPlaying = false;
+    updateSoundIcon();
+  }
 
   if (soundBtn) {
-    soundBtn.classList.toggle('visible', progress > 0.1 && videoPlaying);
+    soundBtn.classList.toggle('visible', fullyOpen && videoPlaying);
   }
 
   const w = 70 + progress * 30;
