@@ -1,3 +1,8 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Dr. Juan Cristóbal Ospina</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400&display=swap">
 <style>
@@ -104,8 +109,12 @@ img{max-width:100%}
 .nav-links a:hover::after{width:100%}
 .nav-cta{background:var(--primary);color:#fff!important;padding:10px 24px;border-radius:99px;font-weight:600;font-size:13px;text-decoration:none;transition:all 0.3s;letter-spacing:0.02em;box-shadow:0 4px 12px rgba(10,110,92,0.25)}
 .nav-cta:hover{background:var(--primary-light);transform:translateY(-2px);box-shadow:0 6px 20px rgba(10,110,92,0.35)}
-.mobile-toggle{display:none;background:none;border:none;cursor:pointer;padding:8px}
+.mobile-toggle{display:none;background:none;border:none;cursor:pointer;padding:8px;z-index:10}
 .mobile-toggle svg{width:24px;height:24px;stroke:var(--text);fill:none;stroke-width:2}
+.nav-inner.menu-open .nav-links{display:flex!important;flex-direction:column;position:absolute;top:100%;left:0;right:0;background:var(--bg-alt);padding:20px 24px;gap:4px;box-shadow:0 12px 32px rgba(0,0,0,0.12);border-top:1px solid var(--border);z-index:100}
+.nav-inner.menu-open .nav-links a{padding:12px 0;font-size:16px;display:block;border-bottom:1px solid var(--border)}
+.nav-inner.menu-open .nav-links li:last-child a{border-bottom:none}
+.nav-inner.menu-open .nav-cta-mobile{display:inline-flex!important;margin-top:12px;width:100%;justify-content:center}
 
 /* HERO */
 .hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:48px;max-width:1200px;margin:0 auto;padding:120px 24px 80px}
@@ -411,29 +420,69 @@ section{padding:100px 24px}
   .bmi-form{grid-template-columns:1fr 1fr}
 }
 @media(max-width:768px){
-  .hero{grid-template-columns:1fr;padding-top:100px;gap:32px}
+  .hero{grid-template-columns:1fr;padding:100px 20px 60px;gap:24px;min-height:auto}
   .hero-visual{order:-1}
-  .hero-photo{max-width:320px;margin:0 auto}
+  .hero-photo{max-width:280px;margin:0 auto}
+  .hero-text h1{font-size:28px}
+  .hero-sub{font-size:15px}
+  .hero-stats{gap:20px}
   .about-grid{grid-template-columns:1fr;gap:36px}
   .services-grid{grid-template-columns:1fr}
   .process-steps{grid-template-columns:1fr;gap:24px}
   .results-grid{grid-template-columns:1fr}
   .nav-links{display:none}
+  .nav-cta{display:none}
   .mobile-toggle{display:block}
-  .hero-stats{gap:20px}
   .benefits{grid-template-columns:1fr}
   .footer-inner{grid-template-columns:1fr;gap:28px}
   .testimonial-card{min-width:290px}
   .bmi-form{grid-template-columns:1fr}
-  .bmi-card{padding:32px 24px}
-  .falling-item{width:180px!important;height:240px!important}
+  .bmi-card{padding:32px 20px}
+  .falling-item{width:160px!important;height:210px!important}
+  section{padding:60px 16px}
+  .section-header h2{font-size:24px}
+  .section-desc{font-size:14px}
+  .video-frame{width:90%!important}
+  .video-overlay{padding:20px}
+  .video-overlay h2{font-size:18px}
+  .video-overlay p{font-size:13px}
+  .video-scroll{height:200vh}
+  .svc-modal{max-height:90vh;max-width:95vw;padding:0}
+  .svc-modal-body{padding:24px 20px}
+  .svc-modal-benefits{grid-template-columns:1fr}
+  .svc-modal-gallery{gap:8px}
+  .svc-modal-gallery img{width:120px;height:90px}
+  .testi-carousel{padding:0 12px}
+  .testi-nav-btn{width:36px;height:36px}
+  .team-member{padding:24px 16px}
+  .faq-q{padding:16px 18px;font-size:14px}
+  .faq-a-inner{padding:0 18px 16px;font-size:13px}
+  .falling-gallery{height:250vh}
 }
 @media(max-width:480px){
+  .hero{padding:90px 16px 40px;gap:20px}
+  .hero-photo{max-width:240px}
+  .hero-text h1{font-size:24px}
   .hero-stats{flex-direction:column;gap:12px;align-items:flex-start}
   .hero-actions{flex-direction:column;align-items:stretch}
   .btn-primary,.btn-outline{justify-content:center}
   .footer-bottom{flex-direction:column;gap:6px;text-align:center}
   .trust-badge{display:none}
+  .about-image{max-width:100%}
+  .section-header h2{font-size:22px}
+  section{padding:48px 14px}
+  .service-card{padding:24px 18px}
+  .service-card h3{font-size:16px}
+  .step{padding:20px 14px}
+  .step h3{font-size:14px}
+  .step p{font-size:12px}
+  .video-scroll{height:180vh}
+  .falling-gallery{height:200vh}
+  .falling-item{width:140px!important;height:180px!important}
+  .cta-section{padding:50px 16px}
+  .cta-section h2{font-size:22px}
+  .nav-inner{height:60px;padding:0 12px}
+  .logo-text{font-size:16px}
 }
 </style>
 
@@ -463,9 +512,10 @@ section{padding:100px 24px}
       <li><a href="#resultados">Resultados</a></li>
       <li><a href="#testimonios">Testimonios</a></li>
       <li><a href="#faq">FAQ</a></li>
+      <li class="nav-cta-mobile" style="display:none"><a href="https://wa.me/573105978158?text=Hola%20Dr.%20Ospina,%20deseo%20solicitar%20una%20cita%20de%20valoraci%C3%B3n" class="btn-primary" target="_blank" rel="noopener noreferrer" style="font-size:14px;padding:12px 24px">Agendar Cita</a></li>
     </ul>
     <a href="https://wa.me/573105978158?text=Hola%20Dr.%20Ospina,%20deseo%20solicitar%20una%20cita%20de%20valoraci%C3%B3n" class="nav-cta" target="_blank" rel="noopener noreferrer">Agendar Cita</a>
-    <button class="mobile-toggle" aria-label="Abrir menú" onclick="this.parentElement.querySelector('.nav-links').style.display=this.parentElement.querySelector('.nav-links').style.display==='flex'?'none':'flex';this.parentElement.querySelector('.nav-links').style.flexDirection='column';this.parentElement.querySelector('.nav-links').style.position='absolute';this.parentElement.querySelector('.nav-links').style.top='76px';this.parentElement.querySelector('.nav-links').style.right='24px';this.parentElement.querySelector('.nav-links').style.background='var(--bg-alt)';this.parentElement.querySelector('.nav-links').style.padding='16px 24px';this.parentElement.querySelector('.nav-links').style.borderRadius='12px';this.parentElement.querySelector('.nav-links').style.boxShadow='0 8px 24px rgba(0,0,0,0.1)'">
+    <button class="mobile-toggle" aria-label="Abrir menú" onclick="this.parentElement.classList.toggle('menu-open')">
       <svg viewBox="0 0 24 24"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
     </button>
   </div>
@@ -1078,6 +1128,13 @@ window.addEventListener('scroll', () => {
 const nav = document.getElementById('nav');
 window.addEventListener('scroll', () => {
   nav.classList.toggle('scrolled', window.scrollY > 50);
+});
+
+// Mobile menu: close on link click
+document.querySelectorAll('.nav-links a').forEach(link => {
+  link.addEventListener('click', () => {
+    document.querySelector('.nav-inner').classList.remove('menu-open');
+  });
 });
 
 // Reveal on scroll
