@@ -7,26 +7,26 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400&display=swap">
 <style>
 :root {
-  --bg: #f7faf9;
+  --bg: #f7f9fb;
   --bg-alt: #ffffff;
-  --surface: #edf3f0;
-  --text: #162b2b;
-  --text-muted: #4a6565;
-  --text-light: #7a9494;
-  --primary: #0a6e5c;
-  --primary-light: #0f8d76;
-  --primary-pale: #e4f5f0;
-  --primary-dark: #064d40;
+  --surface: #edf1f5;
+  --text: #162028;
+  --text-muted: #4a5b6a;
+  --text-light: #7a8d9a;
+  --primary: #0a5e8c;
+  --primary-light: #0f78b2;
+  --primary-pale: #e4f0f8;
+  --primary-dark: #084269;
   --gold: #b8963a;
   --gold-pale: #faf5e8;
-  --border: #d4e0dc;
+  --border: #d4dce4;
   --white: #ffffff;
   --danger: #c0392b;
   --warning: #e67e22;
   --safe: #27ae60;
-  --shadow-sm: 0 1px 4px rgba(10,60,50,0.06);
-  --shadow-md: 0 6px 20px rgba(10,60,50,0.08);
-  --shadow-lg: 0 16px 48px rgba(10,60,50,0.1);
+  --shadow-sm: 0 1px 4px rgba(10,50,80,0.06);
+  --shadow-md: 0 6px 20px rgba(10,50,80,0.08);
+  --shadow-lg: 0 16px 48px rgba(10,50,80,0.1);
   --radius: 20px;
   --radius-sm: 12px;
   --font-display: 'Playfair Display', Georgia, serif;
@@ -35,40 +35,40 @@
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --bg: #0c1816;
-    --bg-alt: #12211e;
-    --surface: #1a302b;
-    --text: #e4f0ec;
-    --text-muted: #8fada5;
-    --text-light: #5e8078;
-    --primary: #26c9a4;
-    --primary-light: #3dddb8;
-    --primary-pale: rgba(38,201,164,0.1);
-    --primary-dark: #1a9b7e;
+    --bg: #0c1418;
+    --bg-alt: #121e24;
+    --surface: #1a2a34;
+    --text: #e4ecf2;
+    --text-muted: #8fa5b4;
+    --text-light: #5e7888;
+    --primary: #4db8e8;
+    --primary-light: #6dcbf5;
+    --primary-pale: rgba(77,184,232,0.1);
+    --primary-dark: #3a9bc8;
     --gold: #d4af52;
     --gold-pale: rgba(212,175,82,0.08);
-    --border: #26403a;
-    --white: #12211e;
+    --border: #263a44;
+    --white: #121e24;
     --shadow-sm: 0 1px 4px rgba(0,0,0,0.2);
     --shadow-md: 0 6px 20px rgba(0,0,0,0.25);
     --shadow-lg: 0 16px 48px rgba(0,0,0,0.3);
   }
 }
 :root[data-theme="dark"] {
-  --bg: #0c1816;
-  --bg-alt: #12211e;
-  --surface: #1a302b;
-  --text: #e4f0ec;
-  --text-muted: #8fada5;
-  --text-light: #5e8078;
-  --primary: #26c9a4;
-  --primary-light: #3dddb8;
-  --primary-pale: rgba(38,201,164,0.1);
-  --primary-dark: #1a9b7e;
+  --bg: #0c1418;
+  --bg-alt: #121e24;
+  --surface: #1a2a34;
+  --text: #e4ecf2;
+  --text-muted: #8fa5b4;
+  --text-light: #5e7888;
+  --primary: #4db8e8;
+  --primary-light: #6dcbf5;
+  --primary-pale: rgba(77,184,232,0.1);
+  --primary-dark: #3a9bc8;
   --gold: #d4af52;
   --gold-pale: rgba(212,175,82,0.08);
-  --border: #26403a;
-  --white: #12211e;
+  --border: #263a44;
+  --white: #121e24;
   --shadow-sm: 0 1px 4px rgba(0,0,0,0.2);
   --shadow-md: 0 6px 20px rgba(0,0,0,0.25);
   --shadow-lg: 0 16px 48px rgba(0,0,0,0.3);
@@ -107,8 +107,8 @@ img{max-width:100%}
 .nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:2px;background:var(--primary);transition:width 0.3s}
 .nav-links a:hover{color:var(--primary)}
 .nav-links a:hover::after{width:100%}
-.nav-cta{background:var(--primary);color:#fff!important;padding:10px 24px;border-radius:99px;font-weight:600;font-size:13px;text-decoration:none;transition:all 0.3s;letter-spacing:0.02em;box-shadow:0 4px 12px rgba(10,110,92,0.25)}
-.nav-cta:hover{background:var(--primary-light);transform:translateY(-2px);box-shadow:0 6px 20px rgba(10,110,92,0.35)}
+.nav-cta{background:var(--primary);color:#fff!important;padding:10px 24px;border-radius:99px;font-weight:600;font-size:13px;text-decoration:none;transition:all 0.3s;letter-spacing:0.02em;box-shadow:0 4px 12px rgba(10,94,140,0.25)}
+.nav-cta:hover{background:var(--primary-light);transform:translateY(-2px);box-shadow:0 6px 20px rgba(10,94,140,0.35)}
 .mobile-toggle{display:none;background:none;border:none;cursor:pointer;padding:8px;z-index:10}
 .mobile-toggle svg{width:24px;height:24px;stroke:var(--text);fill:none;stroke-width:2}
 .nav-inner.menu-open .nav-links{display:flex!important;flex-direction:column;position:absolute;top:100%;left:0;right:0;background:var(--bg-alt);padding:20px 24px;gap:4px;box-shadow:0 12px 32px rgba(0,0,0,0.12);border-top:1px solid var(--border);z-index:100}
@@ -125,8 +125,8 @@ img{max-width:100%}
 .hero h1 em::after{content:'';position:absolute;bottom:2px;left:0;width:100%;height:8px;background:var(--primary);opacity:0.12;border-radius:4px}
 .hero-sub{font-size:17px;color:var(--text-muted);margin-bottom:32px;max-width:440px;line-height:1.7}
 .hero-actions{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
-.btn-primary{display:inline-flex;align-items:center;gap:10px;background:var(--primary);color:#fff;padding:15px 30px;border-radius:99px;font-size:15px;font-weight:600;text-decoration:none;transition:all 0.3s;border:none;cursor:pointer;box-shadow:0 4px 16px rgba(10,110,92,0.3)}
-.btn-primary:hover{background:var(--primary-light);transform:translateY(-3px);box-shadow:0 8px 28px rgba(10,110,92,0.35)}
+.btn-primary{display:inline-flex;align-items:center;gap:10px;background:var(--primary);color:#fff;padding:15px 30px;border-radius:99px;font-size:15px;font-weight:600;text-decoration:none;transition:all 0.3s;border:none;cursor:pointer;box-shadow:0 4px 16px rgba(10,94,140,0.3)}
+.btn-primary:hover{background:var(--primary-light);transform:translateY(-3px);box-shadow:0 8px 28px rgba(10,94,140,0.35)}
 .btn-primary svg{width:18px;height:18px}
 .btn-outline{display:inline-flex;align-items:center;gap:8px;background:transparent;color:var(--text);padding:15px 26px;border-radius:99px;font-size:15px;font-weight:500;text-decoration:none;border:1.5px solid var(--border);transition:all 0.3s}
 .btn-outline:hover{border-color:var(--primary);color:var(--primary);transform:translateY(-2px)}
@@ -197,21 +197,26 @@ section{padding:100px 24px}
 @keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
 
 /* FALLING IMAGES GALLERY */
-.falling-gallery{position:relative;height:400vh;background:linear-gradient(180deg,#062b23 0%,#0a3d32 30%,#073026 70%,#041f19 100%)}
-.falling-gallery-sticky{position:sticky;top:0;height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden}
-.falling-gallery-inner{position:relative;width:100%;max-width:1200px;height:80vh;margin:0 auto}
-.falling-item{position:absolute;opacity:0;transform:translateY(-100%);will-change:transform,opacity;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-lg);background:var(--bg-alt)}
-.falling-item img{width:100%;height:100%;object-fit:cover;display:block}
-.falling-item-caption{position:absolute;bottom:0;left:0;right:0;padding:16px 18px;background:linear-gradient(to top,rgba(0,0,0,0.85),transparent);color:#fff;z-index:2}
-.falling-item-caption h4{font-family:var(--font-display);font-size:15px;font-weight:600;margin-bottom:3px}
-.falling-item-caption p{font-size:11px;opacity:0.85;line-height:1.4}
-.falling-bg-text{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;z-index:0;pointer-events:none}
-.falling-bg-text h2{font-family:var(--font-display);font-size:clamp(40px,8vw,100px);font-weight:700;color:#0fbe8c;line-height:1;opacity:0.1;text-shadow:0 0 60px rgba(10,110,92,0.3)}
-.falling-cta{position:absolute;bottom:8vh;left:50%;transform:translateX(-50%);z-index:10;opacity:0;transition:opacity 0.6s;text-align:center}
-.falling-cta.show{opacity:1}
-.falling-cta a{display:inline-flex;align-items:center;gap:10px;background:var(--primary);color:#fff;padding:16px 36px;border-radius:99px;font-weight:700;font-size:15px;text-decoration:none;box-shadow:0 8px 28px rgba(10,110,92,0.35);transition:all 0.3s}
-.falling-cta a:hover{transform:translateY(-3px);box-shadow:0 12px 36px rgba(10,110,92,0.4)}
-.falling-cta p{margin-top:10px;color:var(--text-muted);font-size:13px}
+.falling-gallery{position:relative;height:auto;min-height:100vh;background:linear-gradient(180deg,#061e2b 0%,#0a2d3d 30%,#072630 70%,#04191f 100%);padding:80px 24px}
+.gallery-inner{max-width:1200px;margin:0 auto}
+.gallery-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px;margin-top:48px}
+.gallery-pair{border-radius:var(--radius);overflow:hidden;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);transition:transform 0.4s,box-shadow 0.4s}
+.gallery-pair:hover{transform:translateY(-6px);box-shadow:0 16px 48px rgba(0,0,0,0.3)}
+.gallery-pair-imgs{display:grid;grid-template-columns:1fr 1fr;position:relative}
+.gallery-pair-imgs img{width:100%;height:240px;object-fit:cover;display:block}
+.gallery-pair-imgs .gallery-arrow{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:36px;height:36px;background:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 12px rgba(0,0,0,0.3);z-index:2}
+.gallery-pair-imgs .gallery-arrow svg{width:16px;height:16px;stroke:var(--primary);fill:none;stroke-width:2.5}
+.gallery-pair-label{display:flex;justify-content:space-between;padding:2px}
+.gallery-pair-label span{flex:1;text-align:center;padding:6px;font-size:11px;font-weight:700;letter-spacing:0.05em;text-transform:uppercase}
+.gallery-pair-label .before-label{background:rgba(200,160,100,0.2);color:#d4af52}
+.gallery-pair-label .after-label{background:rgba(77,184,232,0.15);color:#4db8e8}
+.gallery-pair-info{padding:18px 20px;text-align:center}
+.gallery-pair-info h4{font-family:var(--font-display);font-size:16px;font-weight:600;color:#fff;margin-bottom:4px}
+.gallery-pair-info p{font-size:13px;color:rgba(255,255,255,0.6)}
+.gallery-cta{text-align:center;margin-top:40px}
+.gallery-cta a{display:inline-flex;align-items:center;gap:10px;background:var(--primary);color:#fff;padding:16px 36px;border-radius:99px;font-weight:700;font-size:15px;text-decoration:none;box-shadow:0 8px 28px rgba(10,94,140,0.35);transition:all 0.3s}
+.gallery-cta a:hover{transform:translateY(-3px);box-shadow:0 12px 36px rgba(10,94,140,0.4)}
+.gallery-cta p{margin-top:10px;color:rgba(255,255,255,0.5);font-size:13px}
 
 /* ABOUT */
 .about{background:var(--bg-alt)}
@@ -235,10 +240,8 @@ section{padding:100px 24px}
 .service-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--primary),var(--primary-light));transform:scaleX(0);transform-origin:left;transition:transform 0.4s}
 .service-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg);border-color:var(--primary)}
 .service-card:hover::before{transform:scaleX(1)}
-.service-icon{width:48px;height:48px;background:var(--primary-pale);border-radius:14px;display:flex;align-items:center;justify-content:center;margin-bottom:18px;transition:all 0.3s}
-.service-card:hover .service-icon{background:var(--primary);transform:scale(1.1)}
-.service-icon svg{width:22px;height:22px;stroke:var(--primary);fill:none;stroke-width:1.8;transition:stroke 0.3s}
-.service-card:hover .service-icon svg{stroke:#fff}
+.service-img{width:100%;height:160px;object-fit:cover;border-radius:var(--radius);margin-bottom:18px;transition:transform 0.4s}
+.service-card:hover .service-img{transform:scale(1.03)}
 .service-card h3{font-size:18px;font-weight:600;margin-bottom:10px}
 .service-card p{font-size:13px;color:var(--text-muted);line-height:1.7}
 .service-link{display:inline-flex;align-items:center;gap:6px;margin-top:16px;color:var(--primary);font-size:13px;font-weight:600;text-decoration:none;transition:gap 0.3s}
@@ -267,7 +270,7 @@ section{padding:100px 24px}
 .svc-modal-gallery::-webkit-scrollbar{display:none}
 .svc-modal-gallery img{width:180px;height:130px;object-fit:cover;border-radius:var(--radius-sm);flex-shrink:0;border:2px solid var(--border);transition:all 0.3s}
 .svc-modal-gallery img:hover{border-color:var(--primary);transform:scale(1.05)}
-.svc-modal-cta{display:inline-flex;align-items:center;gap:10px;background:var(--primary);color:#fff;padding:14px 28px;border-radius:99px;font-size:14px;font-weight:700;text-decoration:none;margin-top:24px;transition:all 0.3s;box-shadow:0 4px 16px rgba(10,110,92,0.3)}
+.svc-modal-cta{display:inline-flex;align-items:center;gap:10px;background:var(--primary);color:#fff;padding:14px 28px;border-radius:99px;font-size:14px;font-weight:700;text-decoration:none;margin-top:24px;transition:all 0.3s;box-shadow:0 4px 16px rgba(10,94,140,0.3)}
 .svc-modal-cta:hover{background:var(--primary-light);transform:translateY(-2px)}
 .svc-modal-cta svg{width:18px;height:18px}
 @media(max-width:768px){.svc-modal-benefits{grid-template-columns:1fr}.svc-modal{max-height:90vh}.svc-modal-gallery img{width:140px;height:100px}}
@@ -278,7 +281,7 @@ section{padding:100px 24px}
 .process-steps::before{content:'';position:absolute;top:36px;left:10%;right:10%;height:2px;background:linear-gradient(90deg,var(--primary-pale),var(--primary),var(--primary-pale))}
 .step{text-align:center;position:relative;z-index:1}
 .step-num{width:72px;height:72px;border-radius:50%;background:var(--bg-alt);border:3px solid var(--primary);display:flex;align-items:center;justify-content:center;margin:0 auto 18px;font-family:var(--font-display);font-size:26px;font-weight:700;color:var(--primary);transition:all 0.3s;box-shadow:var(--shadow-sm)}
-.step:hover .step-num{background:var(--primary);color:#fff;transform:scale(1.1);box-shadow:0 8px 24px rgba(10,110,92,0.3)}
+.step:hover .step-num{background:var(--primary);color:#fff;transform:scale(1.1);box-shadow:0 8px 24px rgba(10,94,140,0.3)}
 .step h4{font-size:16px;font-weight:600;margin-bottom:8px}
 .step p{font-size:13px;color:var(--text-muted);line-height:1.6;max-width:220px;margin:0 auto}
 
@@ -318,11 +321,11 @@ section{padding:100px 24px}
 @media(max-width:1024px){.testi-card{min-width:calc(33.33% - 14px);max-width:calc(33.33% - 14px)}}
 @media(max-width:768px){.testi-card{min-width:calc(50% - 10px);max-width:calc(50% - 10px)}}
 @media(max-width:500px){.testi-card{min-width:100%;max-width:100%}}
-.testi-card.testi-green{background:linear-gradient(135deg,#064d40,#0a6e5c);color:#fff;box-shadow:0 8px 32px rgba(10,110,92,0.25)}
-.testi-card.testi-green .testi-quote{color:rgba(255,255,255,0.9)}
-.testi-card.testi-green .testi-author-name{color:#fff}
-.testi-card.testi-green .testi-author-role{color:rgba(255,255,255,0.7)}
-.testi-card.testi-green .testi-quote-icon{color:rgba(255,255,255,0.15)}
+.testi-card.testi-blue{background:linear-gradient(135deg,#084269,#0a5e8c);color:#fff;box-shadow:0 8px 32px rgba(10,94,140,0.25)}
+.testi-card.testi-blue .testi-quote{color:rgba(255,255,255,0.9)}
+.testi-card.testi-blue .testi-author-name{color:#fff}
+.testi-card.testi-blue .testi-author-role{color:rgba(255,255,255,0.7)}
+.testi-card.testi-blue .testi-quote-icon{color:rgba(255,255,255,0.15)}
 .testi-card.testi-gold{background:linear-gradient(135deg,#7c6520,#b8963a);color:#fff;box-shadow:0 8px 32px rgba(184,150,58,0.2)}
 .testi-card.testi-gold .testi-quote{color:rgba(255,255,255,0.9)}
 .testi-card.testi-gold .testi-author-name{color:#fff}
@@ -340,9 +343,9 @@ section{padding:100px 24px}
 .testi-card.testi-dark .testi-quote-icon{color:rgba(255,255,255,0.08)}
 .testi-quote-icon{position:absolute;top:16px;right:20px;font-family:var(--font-display);font-size:64px;line-height:1;font-weight:700}
 .testi-stars{display:flex;gap:2px;margin-bottom:14px;font-size:16px;color:var(--gold, #d4a520)}
-.testi-card.testi-green .testi-stars,.testi-card.testi-dark .testi-stars{color:#ffd700}
+.testi-card.testi-blue .testi-stars,.testi-card.testi-dark .testi-stars{color:#ffd700}
 .testi-card blockquote{font-size:14px;line-height:1.75;margin:0 0 20px;position:relative;z-index:1;font-style:normal}
-.testi-card.testi-green blockquote{color:rgba(255,255,255,0.9)}
+.testi-card.testi-blue blockquote{color:rgba(255,255,255,0.9)}
 .testi-card.testi-gold blockquote{color:rgba(255,255,255,0.9)}
 .testi-card.testi-light blockquote{color:var(--text-muted)}
 .testi-card.testi-dark blockquote{color:rgba(255,255,255,0.85)}
@@ -350,14 +353,14 @@ section{padding:100px 24px}
 .testi-author strong{font-weight:700;font-size:14px;display:block}
 .testi-author span{font-size:12px;margin-top:1px;display:block;opacity:0.7}
 .testi-avatar{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:18px;font-weight:700;flex-shrink:0}
-.testi-card.testi-green .testi-avatar{background:rgba(255,255,255,0.15);color:#fff}
+.testi-card.testi-blue .testi-avatar{background:rgba(255,255,255,0.15);color:#fff}
 .testi-card.testi-gold .testi-avatar{background:rgba(255,255,255,0.2);color:#fff}
 .testi-card.testi-light .testi-avatar{background:var(--primary-pale);color:var(--primary)}
 .testi-card.testi-dark .testi-avatar{background:rgba(255,255,255,0.1);color:#fff}
 .testi-author-name{font-weight:700;font-size:14px}
 .testi-author-role{font-size:12px;margin-top:1px}
 .testi-procedure{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:600;letter-spacing:0.04em;margin-top:4px;padding:3px 10px;border-radius:99px}
-.testi-card.testi-green .testi-procedure{background:rgba(255,255,255,0.12);color:rgba(255,255,255,0.8)}
+.testi-card.testi-blue .testi-procedure{background:rgba(255,255,255,0.12);color:rgba(255,255,255,0.8)}
 .testi-card.testi-gold .testi-procedure{background:rgba(255,255,255,0.15);color:rgba(255,255,255,0.8)}
 .testi-card.testi-light .testi-procedure{background:var(--primary-pale);color:var(--primary)}
 .testi-card.testi-dark .testi-procedure{background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.6)}
@@ -438,7 +441,7 @@ section{padding:100px 24px}
   .testimonial-card{min-width:290px}
   .bmi-form{grid-template-columns:1fr}
   .bmi-card{padding:32px 20px}
-  .falling-item{width:160px!important;height:210px!important}
+  .gallery-grid{grid-template-columns:1fr 1fr}
   section{padding:60px 16px}
   .section-header h2{font-size:24px}
   .section-desc{font-size:14px}
@@ -457,7 +460,7 @@ section{padding:100px 24px}
   .team-member{padding:24px 16px}
   .faq-q{padding:16px 18px;font-size:14px}
   .faq-a-inner{padding:0 18px 16px;font-size:13px}
-  .falling-gallery{height:250vh}
+  .gallery-grid{grid-template-columns:1fr}
 }
 @media(max-width:480px){
   .hero{padding:90px 16px 40px;gap:20px}
@@ -477,8 +480,7 @@ section{padding:100px 24px}
   .step h3{font-size:14px}
   .step p{font-size:12px}
   .video-scroll{height:180vh}
-  .falling-gallery{height:200vh}
-  .falling-item{width:140px!important;height:180px!important}
+  .gallery-pair-imgs img{height:180px}
   .cta-section{padding:50px 16px}
   .cta-section h2{font-size:22px}
   .nav-inner{height:60px;padding:0 12px}
@@ -493,16 +495,7 @@ section{padding:100px 24px}
 <nav class="nav" id="nav">
   <div class="nav-inner">
     <a href="#" class="logo">
-      <svg viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="22" cy="22" r="21" stroke="var(--primary)" stroke-width="2"/>
-        <path d="M22 8c-3 0-6 2-7 5-1 3-0.5 6 0 8 0.5 2 1 4 1 6 0 3 1 5 2 6.5 1 1.5 2.5 2.5 4 2.5s3-1 4-2.5c1-1.5 2-3.5 2-6.5 0-2 0.5-4 1-6 0.5-2 1-5 0-8-1-3-4-5-7-5z" fill="var(--primary)" opacity="0.15" stroke="var(--primary)" stroke-width="1.5" stroke-linecap="round"/>
-        <path d="M18 18h8" stroke="var(--primary)" stroke-width="1.5" stroke-linecap="round"/>
-        <path d="M17 22c1.5 1 3.5 1.5 5 1.5s3.5-0.5 5-1.5" stroke="var(--primary)" stroke-width="1.5" stroke-linecap="round" fill="none"/>
-        <line x1="22" y1="14" x2="22" y2="18" stroke="var(--primary)" stroke-width="1.5" stroke-linecap="round"/>
-        <line x1="22" y1="22" x2="22" y2="28" stroke="var(--primary)" stroke-width="1.5" stroke-linecap="round"/>
-        <circle cx="22" cy="10" r="1.5" fill="var(--primary)"/>
-      </svg>
-      <div class="logo-text">Dr. Ospina<span>Cirugía Bariátrica</span></div>
+      <img src="https://drjuancristobalospina.com/wp-content/uploads/2024/06/Doctor-Juan-Cristobal-Ospina-Cirugia-Bariatrica-Laparoscopica-2-1.png" alt="Dr. Juan Cristóbal Ospina" class="logo-img" style="height:40px;width:auto;filter:hue-rotate(170deg) saturate(0.8)">
     </a>
     <ul class="nav-links">
       <li><a href="#about">Doctor</a></li>
@@ -619,64 +612,64 @@ section{padding:100px 24px}
   </div>
 </section>
 
-<!-- FALLING IMAGES GALLERY -->
+<!-- BEFORE / AFTER GALLERY -->
 <section class="falling-gallery" id="fallingGallery">
-  <div class="falling-bg-text">
-    <h2>Resultados<br>Reales</h2>
-  </div>
-  <div class="falling-gallery-sticky">
-    <div class="falling-gallery-inner" id="fallingInner">
-      <div class="falling-item" data-delay="0" style="left:2%;top:5%;width:260px;height:340px">
-        <img src="https://drjuancristobalospina.com/wp-content/uploads/2024/06/Cirugia-bariatrica-para-perder-peso-antes.jpg.webp" alt="Antes del procedimiento" loading="lazy">
-        <div class="falling-item-caption">
-          <h4>Antes del procedimiento</h4>
-          <p>Evaluación inicial y plan personalizado</p>
+  <div class="gallery-inner">
+    <p class="section-eyebrow" style="text-align:center;color:rgba(255,255,255,0.5)">Resultados reales</p>
+    <h2 class="section-title" style="text-align:center;color:#fff">Antes y Después</h2>
+    <p style="text-align:center;color:rgba(255,255,255,0.6);max-width:560px;margin:0 auto">Casos reales de pacientes que transformaron su vida con cirugía bariátrica del Dr. Ospina</p>
+
+    <div class="gallery-grid">
+      <div class="gallery-pair">
+        <div class="gallery-pair-label">
+          <span class="before-label">Antes</span>
+          <span class="after-label">Después</span>
+        </div>
+        <div class="gallery-pair-imgs">
+          <img src="https://drjuancristobalospina.com/wp-content/uploads/2024/06/Cirugia-bariatrica-para-perder-peso-antes.jpg.webp" alt="Paciente antes de cirugía bariátrica" loading="lazy">
+          <img src="https://drjuancristobalospina.com/wp-content/uploads/2024/06/Cirugia-bariatrica-para-perder-peso-despues.jpg.webp" alt="Paciente después de cirugía bariátrica" loading="lazy">
+          <div class="gallery-arrow"><svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg></div>
+        </div>
+        <div class="gallery-pair-info">
+          <h4>Manga Gástrica</h4>
+          <p>Transformación completa con acompañamiento integral</p>
         </div>
       </div>
-      <div class="falling-item" data-delay="100" style="right:3%;top:2%;width:280px;height:360px">
-        <img src="https://drjuancristobalospina.com/wp-content/uploads/2024/06/Cirugia-bariatrica-para-perder-peso-despues.jpg.webp" alt="Después del procedimiento" loading="lazy">
-        <div class="falling-item-caption">
-          <h4>Después — Nueva vida</h4>
-          <p>Resultado sostenido con acompañamiento integral</p>
+
+      <div class="gallery-pair">
+        <div class="gallery-pair-label">
+          <span class="before-label">Antes</span>
+          <span class="after-label">Después</span>
+        </div>
+        <div class="gallery-pair-imgs">
+          <img src="https://drjuancristobalospina.com/wp-content/uploads/2024/06/Cirugia-para-perder-peso-Antes-Pereira-1.jpg.webp" alt="Paciente antes de manga gástrica" loading="lazy">
+          <img src="https://drjuancristobalospina.com/wp-content/uploads/2024/06/Cirugia-para-perder-peso-Pereira-1.jpg.webp" alt="Paciente después de manga gástrica" loading="lazy">
+          <div class="gallery-arrow"><svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg></div>
+        </div>
+        <div class="gallery-pair-info">
+          <h4>Bypass Gástrico</h4>
+          <p>Pérdida de peso sostenida con seguimiento nutricional</p>
         </div>
       </div>
-      <div class="falling-item" data-delay="200" style="left:28%;top:28%;width:240px;height:320px">
-        <img src="https://drjuancristobalospina.com/wp-content/uploads/2024/06/Cirugia-bariatrica-y-laparoscopica-para-perder-peso-en-Pereira-2.jpg.webp" alt="Consulta médica" loading="lazy">
-        <div class="falling-item-caption">
-          <h4>Consulta personalizada</h4>
-          <p>Análisis de peso, talla y plan quirúrgico a medida</p>
+
+      <div class="gallery-pair">
+        <div class="gallery-pair-label">
+          <span class="before-label">Antes</span>
+          <span class="after-label">Después</span>
         </div>
-      </div>
-      <div class="falling-item" data-delay="300" style="left:6%;top:55%;width:220px;height:280px">
-        <img src="https://drjuancristobalospina.com/wp-content/uploads/2024/06/Cirugia-para-perder-peso-Antes-Pereira-1.jpg.webp" alt="Caso de éxito antes" loading="lazy">
-        <div class="falling-item-caption">
-          <h4>Caso de éxito</h4>
-          <p>Antes de la manga gástrica</p>
+        <div class="gallery-pair-imgs">
+          <img src="https://drjuancristobalospina.com/wp-content/uploads/2024/06/Antes-y-despues-cirugia-perdida-de-peso-Dr-Juan-Cristobal-Ospina-en-Pereira-Colombia-2.png.webp" alt="Paciente antes de procedimiento bariátrico" loading="lazy">
+          <img src="https://drjuancristobalospina.com/wp-content/uploads/2024/06/Antes-y-Despues-05.png.webp" alt="Paciente después de procedimiento bariátrico" loading="lazy">
+          <div class="gallery-arrow"><svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg></div>
         </div>
-      </div>
-      <div class="falling-item" data-delay="400" style="right:6%;top:45%;width:250px;height:330px">
-        <img src="https://drjuancristobalospina.com/wp-content/uploads/2024/06/Cirugia-para-perder-peso-Pereira-1.jpg.webp" alt="Caso de éxito después" loading="lazy">
-        <div class="falling-item-caption">
-          <h4>Transformación completa</h4>
-          <p>Resultado después de la cirugía bariátrica</p>
-        </div>
-      </div>
-      <div class="falling-item" data-delay="500" style="left:48%;top:6%;width:230px;height:300px">
-        <img src="https://drjuancristobalospina.com/wp-content/uploads/2024/06/Cirugia-bariatrica-y-laparoscopica-para-perder-peso-en-Pereira-3.jpg.webp" alt="Equipo médico" loading="lazy">
-        <div class="falling-item-caption">
-          <h4>Equipo multidisciplinario</h4>
-          <p>Cirugía, nutrición, psicología y medicina interna</p>
-        </div>
-      </div>
-      <div class="falling-item" data-delay="600" style="right:22%;top:62%;width:200px;height:260px">
-        <img src="https://drjuancristobalospina.com/wp-content/uploads/2024/06/Cirugia-bariatrica-para-perder-peso-Antes-Pereira-scaled.jpg.webp" alt="Seguimiento postoperatorio" loading="lazy">
-        <div class="falling-item-caption">
-          <h4>Seguimiento continuo</h4>
-          <p>Acompañamiento antes, durante y después</p>
+        <div class="gallery-pair-info">
+          <h4>Cirugía Bariátrica Integral</h4>
+          <p>Resultado con equipo multidisciplinario</p>
         </div>
       </div>
     </div>
-    <div class="falling-cta" id="fallingCta">
+
+    <div class="gallery-cta">
       <a href="https://wa.me/573105978158?text=Hola%20Dr.%20Ospina,%20vi%20los%20resultados%20y%20quiero%20agendar%20una%20cita" target="_blank" rel="noopener noreferrer">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
         Quiero estos resultados
@@ -762,19 +755,19 @@ section{padding:100px 24px}
       </div>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;margin-top:36px">
         <div class="reveal reveal-delay-1" style="background:var(--bg-alt);border:1px solid var(--border);border-radius:var(--radius);padding:28px;text-align:center;transition:all 0.3s">
-          <div style="width:64px;height:64px;border-radius:50%;background:var(--primary-pale);display:flex;align-items:center;justify-content:center;margin:0 auto 14px;font-family:var(--font-display);font-size:24px;font-weight:700;color:var(--primary)">S</div>
+          <img src="https://drjuancristobalospina.com/wp-content/uploads/2024/07/SUSANA-PEREZ-GUTIERREZ.jpeg.webp" alt="Susana Pérez Gutiérrez" style="width:80px;height:80px;border-radius:50%;object-fit:cover;margin:0 auto 14px;display:block;border:3px solid var(--primary-pale)">
           <div style="font-weight:700;font-size:15px;margin-bottom:2px">Susana Pérez Gutiérrez</div>
           <div style="font-size:12px;color:var(--primary);font-weight:600;margin-bottom:8px">Psicóloga Clínica</div>
           <div style="font-size:13px;color:var(--text-muted);line-height:1.6">Maestría en Psicología Clínica. Especialista en conducta alimentaria y acompañamiento en cambio de hábitos.</div>
         </div>
         <div class="reveal reveal-delay-2" style="background:var(--bg-alt);border:1px solid var(--border);border-radius:var(--radius);padding:28px;text-align:center;transition:all 0.3s">
-          <div style="width:64px;height:64px;border-radius:50%;background:var(--gold-pale);display:flex;align-items:center;justify-content:center;margin:0 auto 14px;font-family:var(--font-display);font-size:24px;font-weight:700;color:var(--gold)">M</div>
+          <img src="https://drjuancristobalospina.com/wp-content/uploads/2024/07/Martha-Isabel-Lopez-Reinosa.jpeg.webp" alt="Martha Isabel López Reinosa" style="width:80px;height:80px;border-radius:50%;object-fit:cover;margin:0 auto 14px;display:block;border:3px solid var(--gold-pale)">
           <div style="font-weight:700;font-size:15px;margin-bottom:2px">Martha Isabel López Reinosa</div>
           <div style="font-size:12px;color:var(--primary);font-weight:600;margin-bottom:8px">Nutricionista</div>
           <div style="font-size:13px;color:var(--text-muted);line-height:1.6">Experiencia en pacientes bariátricos y oncológicos. Experta en soporte metabólico y nutricional perioperatorio.</div>
         </div>
         <div class="reveal reveal-delay-3" style="background:var(--bg-alt);border:1px solid var(--border);border-radius:var(--radius);padding:28px;text-align:center;transition:all 0.3s">
-          <div style="width:64px;height:64px;border-radius:50%;background:var(--primary-pale);display:flex;align-items:center;justify-content:center;margin:0 auto 14px;font-family:var(--font-display);font-size:24px;font-weight:700;color:var(--primary)">V</div>
+          <img src="https://drjuancristobalospina.com/wp-content/uploads/2024/07/Dra.-Valentina-Santa-Gil.jpeg.webp" alt="Dra. Valentina Santa Gil" style="width:80px;height:80px;border-radius:50%;object-fit:cover;margin:0 auto 14px;display:block;border:3px solid var(--primary-pale)">
           <div style="font-weight:700;font-size:15px;margin-bottom:2px">Dra. Valentina Santa Gil</div>
           <div style="font-size:12px;color:var(--primary);font-weight:600;margin-bottom:8px">Médica General</div>
           <div style="font-size:13px;color:var(--text-muted);line-height:1.6">Experiencia en ámbito quirúrgico. Apoyo durante intervenciones y monitoreo de pacientes pre y postbariátricos.</div>
@@ -794,37 +787,37 @@ section{padding:100px 24px}
     </div>
     <div class="services-grid">
       <div class="service-card reveal reveal-delay-1" onclick="openServiceModal('manga')">
-        <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></div>
+        <img class="service-img" src="https://drjuancristobalospina.com/wp-content/uploads/2024/06/Cirugia-manga-gastrica-para-bajar-de-peso-en-Pereira.jpg.webp" alt="Manga gástrica - se reduce el 80% del estómago" loading="lazy">
         <h3>Manga Gástrica</h3>
         <p>Se extrae el 80% del estómago por laparoscopia, reduciendo la capacidad de ingesta y generando saciedad temprana.</p>
         <span class="service-link">Ver detalles <span>→</span></span>
       </div>
       <div class="service-card reveal reveal-delay-2" onclick="openServiceModal('bypass')">
-        <div class="service-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg></div>
+        <img class="service-img" src="https://drjuancristobalospina.com/wp-content/uploads/2024/06/Cirugia-bypass-gastrico-para-bajar-de-peso-en-Pereira.jpg.webp" alt="Bypass gástrico - conexión directa al intestino" loading="lazy">
         <h3>Bypass Gástrico</h3>
         <p>Convierte el estómago en una bolsa pequeña conectada al intestino para una pérdida de peso efectiva.</p>
         <span class="service-link">Ver detalles <span>→</span></span>
       </div>
       <div class="service-card reveal reveal-delay-3" onclick="openServiceModal('integral')">
-        <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="23" y1="11" x2="17" y2="11"/></svg></div>
+        <img class="service-img" src="https://drjuancristobalospina.com/wp-content/uploads/2024/06/Cirugia-bariatrica-y-laparoscopica-para-perder-peso-en-Pereira-2.jpg.webp" alt="Programa integral multidisciplinario de obesidad" loading="lazy">
         <h3>Manejo Integral de Obesidad</h3>
         <p>Programa multidisciplinario con nutrición, psicología y medicina interna para pérdida de peso sostenida.</p>
         <span class="service-link">Ver detalles <span>→</span></span>
       </div>
       <div class="service-card reveal reveal-delay-1" onclick="openServiceModal('colecistectomia')">
-        <div class="service-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg></div>
+        <img class="service-img" src="https://drjuancristobalospina.com/wp-content/uploads/2024/06/Cirugia-bariatrica-y-laparoscopica-para-perder-peso-en-Pereira-3.jpg.webp" alt="Colecistectomía por laparoscopia" loading="lazy">
         <h3>Colecistectomía</h3>
         <p>Extracción de vesícula biliar por laparoscopia. Procedimiento ambulatorio con recuperación rápida.</p>
         <span class="service-link">Ver detalles <span>→</span></span>
       </div>
       <div class="service-card reveal reveal-delay-2" onclick="openServiceModal('hernias')">
-        <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <img class="service-img" src="https://drjuancristobalospina.com/wp-content/uploads/2024/06/Cirugia-bariatrica-y-laparoscopica-para-perder-peso-Pereira.jpg.webp" alt="Corrección de hernias por laparoscopia" loading="lazy">
         <h3>Corrección de Hernias</h3>
         <p>Reparación de hernias inguinales, umbilicales e incisionales con técnica laparoscópica avanzada.</p>
         <span class="service-link">Ver detalles <span>→</span></span>
       </div>
       <div class="service-card reveal reveal-delay-3" onclick="openServiceModal('otros')">
-        <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
+        <img class="service-img" src="https://drjuancristobalospina.com/wp-content/uploads/2024/06/Cirugia-bypass-gastrico-para-bajar-de-peso-Pereira.jpg.webp" alt="Otros procedimientos de cirugía general" loading="lazy">
         <h3>Otros Procedimientos</h3>
         <p>Esplenectomía, toma de biopsias, resección de lipomas con técnicas mínimamente invasivas.</p>
         <span class="service-link">Ver detalles <span>→</span></span>
@@ -964,7 +957,7 @@ section{padding:100px 24px}
   </div>
   <div class="testi-carousel" id="testiCarousel">
     <div class="testi-track" id="testiTrack">
-      <div class="testi-card testi-green">
+      <div class="testi-card testi-blue">
         <div class="testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
         <blockquote>Al Doctor me lo recomendó un dermatólogo y me habló muy bien de él. Quedé muy contenta por la seguridad y la agilidad que le da a todo el proceso. Sin duda alguna, lo recomiendo.</blockquote>
         <div class="testi-author"><div class="testi-avatar">L</div><div><strong>Luz</strong><span>Manga gástrica</span></div></div>
@@ -984,7 +977,7 @@ section{padding:100px 24px}
         <blockquote>Excelente cirugía realizada por el profesional. Agradecida por su compromiso y honestidad. Solo tengo opiniones de agradecimiento para el médico y su equipo.</blockquote>
         <div class="testi-author"><div class="testi-avatar">S</div><div><strong>Sandra</strong><span>Cirugía bariátrica</span></div></div>
       </div>
-      <div class="testi-card testi-green">
+      <div class="testi-card testi-blue">
         <div class="testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
         <blockquote>El Doctor Juan Cristóbal Ospina es el mejor de todos, me ayudó con un problema que tenía en mi pierna por años. Todo salió perfecto, muy buen cirujano.</blockquote>
         <div class="testi-author"><div class="testi-avatar">D</div><div><strong>Dora</strong><span>Cirugía general</span></div></div>
@@ -1004,7 +997,7 @@ section{padding:100px 24px}
         <blockquote>El mejor cirujano de Pereira. Me operé de manga gástrica y ya bajé 25 kilos en 5 meses. El seguimiento post-cirugía es excelente, siempre pendiente.</blockquote>
         <div class="testi-author"><div class="testi-avatar">R</div><div><strong>Ricardo</strong><span>Manga gástrica</span></div></div>
       </div>
-      <div class="testi-card testi-green">
+      <div class="testi-card testi-blue">
         <div class="testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
         <blockquote>Le agradezco al Doctor por cambiar mi vida. Tenía diabetes y presión alta, después de la cirugía mis niveles se normalizaron. Excelente ser humano y cirujano.</blockquote>
         <div class="testi-author"><div class="testi-avatar">A</div><div><strong>Ana María</strong><span>Cirugía bariátrica</span></div></div>
@@ -1261,10 +1254,11 @@ function handleVideoScroll() {
   const scrolled = -rect.top;
   const progress = Math.max(0, Math.min(1, scrolled / (sectionHeight - viewportHeight)));
 
-  const fullyOpen = progress > 0.85 && progress < 0.98;
+  const inRange = progress > 0.45 && progress < 0.98;
 
-  if (fullyOpen && !videoPlaying && videoEl) {
+  if (inRange && !videoPlaying && videoEl) {
     videoEl.currentTime = 0;
+    videoEl.loop = false;
     videoEl.play().catch(() => {});
     videoPlaying = true;
     if (!userMuted) {
@@ -1272,7 +1266,7 @@ function handleVideoScroll() {
       updateSoundIcon();
     }
   }
-  if (!fullyOpen && videoPlaying && videoEl) {
+  if (!inRange && videoPlaying && videoEl) {
     videoEl.pause();
     videoEl.muted = true;
     videoPlaying = false;
@@ -1280,7 +1274,7 @@ function handleVideoScroll() {
   }
 
   if (soundBtn) {
-    soundBtn.classList.toggle('visible', fullyOpen && videoPlaying);
+    soundBtn.classList.toggle('visible', inRange && videoPlaying);
   }
 
   const w = 70 + progress * 30;
@@ -1303,41 +1297,7 @@ function handleVideoScroll() {
 }
 window.addEventListener('scroll', handleVideoScroll, { passive: true });
 
-// FALLING IMAGES ON SCROLL
-const fallingGallery = document.getElementById('fallingGallery');
-const fallingItems = document.querySelectorAll('.falling-item');
-const fallingCta = document.getElementById('fallingCta');
-
-function handleFallingScroll() {
-  if (!fallingGallery) return;
-  const rect = fallingGallery.getBoundingClientRect();
-  const sectionTop = -rect.top;
-  const sectionHeight = fallingGallery.offsetHeight - window.innerHeight;
-  const progress = Math.max(0, Math.min(1, sectionTop / sectionHeight));
-
-  fallingItems.forEach((item) => {
-    const delay = parseInt(item.dataset.delay || 0);
-    const triggerPoint = delay / 800;
-    const itemProgress = Math.max(0, Math.min(1, (progress - triggerPoint) / 0.2));
-
-    if (itemProgress > 0) {
-      const ease = 1 - Math.pow(1 - itemProgress, 3);
-      const rotation = (Math.random() - 0.5) * 6;
-      item.style.opacity = Math.min(1, itemProgress * 3);
-      item.style.transform = `translateY(${(1 - ease) * -120}vh) rotate(${rotation * (1 - ease)}deg)`;
-      item.style.transition = 'none';
-    } else {
-      item.style.opacity = 0;
-      item.style.transform = 'translateY(-120vh)';
-      item.style.transition = 'none';
-    }
-  });
-
-  if (fallingCta) {
-    fallingCta.classList.toggle('show', progress > 0.75);
-  }
-}
-window.addEventListener('scroll', handleFallingScroll, { passive: true });
+// Gallery pairs hover (no falling animation)
 
 // Counter animation
 function animateCounters() {
