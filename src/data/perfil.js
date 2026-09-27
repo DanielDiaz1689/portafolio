@@ -166,7 +166,7 @@ export const proyectos = [
     descripcion:
       'Rediseño completo de sitio web médico. Video con expansión scroll y sonido automático, galería de resultados con efecto "falling images", calculadora IMC, modal de servicios con animación spring, carrusel de testimonios y WhatsApp integrado. HTML + CSS + JS vanilla.',
     imagen: '/proyectos/dr-ospina.jpg',
-    enlace: '/dr-ospina-redesign.html',
+    enlace: 'https://dr-ospina.vercel.app',
   },
   {
     titulo: 'CRM Eventos — Gestión comercial para empresas de eventos',
