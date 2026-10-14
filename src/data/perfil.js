@@ -189,7 +189,7 @@ export const proyectos = [
     enlace: 'https://dropi-analyzer.vercel.app/', // ← URL de Vercel
   },
   {
-    titulo: 'EVENTO15 — Wedding & Event Planners',
+    titulo: 'Carlos y Paola — Wedding & Event Planners',
     descripcion:
       'Sitio premium para planificadores de bodas y eventos. Galería cinematográfica con efecto scroll-zoom, sistema de agendamiento de citas con confirmación por correo, WhatsApp integrado y videos de eventos. Verde esmeralda + dorado. React + Vercel.',
     imagen: '/proyectos/evento15.jpg',
