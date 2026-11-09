@@ -22,9 +22,10 @@ function saveLocal(done) {
 
 export default function Reto200() {
   const [done, setDone] = useState(loadLocal)
-  const [synced, setSynced] = useState(false) // true cuando cargó de Supabase
+  const [synced, setSynced] = useState(false)
   const [toast, setToast] = useState(null)
   const toastTimer = useRef(null)
+  const userTouched = useRef(false)
 
   // ── Cargar desde Supabase al montar ──────────────────────────────────────
   useEffect(() => {
@@ -39,8 +40,10 @@ export default function Reto200() {
 
         if (!error && data?.done_numbers) {
           const remoto = new Set(data.done_numbers)
-          setDone(remoto)
-          saveLocal(remoto)
+          if (!userTouched.current) {
+            setDone(remoto)
+            saveLocal(remoto)
+          }
         }
       } catch {}
       setSynced(true)
@@ -64,6 +67,7 @@ export default function Reto200() {
   }, [done, synced])
 
   function toggle(n) {
+    userTouched.current = true
     setDone(prev => {
       const next = new Set(prev)
       if (next.has(n)) {
@@ -72,6 +76,7 @@ export default function Reto200() {
         next.add(n)
         showToast(`+${cop(n)} ahorrado ✓`)
       }
+      saveLocal(next)
       return next
     })
   }
@@ -84,7 +89,10 @@ export default function Reto200() {
 
   function resetAll() {
     if (!confirm('¿Reiniciar todo el reto? Se borrarán todos los avances.')) return
-    setDone(new Set())
+    userTouched.current = true
+    const empty = new Set()
+    saveLocal(empty)
+    setDone(empty)
   }
 
   // ── Exportar a archivo .txt ───────────────────────────────────────────────
